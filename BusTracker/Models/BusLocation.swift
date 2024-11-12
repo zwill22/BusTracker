@@ -10,9 +10,17 @@ import Foundation
 struct BusLocation {
     var latitude: Double
     var longitude: Double
+}
+
+extension BusLocation: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case latitude = "Latitude"
+        case longitude = "Longitude"
+    }
     
-    init(latitude: String, longitude: String) {
-        self.latitude = Double(latitude) ?? 0
-        self.longitude = Double(longitude) ?? 0
+    init (from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.latitude = try container.decode(Double.self, forKey: .latitude)
+        self.longitude = try container.decode(Double.self, forKey: .longitude)
     }
 }

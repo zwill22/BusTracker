@@ -10,12 +10,14 @@ import Foundation
 struct BusDetails {
     let lineNumber: String
     let operatorCode: String
+    let location: BusLocation
 }
 
 extension BusDetails: Decodable {
     enum CodingKeys: String, CodingKey {
         case lineNumber = "LineRef"
         case operatorCode = "OperatorRef"
+        case location = "VehicleLocation"
     }
     
     init(from decoder: Decoder) throws {
@@ -23,15 +25,18 @@ extension BusDetails: Decodable {
         
         let rawLineNumber = try? values.decode(String.self, forKey: .lineNumber)
         let rawOperatorCode = try? values.decode(String.self, forKey: .operatorCode)
+        let rawBusLocation = try? values.decode(BusLocation.self, forKey: .location)
         
         guard let lineNumber = rawLineNumber,
-              let operatorCode = rawOperatorCode
+              let operatorCode = rawOperatorCode,
+              let busLocation = rawBusLocation
         else {
             throw BusError.missingData
         }
         
         self.lineNumber = lineNumber
         self.operatorCode = operatorCode
+        self.location = busLocation
     }
 }
 

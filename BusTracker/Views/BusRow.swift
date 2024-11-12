@@ -27,7 +27,8 @@ struct BusRow: View {
 #Preview(traits: .sizeThatFitsLayout) {
     let previewDetails = BusDetails(
         lineNumber: "X11",
-        operatorCode: "ARV"
+        operatorCode: "ARV",
+        location: BusLocation(latitude: 60, longitude: 0)
     )
     
     let previewBus = Bus(
