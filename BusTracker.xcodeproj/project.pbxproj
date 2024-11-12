@@ -35,16 +35,6 @@
 			path = BusTracker;
 			sourceTree = "<group>";
 		};
-		CE0DDF8D2CDE161D00A1D84B /* BusTrackerTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = BusTrackerTests;
-			sourceTree = "<group>";
-		};
-		CE0DDF972CDE161D00A1D84B /* BusTrackerUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = BusTrackerUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				CE0DDF7C2CDE161C00A1D84B /* BusTracker */,
-				CE0DDF8D2CDE161D00A1D84B /* BusTrackerTests */,
-				CE0DDF972CDE161D00A1D84B /* BusTrackerUITests */,
 				CE0DDF7B2CDE161C00A1D84B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,9 +118,6 @@
 			dependencies = (
 				CE0DDF8C2CDE161D00A1D84B /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				CE0DDF8D2CDE161D00A1D84B /* BusTrackerTests */,
-			);
 			name = BusTrackerTests;
 			packageProductDependencies = (
 			);
@@ -152,9 +137,6 @@
 			);
 			dependencies = (
 				CE0DDF962CDE161D00A1D84B /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				CE0DDF972CDE161D00A1D84B /* BusTrackerUITests */,
 			);
 			name = BusTrackerUITests;
 			packageProductDependencies = (
@@ -399,6 +381,7 @@
 				DEVELOPMENT_TEAM = 42UF25M2U8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location required for relevent information";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +411,7 @@
 				DEVELOPMENT_TEAM = 42UF25M2U8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location required for relevent information";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
