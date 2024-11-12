@@ -21,7 +21,9 @@ struct Buses: View {
         NavigationView {
             List(selection: $selection) {
                 ForEach(provider.buses) { bus in
-                    BusRow(bus: bus)
+                    NavigationLink(destination: BusDetail(bus: bus)) {
+                        BusRow(bus: bus)
+                    }
                 }
                 .onDelete(perform: deleteBuses)
             }
