@@ -12,8 +12,9 @@ struct BusRow: View {
     
     var body: some View {
         HStack {
+            RouteNumber(bus: bus)
             VStack(alignment: .leading) {
-                Text(bus.vehicleUniqueId)
+                Text(bus.details.operatorCode)
                     .font(.title)
                 Text("\(bus.time.formatted(.relative(presentation: .named)))")
                     .foregroundColor(.secondary)
@@ -24,9 +25,15 @@ struct BusRow: View {
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
+    let previewDetails = BusDetails(
+        lineNumber: "X11",
+        operatorCode: "ARV"
+    )
+    
     let previewBus = Bus(
         time: Date(timeIntervalSinceNow: 0),
-        vehicleUniqueId: "1234567890"
+        details: previewDetails,
+        id: "1234567890"
     )
     BusRow(bus: previewBus)
 }

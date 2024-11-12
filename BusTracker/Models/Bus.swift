@@ -5,38 +5,68 @@
 //  Created by Zack Williams on 12-11-2024.
 //
 
- import Foundation
+import Foundation
 
-struct Bus {
+struct BusDetails {
+    let lineNumber: String
+    let operatorCode: String
+}
+
+extension BusDetails: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case lineNumber = "LineRef"
+        case operatorCode = "OperatorRef"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        let rawLineNumber = try? values.decode(String.self, forKey: .lineNumber)
+        let rawOperatorCode = try? values.decode(String.self, forKey: .operatorCode)
+        
+        guard let lineNumber = rawLineNumber,
+              let operatorCode = rawOperatorCode
+        else {
+            throw BusError.missingData
+        }
+        
+        self.lineNumber = lineNumber
+        self.operatorCode = operatorCode
+    }
+}
+
+struct Bus: Identifiable {
     let time: Date
-    let vehicleUniqueId: String
+    let details: BusDetails
+    let id: String
 }
 
-extension Bus: Identifiable {
-    var id: String { vehicleUniqueId }
-}
-
-extension Bus: Codable {
+extension Bus: Decodable {
     
     private enum CodingKeys: String, CodingKey {
         case time = "RecordedAtTime"
-        case vehicleUniqueId = "ItemIdentifier"
+        case id = "ItemIdentifier"
+        case monitoredJourney = "MonitoredVehicleJourney"
     }
     
     init(from decoder: Decoder) throws {
         
         let values = try decoder.container(keyedBy: CodingKeys.self)
 
+
         let rawTime = try? values.decode(Date.self, forKey: .time)
-        let rawCode = try? values.decode(String.self, forKey: .vehicleUniqueId)
+        let rawID = try? values.decode(String.self, forKey: .id)
+        let rawDetails = try? values.decode(BusDetails.self, forKey: .monitoredJourney)
         
         guard let time = rawTime,
-              let code = rawCode
+              let id = rawID,
+              let details = rawDetails
         else {
             throw BusError.missingData
         }
         
         self.time = time
-        self.vehicleUniqueId = code
+        self.id = id
+        self.details = details
     }
 }
