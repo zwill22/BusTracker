@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CEA153AC2CE38D9A00C86380 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = CEA153AB2CE38D9A00C86380 /* XMLCoder */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		CE0DDF8B2CDE161D00A1D84B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -42,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA153AC2CE38D9A00C86380 /* XMLCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +105,7 @@
 			);
 			name = BusTracker;
 			packageProductDependencies = (
+				CEA153AB2CE38D9A00C86380 /* XMLCoder */,
 			);
 			productName = BusTracker;
 			productReference = CE0DDF7A2CDE161C00A1D84B /* BusTracker.app */;
@@ -177,6 +183,9 @@
 			);
 			mainGroup = CE0DDF712CDE161C00A1D84B;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CEA153AA2CE38D9A00C86380 /* XCRemoteSwiftPackageReference "XMLCoder" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CE0DDF7B2CDE161C00A1D84B /* Products */;
 			projectDirPath = "";
@@ -542,6 +551,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CEA153AA2CE38D9A00C86380 /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CoreOffice/XMLCoder.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.17.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CEA153AB2CE38D9A00C86380 /* XMLCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEA153AA2CE38D9A00C86380 /* XCRemoteSwiftPackageReference "XMLCoder" */;
+			productName = XMLCoder;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE0DDF722CDE161C00A1D84B /* Project object */;
 }
