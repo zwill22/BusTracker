@@ -13,7 +13,10 @@ extension Bus {
         let previewDetails = BusDetails(
             lineNumber: "X11",
             operatorCode: "ARV",
-            location: BusLocation(latitude: 53, longitude: -3)
+            location: BusLocation(latitude: 53, longitude: -3),
+            origin: "Atown",
+            destination: "Btown",
+            originDepartureTime: Date(timeIntervalSinceNow: -1000)
         )
         
         let previewBus = Bus(

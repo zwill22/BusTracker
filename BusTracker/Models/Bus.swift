@@ -11,6 +11,9 @@ struct BusDetails {
     let lineNumber: String
     let operatorCode: String
     let location: BusLocation
+    let origin: String
+    let destination: String
+    let originDepartureTime: Date
 }
 
 extension BusDetails: Decodable {
@@ -18,6 +21,9 @@ extension BusDetails: Decodable {
         case lineNumber = "LineRef"
         case operatorCode = "OperatorRef"
         case location = "VehicleLocation"
+        case origin = "OriginName"
+        case destination = "DestinationName"
+        case originDepartureTime = "OriginAimedDepartureTime"
     }
     
     init(from decoder: Decoder) throws {
@@ -26,10 +32,16 @@ extension BusDetails: Decodable {
         let rawLineNumber = try? values.decode(String.self, forKey: .lineNumber)
         let rawOperatorCode = try? values.decode(String.self, forKey: .operatorCode)
         let rawBusLocation = try? values.decode(BusLocation.self, forKey: .location)
+        let rawOrigin = try? values.decode(String.self, forKey: .origin)
+        let rawDestination = try? values.decode(String.self, forKey: .destination)
+        let rawOriginDepartureTime = try? values.decode(Date.self, forKey: .originDepartureTime)
         
         guard let lineNumber = rawLineNumber,
               let operatorCode = rawOperatorCode,
-              let busLocation = rawBusLocation
+              let busLocation = rawBusLocation,
+              let origin = rawOrigin,
+              let destination = rawDestination,
+              let originDepartureTime = rawOriginDepartureTime
         else {
             throw BusError.missingData
         }
@@ -37,6 +49,9 @@ extension BusDetails: Decodable {
         self.lineNumber = lineNumber
         self.operatorCode = operatorCode
         self.location = busLocation
+        self.origin = origin
+        self.destination = destination
+        self.originDepartureTime = originDepartureTime
     }
 }
 

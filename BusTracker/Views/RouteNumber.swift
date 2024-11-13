@@ -9,11 +9,12 @@ import SwiftUI
 
 struct RouteNumber: View {
     var bus: Bus
+    var height: CGFloat = 60
     
     var body: some View {
         RoundedRectangle(cornerRadius: 8)
             .fill(.black)
-            .frame(width: 80, height: 60)
+            .frame(width: 80, height: height)
             .overlay {
                 Text(bus.details.lineNumber)
                     .font(.title)

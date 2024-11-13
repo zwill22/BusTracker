@@ -18,15 +18,20 @@ struct BusDetail: View {
     
     var body: some View {
         let location = self.bus.details.location
-        VStack {
+        VStack(alignment: .leading) {
             BusDetailMap(location: location, tintColour: bus.colour)
                 .ignoresSafeArea(.container)
             HStack {
-                RouteNumber(bus: bus)
-                VStack {
-                    Text(bus.details.operatorCode)
-                        .font(.title3)
-                        .bold()
+                RouteNumber(bus: bus, height: 80)
+                    .padding(.trailing, 10)
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text(bus.details.origin).font(.title3)
+                        Image(systemName: "arrow.right").font(.title3)
+                        Text(bus.details.destination).font(.title3)
+                    }
+                    Text("Operator: \(bus.details.operatorCode)")
+                        .font(.headline)
                     Text("\(bus.time.formatted())")
                         .foregroundStyle(Color.secondary)
                     if high_precision {
@@ -38,6 +43,7 @@ struct BusDetail: View {
                     }
                 }
             }
+            .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 10))
         }.onTapGesture {
             changePrecision()
         }

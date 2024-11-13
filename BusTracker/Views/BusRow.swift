@@ -12,15 +12,22 @@ struct BusRow: View {
     
     var body: some View {
         HStack {
-            RouteNumber(bus: bus)
+            RouteNumber(bus: bus, height: 75)
             VStack(alignment: .leading) {
-                Text(bus.details.operatorCode)
-                    .font(.title)
-                Text("\(bus.time.formatted(.relative(presentation: .named)))")
-                    .foregroundColor(.secondary)
+                HStack{
+                    Text("\(bus.details.originDepartureTime.formatted(date: .omitted, time: .shortened))").font(.title)
+                        .lineLimit(1, reservesSpace: true)
+                    Image(systemName: "arrow.right").font(.title)
+                    Text(bus.details.destination).font(.title)
+                        .lineLimit(1, reservesSpace: true)
+                }
+                Text("Operator: \(bus.details.operatorCode)").foregroundStyle(.secondary)
+                        .lineLimit(1, reservesSpace: true)
+                Text("Origin: \(bus.details.origin)").foregroundColor(.secondary)
+                        .lineLimit(1, reservesSpace: true)
             }
         }
-        .padding(.vertical, 8)
+        .padding(.vertical, 10)
     }
 }
 

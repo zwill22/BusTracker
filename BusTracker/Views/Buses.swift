@@ -33,6 +33,7 @@ struct Buses: View {
                 await fetchBuses()
             }
             .alert(isPresented: $hasError, error: error) {}
+            .padding(EdgeInsets(top: 0, leading:5, bottom: 0, trailing: 5))
         }
         .task {
             await fetchBuses()
