@@ -36,22 +36,16 @@ extension BusDetails: Decodable {
         let rawDestination = try? values.decode(String.self, forKey: .destination)
         let rawOriginDepartureTime = try? values.decode(Date.self, forKey: .originDepartureTime)
         
-        guard let lineNumber = rawLineNumber,
-              let operatorCode = rawOperatorCode,
-              let busLocation = rawBusLocation,
-              let origin = rawOrigin,
-              let destination = rawDestination,
-              let originDepartureTime = rawOriginDepartureTime
-        else {
+        guard let location = rawBusLocation else {
             throw BusError.missingData
         }
         
-        self.lineNumber = lineNumber
-        self.operatorCode = operatorCode
-        self.location = busLocation
-        self.origin = origin
-        self.destination = destination
-        self.originDepartureTime = originDepartureTime
+        self.lineNumber = rawLineNumber ?? ""
+        self.operatorCode = rawOperatorCode ?? ""
+        self.location = location
+        self.origin = rawOrigin ?? ""
+        self.destination = rawDestination ?? ""
+        self.originDepartureTime = rawOriginDepartureTime ?? .distantPast
     }
 }
 

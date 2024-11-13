@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct BusTrackerApp: App {
+    @StateObject var busProvider = BusProvider()
     var body: some Scene {
         WindowGroup {
-            MapView()
+            Buses()
+                .environmentObject(busProvider)
         }
     }
 }
