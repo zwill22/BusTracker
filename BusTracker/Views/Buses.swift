@@ -29,6 +29,7 @@ struct Buses: View {
             }
             .listStyle(.inset)
             .navigationTitle(title)
+            .toolbar(content: toolbarContent)
             .refreshable {
                 await fetchBuses()
             }
