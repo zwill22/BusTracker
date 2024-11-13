@@ -1,6 +1,15 @@
 {
-  "originHash" : "dac34623e52271c90d2f4d8becf8429e6548642bb5b6eef33997307f707d8737",
+  "originHash" : "523de5f239d5d9b95c289a29c3c6fff8e1e85a6510e889af3baac7a6bc63e071",
   "pins" : [
+    {
+      "identity" : "wrappinghstack",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:ksemianov/WrappingHStack.git",
+      "state" : {
+        "revision" : "3300f68b6bf5f8a75ee7ca8a40f136a558053d10",
+        "version" : "0.2.0"
+      }
+    },
     {
       "identity" : "xmlcoder",
       "kind" : "remoteSourceControl",

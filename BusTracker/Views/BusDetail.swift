@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WrappingHStack
 
 struct BusDetail: View {
     var bus: Bus
@@ -25,10 +26,12 @@ struct BusDetail: View {
                 RouteNumber(bus: bus, height: 80)
                     .padding(.trailing, 10)
                 VStack(alignment: .leading) {
-                    HStack {
-                        Text(bus.details.origin).font(.title3)
-                        Image(systemName: "arrow.right").font(.title3)
-                        Text(bus.details.destination).font(.title3)
+                    WrappingHStack(alignment: .leading) {
+                        Group {
+                            Text(bus.details.origin)
+                            Image(systemName: "arrow.right")
+                            Text(bus.details.destination)
+                        }.lineLimit(1).font(.title3)
                     }
                     Text("Operator: \(bus.details.operatorCode)")
                         .font(.headline)
