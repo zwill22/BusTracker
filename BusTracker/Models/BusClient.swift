@@ -15,7 +15,8 @@ actor BusClient {
         get async throws {
             let data = try await downloader.httpData(from: feedURL)
             let allBuses = try decoder.decode(XML.self, from: data)
-            return allBuses.buses
+            
+            return allBuses.buses.filter({ $0.time.timeIntervalSinceNow > -3600})
         }
     }
 
