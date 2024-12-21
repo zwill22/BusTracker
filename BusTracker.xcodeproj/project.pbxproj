@@ -7,24 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE5E43A82D134A4100A797CD /* libOpenIDC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5E43A72D134A4100A797CD /* libOpenIDC.xcframework */; };
+		CE5E43AC2D134A5800A797CD /* libOpenID.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5E43AB2D134A5800A797CD /* libOpenID.xcframework */; };
+		CE5E43BD2D134A7F00A797CD /* libaws-checksums.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5E43AE2D134A7F00A797CD /* libaws-checksums.xcframework */; };
+		CE5E43BF2D134A7F00A797CD /* libtesting-resources.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5E43AF2D134A7F00A797CD /* libtesting-resources.xcframework */; };
+		CE5E43C02D134A7F00A797CD /* libtesting-resources.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE5E43AF2D134A7F00A797CD /* libtesting-resources.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CE5E43C12D134A7F00A797CD /* libaws-c-mqtt.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5E43B02D134A7F00A797CD /* libaws-c-mqtt.xcframework */; };
+		CE5E43C32D134A7F00A797CD /* libaws-c-http.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5E43B12D134A7F00A797CD /* libaws-c-http.xcframework */; };
+		CE5E43C52D134A7F00A797CD /* libaws-c-compression.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5E43B22D134A7F00A797CD /* libaws-c-compression.xcframework */; };
+		CE5E43C72D134A7F00A797CD /* libaws-c-io.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5E43B32D134A7F00A797CD /* libaws-c-io.xcframework */; };
+		CE5E43C92D134A7F00A797CD /* libaws-c-cal.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5E43B42D134A7F00A797CD /* libaws-c-cal.xcframework */; };
+		CE5E43CB2D134A7F00A797CD /* libaws-cpp-sdk-cognito-idp.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5E43B52D134A7F00A797CD /* libaws-cpp-sdk-cognito-idp.xcframework */; };
+		CE5E43CD2D134A7F00A797CD /* libaws-c-sdkutils.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5E43B62D134A7F00A797CD /* libaws-c-sdkutils.xcframework */; };
+		CE5E43CF2D134A7F00A797CD /* libaws-c-auth.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5E43B72D134A7F00A797CD /* libaws-c-auth.xcframework */; };
+		CE5E43D12D134A7F00A797CD /* libaws-cpp-sdk-core.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5E43B82D134A7F00A797CD /* libaws-cpp-sdk-core.xcframework */; };
+		CE5E43D32D134A7F00A797CD /* libaws-crt-cpp.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5E43B92D134A7F00A797CD /* libaws-crt-cpp.xcframework */; };
+		CE5E43D52D134A7F00A797CD /* libaws-c-s3.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5E43BA2D134A7F00A797CD /* libaws-c-s3.xcframework */; };
+		CE5E43D72D134A7F00A797CD /* libaws-c-common.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5E43BB2D134A7F00A797CD /* libaws-c-common.xcframework */; };
+		CE5E43D92D134A7F00A797CD /* libaws-c-event-stream.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5E43BC2D134A7F00A797CD /* libaws-c-event-stream.xcframework */; };
+		CE5E43DD2D134D0F00A797CD /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5E43DC2D134CCE00A797CD /* libz.tbd */; };
 		CEA153AC2CE38D9A00C86380 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = CEA153AB2CE38D9A00C86380 /* XMLCoder */; };
 		CEA153E42CE4FF7D00C86380 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = CEA153E32CE4FF7D00C86380 /* WrappingHStack */; };
-		CEE2FA922D0B4D6200BB2E26 /* libopenidc.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2FA902D0B4BF300BB2E26 /* libopenidc.xcframework */; };
-		CEE2FA942D0B4D9C00BB2E26 /* libopenid.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2FA932D0B4D9C00BB2E26 /* libopenid.xcframework */; };
-		CEE2FAA52D0B557000BB2E26 /* libaws-c-event-stream.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2FA972D0B557000BB2E26 /* libaws-c-event-stream.xcframework */; };
-		CEE2FAA62D0B557000BB2E26 /* libaws-c-compression.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2FA982D0B557000BB2E26 /* libaws-c-compression.xcframework */; };
-		CEE2FAA72D0B557000BB2E26 /* libaws-c-sdkutils.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2FA992D0B557000BB2E26 /* libaws-c-sdkutils.xcframework */; };
-		CEE2FAA82D0B557000BB2E26 /* libaws-c-common.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2FA9A2D0B557000BB2E26 /* libaws-c-common.xcframework */; };
-		CEE2FAA92D0B557000BB2E26 /* libaws-checksums.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2FA9B2D0B557000BB2E26 /* libaws-checksums.xcframework */; };
-		CEE2FAAA2D0B557000BB2E26 /* libaws-crt-cpp.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2FA9C2D0B557000BB2E26 /* libaws-crt-cpp.xcframework */; };
-		CEE2FAAB2D0B557000BB2E26 /* libaws-cpp-sdk-core.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2FA9D2D0B557000BB2E26 /* libaws-cpp-sdk-core.xcframework */; };
-		CEE2FAAC2D0B557000BB2E26 /* libaws-c-http.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2FA9E2D0B557000BB2E26 /* libaws-c-http.xcframework */; };
-		CEE2FAAD2D0B557000BB2E26 /* libaws-c-s3.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2FA9F2D0B557000BB2E26 /* libaws-c-s3.xcframework */; };
-		CEE2FAAE2D0B557000BB2E26 /* libaws-c-auth.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2FAA02D0B557000BB2E26 /* libaws-c-auth.xcframework */; };
-		CEE2FAAF2D0B557000BB2E26 /* libaws-c-io.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2FAA12D0B557000BB2E26 /* libaws-c-io.xcframework */; };
-		CEE2FAB02D0B557000BB2E26 /* libaws-c-mqtt.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2FAA22D0B557000BB2E26 /* libaws-c-mqtt.xcframework */; };
-		CEE2FAB12D0B557000BB2E26 /* libaws-cpp-sdk-cognito-idp.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2FAA32D0B557000BB2E26 /* libaws-cpp-sdk-cognito-idp.xcframework */; };
-		CEE2FAB22D0B557000BB2E26 /* libaws-c-cal.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2FAA42D0B557000BB2E26 /* libaws-c-cal.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,10 +47,42 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CE5E43DB2D134A7F00A797CD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CE5E43C02D134A7F00A797CD /* libtesting-resources.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		CE0DDF7A2CDE161C00A1D84B /* BusTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0DDF8A2CDE161D00A1D84B /* BusTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BusTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0DDF942CDE161D00A1D84B /* BusTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BusTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE5E43A72D134A4100A797CD /* libOpenIDC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libOpenIDC.xcframework; path = ../OpenID/out/build/libOpenIDC.xcframework; sourceTree = "<group>"; };
+		CE5E43AB2D134A5800A797CD /* libOpenID.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libOpenID.xcframework; path = ../OpenID/out/build/libOpenID.xcframework; sourceTree = "<group>"; };
+		CE5E43AE2D134A7F00A797CD /* libaws-checksums.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "libaws-checksums.xcframework"; path = "../aws-sdk-cpp-build/install/lib/libaws-checksums.xcframework"; sourceTree = "<group>"; };
+		CE5E43AF2D134A7F00A797CD /* libtesting-resources.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "libtesting-resources.xcframework"; path = "../aws-sdk-cpp-build/install/lib/libtesting-resources.xcframework"; sourceTree = "<group>"; };
+		CE5E43B02D134A7F00A797CD /* libaws-c-mqtt.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "libaws-c-mqtt.xcframework"; path = "../aws-sdk-cpp-build/install/lib/libaws-c-mqtt.xcframework"; sourceTree = "<group>"; };
+		CE5E43B12D134A7F00A797CD /* libaws-c-http.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "libaws-c-http.xcframework"; path = "../aws-sdk-cpp-build/install/lib/libaws-c-http.xcframework"; sourceTree = "<group>"; };
+		CE5E43B22D134A7F00A797CD /* libaws-c-compression.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "libaws-c-compression.xcframework"; path = "../aws-sdk-cpp-build/install/lib/libaws-c-compression.xcframework"; sourceTree = "<group>"; };
+		CE5E43B32D134A7F00A797CD /* libaws-c-io.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "libaws-c-io.xcframework"; path = "../aws-sdk-cpp-build/install/lib/libaws-c-io.xcframework"; sourceTree = "<group>"; };
+		CE5E43B42D134A7F00A797CD /* libaws-c-cal.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "libaws-c-cal.xcframework"; path = "../aws-sdk-cpp-build/install/lib/libaws-c-cal.xcframework"; sourceTree = "<group>"; };
+		CE5E43B52D134A7F00A797CD /* libaws-cpp-sdk-cognito-idp.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "libaws-cpp-sdk-cognito-idp.xcframework"; path = "../aws-sdk-cpp-build/install/lib/libaws-cpp-sdk-cognito-idp.xcframework"; sourceTree = "<group>"; };
+		CE5E43B62D134A7F00A797CD /* libaws-c-sdkutils.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "libaws-c-sdkutils.xcframework"; path = "../aws-sdk-cpp-build/install/lib/libaws-c-sdkutils.xcframework"; sourceTree = "<group>"; };
+		CE5E43B72D134A7F00A797CD /* libaws-c-auth.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "libaws-c-auth.xcframework"; path = "../aws-sdk-cpp-build/install/lib/libaws-c-auth.xcframework"; sourceTree = "<group>"; };
+		CE5E43B82D134A7F00A797CD /* libaws-cpp-sdk-core.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "libaws-cpp-sdk-core.xcframework"; path = "../aws-sdk-cpp-build/install/lib/libaws-cpp-sdk-core.xcframework"; sourceTree = "<group>"; };
+		CE5E43B92D134A7F00A797CD /* libaws-crt-cpp.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "libaws-crt-cpp.xcframework"; path = "../aws-sdk-cpp-build/install/lib/libaws-crt-cpp.xcframework"; sourceTree = "<group>"; };
+		CE5E43BA2D134A7F00A797CD /* libaws-c-s3.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "libaws-c-s3.xcframework"; path = "../aws-sdk-cpp-build/install/lib/libaws-c-s3.xcframework"; sourceTree = "<group>"; };
+		CE5E43BB2D134A7F00A797CD /* libaws-c-common.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "libaws-c-common.xcframework"; path = "../aws-sdk-cpp-build/install/lib/libaws-c-common.xcframework"; sourceTree = "<group>"; };
+		CE5E43BC2D134A7F00A797CD /* libaws-c-event-stream.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "libaws-c-event-stream.xcframework"; path = "../aws-sdk-cpp-build/install/lib/libaws-c-event-stream.xcframework"; sourceTree = "<group>"; };
+		CE5E43DC2D134CCE00A797CD /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		CEE2FA902D0B4BF300BB2E26 /* libopenidc.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libopenidc.xcframework; path = ../OpenID/out/build/libopenidc.xcframework; sourceTree = "<group>"; };
 		CEE2FA932D0B4D9C00BB2E26 /* libopenid.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libopenid.xcframework; path = ../OpenID/out/build/libopenid.xcframework; sourceTree = "<group>"; };
 		CEE2FA952D0B4E2600BB2E26 /* libaws-cpp-sdk-cognito-idp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libaws-cpp-sdk-cognito-idp.a"; path = "../aws-sdk-cpp/build/install/SIMULATORARM64/lib/libaws-cpp-sdk-cognito-idp.a"; sourceTree = "<group>"; };
@@ -80,24 +115,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEE2FAA52D0B557000BB2E26 /* libaws-c-event-stream.xcframework in Frameworks */,
-				CEE2FAA62D0B557000BB2E26 /* libaws-c-compression.xcframework in Frameworks */,
-				CEE2FAA72D0B557000BB2E26 /* libaws-c-sdkutils.xcframework in Frameworks */,
-				CEE2FAA82D0B557000BB2E26 /* libaws-c-common.xcframework in Frameworks */,
-				CEE2FAA92D0B557000BB2E26 /* libaws-checksums.xcframework in Frameworks */,
-				CEE2FAAA2D0B557000BB2E26 /* libaws-crt-cpp.xcframework in Frameworks */,
-				CEE2FAAB2D0B557000BB2E26 /* libaws-cpp-sdk-core.xcframework in Frameworks */,
-				CEE2FAAC2D0B557000BB2E26 /* libaws-c-http.xcframework in Frameworks */,
-				CEE2FAAD2D0B557000BB2E26 /* libaws-c-s3.xcframework in Frameworks */,
-				CEE2FAAE2D0B557000BB2E26 /* libaws-c-auth.xcframework in Frameworks */,
-				CEE2FAAF2D0B557000BB2E26 /* libaws-c-io.xcframework in Frameworks */,
-				CEE2FAB02D0B557000BB2E26 /* libaws-c-mqtt.xcframework in Frameworks */,
-				CEE2FAB12D0B557000BB2E26 /* libaws-cpp-sdk-cognito-idp.xcframework in Frameworks */,
-				CEE2FAB22D0B557000BB2E26 /* libaws-c-cal.xcframework in Frameworks */,
-				CEE2FA942D0B4D9C00BB2E26 /* libopenid.xcframework in Frameworks */,
-				CEE2FA922D0B4D6200BB2E26 /* libopenidc.xcframework in Frameworks */,
+				CE5E43CB2D134A7F00A797CD /* libaws-cpp-sdk-cognito-idp.xcframework in Frameworks */,
+				CE5E43C52D134A7F00A797CD /* libaws-c-compression.xcframework in Frameworks */,
+				CE5E43BD2D134A7F00A797CD /* libaws-checksums.xcframework in Frameworks */,
+				CE5E43C92D134A7F00A797CD /* libaws-c-cal.xcframework in Frameworks */,
 				CEA153E42CE4FF7D00C86380 /* WrappingHStack in Frameworks */,
+				CE5E43C72D134A7F00A797CD /* libaws-c-io.xcframework in Frameworks */,
+				CE5E43D72D134A7F00A797CD /* libaws-c-common.xcframework in Frameworks */,
+				CE5E43D12D134A7F00A797CD /* libaws-cpp-sdk-core.xcframework in Frameworks */,
+				CE5E43C12D134A7F00A797CD /* libaws-c-mqtt.xcframework in Frameworks */,
+				CE5E43DD2D134D0F00A797CD /* libz.tbd in Frameworks */,
+				CE5E43BF2D134A7F00A797CD /* libtesting-resources.xcframework in Frameworks */,
+				CE5E43D52D134A7F00A797CD /* libaws-c-s3.xcframework in Frameworks */,
+				CE5E43D32D134A7F00A797CD /* libaws-crt-cpp.xcframework in Frameworks */,
+				CE5E43A82D134A4100A797CD /* libOpenIDC.xcframework in Frameworks */,
+				CE5E43AC2D134A5800A797CD /* libOpenID.xcframework in Frameworks */,
+				CE5E43CD2D134A7F00A797CD /* libaws-c-sdkutils.xcframework in Frameworks */,
 				CEA153AC2CE38D9A00C86380 /* XMLCoder in Frameworks */,
+				CE5E43C32D134A7F00A797CD /* libaws-c-http.xcframework in Frameworks */,
+				CE5E43D92D134A7F00A797CD /* libaws-c-event-stream.xcframework in Frameworks */,
+				CE5E43CF2D134A7F00A797CD /* libaws-c-auth.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +177,24 @@
 		CEE2FA8F2D0B4BF300BB2E26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE5E43DC2D134CCE00A797CD /* libz.tbd */,
+				CE5E43B72D134A7F00A797CD /* libaws-c-auth.xcframework */,
+				CE5E43B42D134A7F00A797CD /* libaws-c-cal.xcframework */,
+				CE5E43BB2D134A7F00A797CD /* libaws-c-common.xcframework */,
+				CE5E43B22D134A7F00A797CD /* libaws-c-compression.xcframework */,
+				CE5E43BC2D134A7F00A797CD /* libaws-c-event-stream.xcframework */,
+				CE5E43B12D134A7F00A797CD /* libaws-c-http.xcframework */,
+				CE5E43B32D134A7F00A797CD /* libaws-c-io.xcframework */,
+				CE5E43B02D134A7F00A797CD /* libaws-c-mqtt.xcframework */,
+				CE5E43BA2D134A7F00A797CD /* libaws-c-s3.xcframework */,
+				CE5E43B62D134A7F00A797CD /* libaws-c-sdkutils.xcframework */,
+				CE5E43AE2D134A7F00A797CD /* libaws-checksums.xcframework */,
+				CE5E43B52D134A7F00A797CD /* libaws-cpp-sdk-cognito-idp.xcframework */,
+				CE5E43B82D134A7F00A797CD /* libaws-cpp-sdk-core.xcframework */,
+				CE5E43B92D134A7F00A797CD /* libaws-crt-cpp.xcframework */,
+				CE5E43AF2D134A7F00A797CD /* libtesting-resources.xcframework */,
+				CE5E43AB2D134A5800A797CD /* libOpenID.xcframework */,
+				CE5E43A72D134A4100A797CD /* libOpenIDC.xcframework */,
 				CEE2FAA02D0B557000BB2E26 /* libaws-c-auth.xcframework */,
 				CEE2FAA42D0B557000BB2E26 /* libaws-c-cal.xcframework */,
 				CEE2FA9A2D0B557000BB2E26 /* libaws-c-common.xcframework */,
@@ -171,6 +226,7 @@
 				CE0DDF762CDE161C00A1D84B /* Sources */,
 				CE0DDF772CDE161C00A1D84B /* Frameworks */,
 				CE0DDF782CDE161C00A1D84B /* Resources */,
+				CE5E43DB2D134A7F00A797CD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -390,9 +446,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "../OpenID/include/**";
+				HEADER_SEARCH_PATHS = ../OpenID/include;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				LIBRARY_SEARCH_PATHS = "../OpenID/out/build/iOS_Static_Build/**";
+				LIBRARY_SEARCH_PATHS = "";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -450,9 +506,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "../OpenID/include/**";
+				HEADER_SEARCH_PATHS = ../OpenID/include;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				LIBRARY_SEARCH_PATHS = "../OpenID/out/build/iOS_Static_Build/**";
+				LIBRARY_SEARCH_PATHS = "";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

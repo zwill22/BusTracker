@@ -130,6 +130,8 @@ class IDProvider {
     }
     
     deinit {
+        uninitialiseOpenIDClient(clientPtr);
+        uninitialiseOpenIDProvider(idProviderPtr);
         clientPtr.deallocate();
         idProviderPtr.deallocate();
         authenticationPtr.deallocate();

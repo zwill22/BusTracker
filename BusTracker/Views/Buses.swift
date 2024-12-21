@@ -11,6 +11,10 @@ struct Buses: View {
     @AppStorage("lastUpdated")
     var lastUpdated = Date.distantFuture.timeIntervalSince1970
     
+    @Binding var authentication: Authentication
+    @Environment(\.scenePhase) private var scenePhase
+    let saveAction: () -> Void
+    
     @EnvironmentObject var provider: BusProvider
     @State var isLoading: Bool = false
     @State var selection: Set<String> = []
@@ -38,6 +42,11 @@ struct Buses: View {
         }
         .task {
             await fetchBuses()
+        }
+        .onChange(of: scenePhase, initial: false) { oldPhase, newPhase in
+            if newPhase == .inactive {
+                saveAction()
+            }
         }
     }
 
@@ -74,7 +83,8 @@ struct Buses: View {
 }
 
 #Preview {
-    Buses()
+    Buses(authentication: .constant(Authentication.sampleData),
+          saveAction: {})
         .environmentObject(
             BusProvider(client: BusClient(downloader: TestDownloader()))
         )
