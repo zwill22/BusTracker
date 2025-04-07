@@ -11,7 +11,7 @@ extension Buses {
     
     @ToolbarContentBuilder
     func toolbarContent() -> some ToolbarContent {
-        ToolbarItemGroup(placement: .bottomBar) {
+        ToolbarItemGroup(placement: .automatic) {
             RefreshButton {
                 Task {
                     await fetchBuses()
