@@ -9,14 +9,17 @@ import Foundation
 import XMLCoder
 
 actor BusClient {
-    let apiKey: String? = nil
     
     var buses: [Bus] {
         get async throws {
             let data = try await downloader.httpData(from: feedURL)
             let allBuses = try decoder.decode(XML.self, from: data)
             
-            return allBuses.buses.filter({ $0.time.timeIntervalSinceNow > -3600})
+            if (allBuses.buses.count > 100) {
+                return allBuses.buses.filter({ $0.time.timeIntervalSinceNow > -3600})
+            }
+            
+            return allBuses.buses
         }
     }
 
@@ -27,20 +30,17 @@ actor BusClient {
     }()
     
     private let feedURL: URL = {
-        let part1 = "https://data.bus-data.dft.gov.uk/api/v1/datafeed?"
-        let part2 = "boundingBox=-2.93,53.374,-3.085,53.453"
+        let urlRoot = "http://127.0.0.1:5000/location/"
+        let minLongitude: Double = -3.085
+        let maxLongitude: Double = -2.93
+        let minLatitude: Double = 53.374
+        let maxLatitude: Double = 53.453
         
-        var apiKey: String? = nil
-        if let path = Bundle.main.path(forResource: "api_key.txt", ofType: nil) {
-            apiKey = try? String(contentsOfFile: path, encoding: .utf8)
-        }
         
-        if apiKey != nil {
-            print(part1 + "api_key=" + apiKey!.trimmingCharacters(in: .newlines) + "&" + part2)
-            return URL(string: part1 + "api_key=" + apiKey!.trimmingCharacters(in: .newlines) + "&" + part2)!
-        } else {
-            return URL(string: part1 + part2)!
-        }
+        let result = urlRoot + minLatitude.description + "/" + minLongitude.description + "/" + maxLatitude.description + "/" + maxLongitude.description
+        
+        print(result)
+        return URL(string: result)!
     }()
     
     private let downloader: any HTTPDataDownloader
