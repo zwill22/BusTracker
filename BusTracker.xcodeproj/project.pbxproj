@@ -73,7 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				CE0DDF7C2CDE161C00A1D84B /* BusTracker */,
-				CEE2FA8F2D0B4BF300BB2E26 /* Frameworks */,
 				CE0DDF7B2CDE161C00A1D84B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,13 +85,6 @@
 				CE0DDF942CDE161D00A1D84B /* BusTrackerUITests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		CEE2FA8F2D0B4BF300BB2E26 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
