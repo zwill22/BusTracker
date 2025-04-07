@@ -1,5 +1,3 @@
-BusTracker.xcodeproj/project.xcworkspace/xcuserdata/
-BusTracker.xcodeproj/xcuserdata/
-BusTracker.xcodeproject/xcuserdata
-BusTracker.xcodeproject/xcshareddata
-BusTracker/Models/api_key.txt
+xcuserdata/
+xcshareddata/
+api_key.txt
