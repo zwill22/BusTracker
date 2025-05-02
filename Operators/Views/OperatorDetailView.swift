@@ -18,32 +18,24 @@ struct OperatorDetailView: View {
             Text(transportOperator.name).font(.largeTitle).padding(.bottom)
             List {
                 if let website = transportOperator.website {
-                    WebButton(inputAddress: website)
+                    WebButton(webAddress: website)
                 }
                 if let twitter = transportOperator.twitter {
                     TwitterButton(twitterHandle: twitter)
                 }
                 if let address = transportOperator.address {
-                    AddressButton(address: address)
+                    AddressButton(address: address).scaledToFill()
                 }
                 
                 ForEach(transportOperator.enquiries, id: \.self) { enquiry in
-                    HStack {
-                        let imageName = switch enquiry.type {
-                        case .email:
-                            "envelope.fill"
-                        case .phone:
-                            "phone.fill"
-                        default:
-                            "message.circle.fill"
-                        }
-                        Image(systemName: imageName)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 32, height: 32)
-                            .padding(.trailing)
-                        Text(enquiry.string)
-                    }.padding(.vertical)
+                    switch enquiry.type {
+                    case .email:
+                        EmailButton(email: enquiry.string)
+                    case .phone:
+                        PhoneButton(phoneNumber: enquiry.string)
+                    default:
+                        OtherEnquiryButton(string: enquiry.string)
+                    }
                 }
             }
         }

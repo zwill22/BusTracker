@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct EmailButton: View {
+    var email: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        BaseLink(label: email, urlString: "mailto:\(email)", image: Image(systemName: "envelope.fill"))
     }
 }
 
 #Preview {
-    EmailButton()
+    EmailButton(email: "example@example.com")
 }

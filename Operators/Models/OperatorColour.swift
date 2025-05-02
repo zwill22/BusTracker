@@ -18,31 +18,42 @@ extension Color {
 
 extension Operator {
     var primaryColour: Color {
-        switch opCode {
-        case "LLCO":
-            return Color(Color.init(hex: 0xBD0E19))
-        case "ACYM":
+        if name.lowercased().contains("arriva") {
             return .green
-        case "PATS":
-            return .white
-        case "TANV":
-            return .red
-        default:
-            return .black
         }
+        
+        if opCode == "PATS" {
+            return .white
+        }
+        
+        if opCode == "TANV" {
+            return .red
+        }
+        
+        if opCode == "LLCO" {
+            return Color(Color.init(hex: 0xBD0E19))
+        }
+        
+        return .primary.opacity(0.8)
     }
+        
     var secondaryColour: Color {
-        switch opCode {
-        case "LLCO":
-            return Color(Color.init(hex: 0xAF991D))
-        case "ACYM":
-            return .white
-        case "PATS":
-            return .red
-        case "TANV":
-            return .white
-        default:
+        if name.lowercased().contains("arriva") {
             return .white
         }
+        
+        if opCode == "PATS" {
+            return .red
+        }
+        
+        if opCode == "TANV" {
+            return .white
+        }
+        
+        if opCode == "LLCO" {
+            return Color(Color.init(hex: 0xAF991D))
+        }
+        
+        return .accentColor
     }
 }
