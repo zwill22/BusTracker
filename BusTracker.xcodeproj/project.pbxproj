@@ -11,33 +11,20 @@
 		CEA153E42CE4FF7D00C86380 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = CEA153E32CE4FF7D00C86380 /* WrappingHStack */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		CE0DDF8B2CDE161D00A1D84B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CE0DDF722CDE161C00A1D84B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CE0DDF792CDE161C00A1D84B;
-			remoteInfo = BusTracker;
-		};
-		CE0DDF952CDE161D00A1D84B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CE0DDF722CDE161C00A1D84B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CE0DDF792CDE161C00A1D84B;
-			remoteInfo = BusTracker;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		CE0DDF7A2CDE161C00A1D84B /* BusTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE0DDF8A2CDE161D00A1D84B /* BusTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BusTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE0DDF942CDE161D00A1D84B /* BusTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BusTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC277D12DB1141D00D72193 /* Operators.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Operators.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		CE0DDF7C2CDE161C00A1D84B /* BusTracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = BusTracker;
+			sourceTree = "<group>";
+		};
+		CEC277D22DB1141D00D72193 /* Operators */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Operators;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -52,14 +39,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE0DDF872CDE161D00A1D84B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE0DDF912CDE161D00A1D84B /* Frameworks */ = {
+		CEC277CE2DB1141D00D72193 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -73,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				CE0DDF7C2CDE161C00A1D84B /* BusTracker */,
+				CEC277D22DB1141D00D72193 /* Operators */,
 				CE0DDF7B2CDE161C00A1D84B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,8 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				CE0DDF7A2CDE161C00A1D84B /* BusTracker.app */,
-				CE0DDF8A2CDE161D00A1D84B /* BusTrackerTests.xctest */,
-				CE0DDF942CDE161D00A1D84B /* BusTrackerUITests.xctest */,
+				CEC277D12DB1141D00D72193 /* Operators.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,45 +94,27 @@
 			productReference = CE0DDF7A2CDE161C00A1D84B /* BusTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CE0DDF892CDE161D00A1D84B /* BusTrackerTests */ = {
+		CEC277D02DB1141D00D72193 /* Operators */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CE0DDFA12CDE161D00A1D84B /* Build configuration list for PBXNativeTarget "BusTrackerTests" */;
+			buildConfigurationList = CEC277DB2DB1141F00D72193 /* Build configuration list for PBXNativeTarget "Operators" */;
 			buildPhases = (
-				CE0DDF862CDE161D00A1D84B /* Sources */,
-				CE0DDF872CDE161D00A1D84B /* Frameworks */,
-				CE0DDF882CDE161D00A1D84B /* Resources */,
+				CEC277CD2DB1141D00D72193 /* Sources */,
+				CEC277CE2DB1141D00D72193 /* Frameworks */,
+				CEC277CF2DB1141D00D72193 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CE0DDF8C2CDE161D00A1D84B /* PBXTargetDependency */,
 			);
-			name = BusTrackerTests;
+			fileSystemSynchronizedGroups = (
+				CEC277D22DB1141D00D72193 /* Operators */,
+			);
+			name = Operators;
 			packageProductDependencies = (
 			);
-			productName = BusTrackerTests;
-			productReference = CE0DDF8A2CDE161D00A1D84B /* BusTrackerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		CE0DDF932CDE161D00A1D84B /* BusTrackerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CE0DDFA42CDE161D00A1D84B /* Build configuration list for PBXNativeTarget "BusTrackerUITests" */;
-			buildPhases = (
-				CE0DDF902CDE161D00A1D84B /* Sources */,
-				CE0DDF912CDE161D00A1D84B /* Frameworks */,
-				CE0DDF922CDE161D00A1D84B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CE0DDF962CDE161D00A1D84B /* PBXTargetDependency */,
-			);
-			name = BusTrackerUITests;
-			packageProductDependencies = (
-			);
-			productName = BusTrackerUITests;
-			productReference = CE0DDF942CDE161D00A1D84B /* BusTrackerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
+			productName = Operators;
+			productReference = CEC277D12DB1141D00D72193 /* Operators.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -161,19 +123,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1610;
+				LastSwiftUpdateCheck = 1630;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					CE0DDF792CDE161C00A1D84B = {
 						CreatedOnToolsVersion = 16.1;
 					};
-					CE0DDF892CDE161D00A1D84B = {
-						CreatedOnToolsVersion = 16.1;
-						TestTargetID = CE0DDF792CDE161C00A1D84B;
-					};
-					CE0DDF932CDE161D00A1D84B = {
-						CreatedOnToolsVersion = 16.1;
-						TestTargetID = CE0DDF792CDE161C00A1D84B;
+					CEC277D02DB1141D00D72193 = {
+						CreatedOnToolsVersion = 16.3;
 					};
 				};
 			};
@@ -196,8 +153,7 @@
 			projectRoot = "";
 			targets = (
 				CE0DDF792CDE161C00A1D84B /* BusTracker */,
-				CE0DDF892CDE161D00A1D84B /* BusTrackerTests */,
-				CE0DDF932CDE161D00A1D84B /* BusTrackerUITests */,
+				CEC277D02DB1141D00D72193 /* Operators */,
 			);
 		};
 /* End PBXProject section */
@@ -210,14 +166,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE0DDF882CDE161D00A1D84B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE0DDF922CDE161D00A1D84B /* Resources */ = {
+		CEC277CF2DB1141D00D72193 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -234,14 +183,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE0DDF862CDE161D00A1D84B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE0DDF902CDE161D00A1D84B /* Sources */ = {
+		CEC277CD2DB1141D00D72193 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -249,19 +191,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CE0DDF8C2CDE161D00A1D84B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CE0DDF792CDE161C00A1D84B /* BusTracker */;
-			targetProxy = CE0DDF8B2CDE161D00A1D84B /* PBXContainerItemProxy */;
-		};
-		CE0DDF962CDE161D00A1D84B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CE0DDF792CDE161C00A1D84B /* BusTracker */;
-			targetProxy = CE0DDF952CDE161D00A1D84B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CE0DDF9C2CDE161D00A1D84B /* Debug */ = {
@@ -395,16 +324,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BusTracker/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Bus Tracker";
+				INFOPLIST_KEY_CFBundleDisplayName = BusTracker;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location required for relevent information";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -415,13 +345,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = zwill.BusTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -433,16 +363,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BusTracker/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Bus Tracker";
+				INFOPLIST_KEY_CFBundleDisplayName = BusTracker;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location required for relevent information";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -453,81 +384,79 @@
 				PRODUCT_BUNDLE_IDENTIFIER = zwill.BusTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
-		CE0DDFA22CDE161D00A1D84B /* Debug */ = {
+		CEC277D92DB1141F00D72193 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = zwill.BusTrackerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = zwill.Operators;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BusTracker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BusTracker";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
-		CE0DDFA32CDE161D00A1D84B /* Release */ = {
+		CEC277DA2DB1141F00D72193 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = zwill.BusTrackerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = zwill.Operators;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BusTracker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BusTracker";
-			};
-			name = Release;
-		};
-		CE0DDFA52CDE161D00A1D84B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = zwill.BusTrackerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BusTracker;
-			};
-			name = Debug;
-		};
-		CE0DDFA62CDE161D00A1D84B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = zwill.BusTrackerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BusTracker;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -552,20 +481,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CE0DDFA12CDE161D00A1D84B /* Build configuration list for PBXNativeTarget "BusTrackerTests" */ = {
+		CEC277DB2DB1141F00D72193 /* Build configuration list for PBXNativeTarget "Operators" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CE0DDFA22CDE161D00A1D84B /* Debug */,
-				CE0DDFA32CDE161D00A1D84B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CE0DDFA42CDE161D00A1D84B /* Build configuration list for PBXNativeTarget "BusTrackerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CE0DDFA52CDE161D00A1D84B /* Debug */,
-				CE0DDFA62CDE161D00A1D84B /* Release */,
+				CEC277D92DB1141F00D72193 /* Debug */,
+				CEC277DA2DB1141F00D72193 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
