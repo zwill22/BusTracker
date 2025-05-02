@@ -12,7 +12,7 @@ struct BusTrackerApp: App {
     @StateObject var busProvider = BusProvider()
     var body: some Scene {
         WindowGroup {
-            Buses()
+            MainView()
                 .environmentObject(busProvider)
         }
     }

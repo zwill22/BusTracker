@@ -10,6 +10,7 @@ import Foundation
 struct BusDetails {
     let lineNumber: String
     let operatorCode: String
+    let vehicleRef: String
     let location: BusLocation
     let origin: String
     let destination: String
@@ -20,6 +21,7 @@ extension BusDetails: Decodable {
     enum CodingKeys: String, CodingKey {
         case lineNumber = "LineRef"
         case operatorCode = "OperatorRef"
+        case vehicleRef = "VehicleRef"
         case location = "VehicleLocation"
         case origin = "OriginName"
         case destination = "DestinationName"
@@ -31,6 +33,7 @@ extension BusDetails: Decodable {
         
         let rawLineNumber = try? values.decode(String.self, forKey: .lineNumber)
         let rawOperatorCode = try? values.decode(String.self, forKey: .operatorCode)
+        let rawVehicleRef = try? values.decode(String.self, forKey: .vehicleRef)
         let rawBusLocation = try? values.decode(BusLocation.self, forKey: .location)
         let rawOrigin = try? values.decode(String.self, forKey: .origin)
         let rawDestination = try? values.decode(String.self, forKey: .destination)
@@ -42,6 +45,7 @@ extension BusDetails: Decodable {
         
         self.lineNumber = rawLineNumber ?? ""
         self.operatorCode = rawOperatorCode ?? ""
+        self.vehicleRef = rawVehicleRef ?? ""
         self.location = location
         self.origin = rawOrigin ?? ""
         self.destination = rawDestination ?? ""

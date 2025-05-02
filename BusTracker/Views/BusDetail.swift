@@ -10,17 +10,11 @@ import WrappingHStack
 
 struct BusDetail: View {
     var bus: Bus
-    @EnvironmentObject private var busProvider: BusProvider
-    @State private var high_precision: Bool = false
-    
-    func changePrecision() {
-        self.high_precision.toggle()
-    }
     
     var body: some View {
         let location = self.bus.details.location
         VStack(alignment: .leading) {
-            BusDetailMap(location: location, tintColour: bus.colour)
+            BusDetailMap(location: location, tintColour: bus.primaryColour)
                 .ignoresSafeArea(.container)
             HStack {
                 RouteNumber(bus: bus, height: 80)
@@ -37,18 +31,11 @@ struct BusDetail: View {
                         .font(.headline)
                     Text("\(bus.time.formatted())")
                         .foregroundStyle(Color.secondary)
-                    if high_precision {
-                        Text("Latitude: \(location.latitude.formatted())")
-                        Text("Longitude: \(location.longitude.formatted())")
-                    } else {
-                        Text("Latitude: \(location.latitude.formatted(.number.precision(.fractionLength(3))))")
-                        Text("Longitude: \(location.longitude.formatted(.number.precision(.fractionLength(3))))")
-                    }
+                    Text("Latitude: \(location.latitude.formatted(.number.precision(.fractionLength(3))))")
+                    Text("Longitude: \(location.longitude.formatted(.number.precision(.fractionLength(3))))")
                 }
             }
             .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 10))
-        }.onTapGesture {
-            changePrecision()
         }
     }
 }

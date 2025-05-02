@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-extension Buses {
+extension MainView {
     
     @ToolbarContentBuilder
     func toolbarContent() -> some ToolbarContent {
-        ToolbarItemGroup(placement: .automatic) {
+        ToolbarItemGroup(placement: .bottomBar) {
             RefreshButton {
                 Task {
                     await fetchBuses()

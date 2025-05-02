@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 struct BusLocation {
     var latitude: Double
@@ -22,5 +23,9 @@ extension BusLocation: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.latitude = try container.decode(Double.self, forKey: .latitude)
         self.longitude = try container.decode(Double.self, forKey: .longitude)
+    }
+    
+    func getPlace() -> CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
     }
 }

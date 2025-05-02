@@ -1,69 +1,64 @@
 //
-//  Buses.swift
+//  MainView.swift
 //  BusTracker
 //
-//  Created by Zack Williams on 12-11-2024.
+//  Created by Zack Williams on 07-04-2025.
 //
 
 import SwiftUI
+import MapKit
 
-struct Buses: View {
+struct MainView: View {
     @AppStorage("lastUpdated")
     var lastUpdated = Date.distantFuture.timeIntervalSince1970
     
     @EnvironmentObject var provider: BusProvider
+    @StateObject var locationManager = LocationManager()
+    
     @State var isLoading: Bool = false
     @State var selection: Set<String> = []
     @State private var error: BusError?
     @State private var hasError = false
+    @State var position: MapCameraPosition = .automatic
+    @State var defaultDelta: Double = 0.1
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
+            MapView(position: $position, buses: $provider.buses)
             List(selection: $selection) {
                 ForEach(provider.buses) { bus in
                     NavigationLink(destination: BusDetail(bus: bus)) {
                         BusRow(bus: bus)
                     }
                 }
-                .onDelete(perform: deleteBuses)
             }
             .listStyle(.inset)
-            .navigationTitle(title)
             .toolbar(content: toolbarContent)
-            .refreshable {
-                await fetchBuses()
-            }
             .alert(isPresented: $hasError, error: error) {}
-            .padding(EdgeInsets(top: 0, leading:5, bottom: 0, trailing: 5))
+        }
+        .task {
+            guard let location = locationManager.location else { return }
+            position = .region(MKCoordinateRegion(
+                center: location.coordinate,
+                span: MKCoordinateSpan(latitudeDelta: defaultDelta, longitudeDelta: defaultDelta)
+            ))
         }
         .task {
             await fetchBuses()
         }
     }
-
-    var title: String {
-        return "Buses"
-    }
-    
-    func deleteBuses(at offsets: IndexSet) {
-        provider.deleteBuses(atOffsets: offsets)
-    }
-    
-    func deleteBuses(for codes: Set<String>) {
-        var offsetsToDelete: IndexSet = []
-        for (index, element) in provider.buses.enumerated() {
-            if codes.contains(element.id) {
-                offsetsToDelete.insert(index)
-            }
-        }
-        deleteBuses(at: offsetsToDelete)
-        selection.removeAll()
-    }
     
     func fetchBuses() async {
         isLoading = true
         do {
-            try await provider.fetchBuses()
+            let userLocation = locationManager.location ?? CLLocation(
+                    latitude: position.region!.center.latitude,
+                    longitude: position.region!.center.longitude
+                )
+            
+            try await provider.fetchBuses(
+                position: position,
+                userLocation: userLocation.coordinate)
         } catch {
             self.error = error as? BusError ?? .unexpectedError(error: error)
             self.hasError = true
@@ -74,9 +69,9 @@ struct Buses: View {
 }
 
 #Preview {
-    Buses()
+    MainView()
         .environmentObject(
-            BusProvider(client: BusClient(downloader: TestDownloader()))
+            BusProvider.preview
         )
 }
 

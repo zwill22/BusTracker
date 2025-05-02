@@ -39,7 +39,7 @@ struct BusPlace: Identifiable {
     
     init(id: UUID = UUID(), location: BusLocation) {
         self.id = id
-        self.location = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+        self.location = location.getPlace()
         
     }
 }

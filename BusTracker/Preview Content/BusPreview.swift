@@ -13,6 +13,7 @@ extension Bus {
         let previewDetails = BusDetails(
             lineNumber: "X11",
             operatorCode: "ARV",
+            vehicleRef: "FAKE_VEHICLE_REF",
             location: BusLocation(latitude: 53, longitude: -3),
             origin: "Atown",
             destination: "Btown",

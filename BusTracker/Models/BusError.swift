@@ -10,6 +10,7 @@ import Foundation
 enum BusError: Error {
     case missingData
     case networkError
+    case dataFormatError
     case unexpectedError(error: Error)
 }
 
@@ -24,6 +25,11 @@ extension BusError: LocalizedError {
         case .networkError:
             return NSLocalizedString(
                 "Error fetching bus data from the server",
+                comment: ""
+            )
+        case .dataFormatError:
+            return NSLocalizedString(
+                "Data returned from server was not in the expected format",
                 comment: ""
             )
         case .unexpectedError(let error):

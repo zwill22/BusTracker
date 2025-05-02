@@ -10,11 +10,19 @@ import MapKit
 
 struct MapView: View {
     @Namespace var mapScope
-    
-    @State private var position: MapCameraPosition = .userLocation(fallback: .automatic)
+    @Binding var position: MapCameraPosition
+    @Binding var buses: [Bus]
     
     var body: some View {
-        Map(position: $position, scope: mapScope)
+        Map(position: $position) {
+            ForEach(buses) { bus in
+                Marker("", systemImage: "bus", coordinate: bus.details.location.getPlace())
+                    .tint(bus.primaryColour)
+            }
+        }
+            .onMapCameraChange(frequency: .onEnd) { context in
+                position = .region(context.region)
+            }
             .mapControls {
                 VStack {
                     MapUserLocationButton(scope: mapScope)
@@ -24,7 +32,3 @@ struct MapView: View {
     }
 }
 
-
-#Preview {
-    MapView()
-}
