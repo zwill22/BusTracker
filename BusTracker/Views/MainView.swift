@@ -2,76 +2,32 @@
 //  MainView.swift
 //  BusTracker
 //
-//  Created by Zack Williams on 07-04-2025.
+//  Created by Zack Williams on 05-05-2025.
 //
 
 import SwiftUI
-import MapKit
 
 struct MainView: View {
     @AppStorage("lastUpdated")
     var lastUpdated = Date.distantFuture.timeIntervalSince1970
     
-    @EnvironmentObject var provider: BusProvider
+    @EnvironmentObject var operatorProvider: OperatorProvider
+    @EnvironmentObject var busProvider: BusProvider
     @StateObject var locationManager = LocationManager()
     
-    @State var isLoading: Bool = false
-    @State var selection: Set<String> = []
-    @State private var error: BusError?
-    @State private var hasError = false
-    @State var position: MapCameraPosition = .automatic
-    @State var defaultDelta: Double = 0.1
-    
     var body: some View {
-        NavigationStack {
-            MapView(position: $position, buses: $provider.buses)
-            List(selection: $selection) {
-                ForEach(provider.buses) { bus in
-                    NavigationLink(destination: BusDetail(bus: bus)) {
-                        BusRow(bus: bus)
-                    }
-                }
+        TabView {
+            Tab("Buses", systemImage: "bus") {
+                Buses().environmentObject(busProvider).environmentObject(locationManager)
             }
-            .listStyle(.inset)
-            .toolbar(content: toolbarContent)
-            .alert(isPresented: $hasError, error: error) {}
-        }
-        .task {
-            guard let location = locationManager.location else { return }
-            position = .region(MKCoordinateRegion(
-                center: location.coordinate,
-                span: MKCoordinateSpan(latitudeDelta: defaultDelta, longitudeDelta: defaultDelta)
-            ))
-        }
-        .task {
-            await fetchBuses()
-        }
-    }
-    
-    func fetchBuses() async {
-        isLoading = true
-        do {
-            let userLocation = locationManager.location ?? CLLocation(
-                    latitude: position.region!.center.latitude,
-                    longitude: position.region!.center.longitude
-                )
             
-            try await provider.fetchBuses(
-                position: position,
-                userLocation: userLocation.coordinate)
-        } catch {
-            self.error = error as? BusError ?? .unexpectedError(error: error)
-            self.hasError = true
+            Tab("Operators", systemImage: "cablecar.fill") {
+                Operators().environmentObject(operatorProvider)
+            }
         }
-        lastUpdated = Date().timeIntervalSince1970
-        isLoading = false
     }
 }
 
 #Preview {
-    MainView()
-        .environmentObject(
-            BusProvider.preview
-        )
+    MainView().environmentObject(BusProvider.preview).environmentObject(OperatorProvider.preview)
 }
-

@@ -8,9 +8,9 @@
 extension BusProvider {
     static var preview: BusProvider {
         
-        var client = BusClient(downloader: TestDownloader())
+        let client = BusClient(downloader: TestBusDownloader())
         
-        var provider = BusProvider(client: client)
+        let provider = BusProvider(client: client)
         
         Task {
             do {

@@ -59,8 +59,6 @@ struct Operators: View {
 
 #Preview {
     Operators()
-        .environmentObject(
-            OperatorProvider(client: OperatorClient(downloader: TestDownloader()))
-        )
+        .environmentObject(OperatorProvider.preview)
 }
 

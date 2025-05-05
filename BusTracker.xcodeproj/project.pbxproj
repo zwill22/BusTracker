@@ -13,18 +13,12 @@
 
 /* Begin PBXFileReference section */
 		CE0DDF7A2CDE161C00A1D84B /* BusTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEC277D12DB1141D00D72193 /* Operators.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Operators.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		CE0DDF7C2CDE161C00A1D84B /* BusTracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = BusTracker;
-			sourceTree = "<group>";
-		};
-		CEC277D22DB1141D00D72193 /* Operators */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Operators;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -39,13 +33,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CEC277CE2DB1141D00D72193 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -53,7 +40,6 @@
 			isa = PBXGroup;
 			children = (
 				CE0DDF7C2CDE161C00A1D84B /* BusTracker */,
-				CEC277D22DB1141D00D72193 /* Operators */,
 				CE0DDF7B2CDE161C00A1D84B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,7 +48,6 @@
 			isa = PBXGroup;
 			children = (
 				CE0DDF7A2CDE161C00A1D84B /* BusTracker.app */,
-				CEC277D12DB1141D00D72193 /* Operators.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,28 +79,6 @@
 			productReference = CE0DDF7A2CDE161C00A1D84B /* BusTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CEC277D02DB1141D00D72193 /* Operators */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CEC277DB2DB1141F00D72193 /* Build configuration list for PBXNativeTarget "Operators" */;
-			buildPhases = (
-				CEC277CD2DB1141D00D72193 /* Sources */,
-				CEC277CE2DB1141D00D72193 /* Frameworks */,
-				CEC277CF2DB1141D00D72193 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				CEC277D22DB1141D00D72193 /* Operators */,
-			);
-			name = Operators;
-			packageProductDependencies = (
-			);
-			productName = Operators;
-			productReference = CEC277D12DB1141D00D72193 /* Operators.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -128,9 +91,6 @@
 				TargetAttributes = {
 					CE0DDF792CDE161C00A1D84B = {
 						CreatedOnToolsVersion = 16.1;
-					};
-					CEC277D02DB1141D00D72193 = {
-						CreatedOnToolsVersion = 16.3;
 					};
 				};
 			};
@@ -153,7 +113,6 @@
 			projectRoot = "";
 			targets = (
 				CE0DDF792CDE161C00A1D84B /* BusTracker */,
-				CEC277D02DB1141D00D72193 /* Operators */,
 			);
 		};
 /* End PBXProject section */
@@ -166,24 +125,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CEC277CF2DB1141D00D72193 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE0DDF762CDE161C00A1D84B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CEC277CD2DB1141D00D72193 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -394,74 +339,6 @@
 			};
 			name = Release;
 		};
-		CEC277D92DB1141F00D72193 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = zwill.Operators;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		CEC277DA2DB1141F00D72193 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = zwill.Operators;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -479,15 +356,6 @@
 			buildConfigurations = (
 				CE0DDF9F2CDE161D00A1D84B /* Debug */,
 				CE0DDFA02CDE161D00A1D84B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CEC277DB2DB1141F00D72193 /* Build configuration list for PBXNativeTarget "Operators" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CEC277D92DB1141F00D72193 /* Debug */,
-				CEC277DA2DB1141F00D72193 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

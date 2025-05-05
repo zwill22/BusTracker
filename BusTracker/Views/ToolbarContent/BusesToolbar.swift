@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension MainView {
+extension Buses {
     
     @ToolbarContentBuilder
     func toolbarContent() -> some ToolbarContent {
