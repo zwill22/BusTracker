@@ -12,7 +12,7 @@ struct OperatorRow: View {
     
     var body: some View {
         HStack {
-            OperatorBlock(transportOperator: busOperator).padding(.trailing)
+            OperatorBlock(transportOperator: busOperator, height: 75)
 
             VStack(alignment: .leading) {
                 Text("\(busOperator.name)").font(.title)

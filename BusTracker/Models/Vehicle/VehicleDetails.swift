@@ -1,5 +1,5 @@
 //
-//  BusDetails.swift
+//  VehicleDetails.swift
 //  BusTracker
 //
 //  Created by Zack Williams on 05-05-2025.
@@ -7,17 +7,17 @@
 
 import Foundation
 
-struct BusDetails {
+struct VehicleDetails {
     let lineNumber: String
     let operatorCode: String
     let vehicleRef: String
-    let location: BusLocation
+    let location: VehicleLocation
     let origin: String
     let destination: String
     let originDepartureTime: Date
 }
 
-extension BusDetails: Decodable {
+extension VehicleDetails: Decodable {
     enum CodingKeys: String, CodingKey {
         case lineNumber = "LineRef"
         case operatorCode = "OperatorRef"
@@ -34,17 +34,17 @@ extension BusDetails: Decodable {
         let rawLineNumber = try? values.decode(String.self, forKey: .lineNumber)
         let rawOperatorCode = try? values.decode(String.self, forKey: .operatorCode)
         let rawVehicleRef = try? values.decode(String.self, forKey: .vehicleRef)
-        let rawBusLocation = try? values.decode(BusLocation.self, forKey: .location)
+        let rawLocation = try? values.decode(VehicleLocation.self, forKey: .location)
         let rawOrigin = try? values.decode(String.self, forKey: .origin)
         let rawDestination = try? values.decode(String.self, forKey: .destination)
         let rawOriginDepartureTime = try? values.decode(Date.self, forKey: .originDepartureTime)
         
-        guard let location = rawBusLocation,
+        guard let location = rawLocation,
               let lineNumber = rawLineNumber,
               let operatorCode = rawOperatorCode,
               let vehicleRef = rawVehicleRef
         else {
-            throw BusError.missingData
+            throw VehicleError.missingData
         }
         
         self.lineNumber = lineNumber

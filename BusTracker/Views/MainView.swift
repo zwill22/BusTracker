@@ -12,13 +12,13 @@ struct MainView: View {
     var lastUpdated = Date.distantFuture.timeIntervalSince1970
     
     @EnvironmentObject var operatorProvider: OperatorProvider
-    @EnvironmentObject var busProvider: BusProvider
+    @EnvironmentObject var vehicleProvider: VehicleProvider
     @StateObject var locationManager = LocationManager()
     
     var body: some View {
         TabView {
-            Tab("Buses", systemImage: "bus") {
-                Buses().environmentObject(busProvider).environmentObject(locationManager)
+            Tab("Vehicles", systemImage: "bus") {
+                Vehicles().environmentObject(vehicleProvider).environmentObject(locationManager)
             }
             
             Tab("Operators", systemImage: "cablecar.fill") {
@@ -29,5 +29,5 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView().environmentObject(BusProvider.preview).environmentObject(OperatorProvider.preview)
+    MainView().environmentObject(VehicleProvider.preview).environmentObject(OperatorProvider.preview)
 }

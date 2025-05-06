@@ -12,9 +12,9 @@ private func simulateHTTPData(data: Data) async throws -> Data {
         return data
 }
 
-class TestBusDownloader: HTTPDataDownloader {
+class TestVehicleDownloader: HTTPDataDownloader {
     func httpData(from url: URL) async throws -> Data {
-        return try await simulateHTTPData(data: testBusData)
+        return try await simulateHTTPData(data: testVehicleData)
     }
 }
 

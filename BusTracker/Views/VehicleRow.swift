@@ -1,5 +1,5 @@
 //
-//  BusRow.swift
+//  VehicleRow.swift
 //  BusTracker
 //
 //  Created by Zack Williams on 12-11-2024.
@@ -7,23 +7,23 @@
 
 import SwiftUI
 
-struct BusRow: View {
-    var bus: Bus
+struct VehicleRow: View {
+    var vehicle: Vehicle
     
     var body: some View {
         HStack {
-            RouteNumber(bus: bus, height: 75)
+            RouteNumber(vehicle: vehicle, height: 75)
             VStack(alignment: .leading) {
                 HStack{
-                    Text("\(bus.details.originDepartureTime.formatted(date: .omitted, time: .shortened))").font(.title)
+                    Text("\(vehicle.details.originDepartureTime.formatted(date: .omitted, time: .shortened))").font(.title)
                         .lineLimit(1, reservesSpace: true)
                     Image(systemName: "arrow.right").font(.title)
-                    Text(bus.details.destination).font(.title)
+                    Text(vehicle.details.destination).font(.title)
                         .lineLimit(1, reservesSpace: true)
                 }
-                Text("Operator: \(bus.details.operatorCode)").foregroundStyle(.secondary)
+                Text("Operator: \(vehicle.details.operatorCode)").foregroundStyle(.secondary)
                         .lineLimit(1, reservesSpace: true)
-                Text("Origin: \(bus.details.origin)").foregroundColor(.secondary)
+                Text("Origin: \(vehicle.details.origin)").foregroundColor(.secondary)
                         .lineLimit(1, reservesSpace: true)
             }
         }
@@ -32,5 +32,5 @@ struct BusRow: View {
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-    BusRow(bus: Bus.preview)
+    VehicleRow(vehicle: Vehicle.preview)
 }

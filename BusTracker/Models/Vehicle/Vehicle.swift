@@ -1,5 +1,5 @@
 //
-//  Bus.swift
+//  Vehicle.swift
 //  BusTracker
 //
 //  Created by Zack Williams on 12-11-2024.
@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct Bus: Identifiable {
+struct Vehicle: Identifiable {
     let time: Date
-    let details: BusDetails
+    let details: VehicleDetails
     let id: String
 }
 
-extension Bus: Decodable {
+extension Vehicle: Decodable {
     
     private enum CodingKeys: String, CodingKey {
         case time = "RecordedAtTime"
@@ -27,13 +27,13 @@ extension Bus: Decodable {
 
         let rawTime = try? values.decode(Date.self, forKey: .time)
         let rawID = try? values.decode(String.self, forKey: .id)
-        let rawDetails = try? values.decode(BusDetails.self, forKey: .monitoredJourney)
+        let rawDetails = try? values.decode(VehicleDetails.self, forKey: .monitoredJourney)
         
         guard let time = rawTime,
               let id = rawID,
               let details = rawDetails
         else {
-            throw BusError.missingData
+            throw VehicleError.missingData
         }
         
         self.time = time

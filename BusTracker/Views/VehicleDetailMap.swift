@@ -1,5 +1,5 @@
 //
-//  BusDetailMap.swift
+//  VehicleDetailMap.swift
 //  BusTracker
 //
 //  Created by Zack Williams on 12-11-2024.
@@ -8,16 +8,16 @@
 import SwiftUI
 import MapKit
 
-struct BusDetailMap: View {
-    let location: BusLocation
+struct VehicleDetailMap: View {
+    let location: VehicleLocation
     let tintColour: Color
-    private let place: BusPlace
+    private let place: VehiclePlace
     @State private var position: MapCameraPosition = .region(MKCoordinateRegion())
     
-    init(location: BusLocation, tintColour: Color) {
+    init(location: VehicleLocation, tintColour: Color) {
         self.location = location
         self.tintColour = tintColour
-        self.place = BusPlace(location: location)
+        self.place = VehiclePlace(location: location)
     }
     
     var body: some View {
@@ -33,13 +33,16 @@ struct BusDetailMap: View {
     }
 }
 
-struct BusPlace: Identifiable {
+struct VehiclePlace: Identifiable {
     let id: UUID
     let location: CLLocationCoordinate2D
     
-    init(id: UUID = UUID(), location: BusLocation) {
+    init(id: UUID = UUID(), location: VehicleLocation) {
         self.id = id
-        self.location = location.getPlace()
+        self.location = CLLocationCoordinate2D(
+            latitude: location.latitude,
+            longitude: location.longitude
+        )
         
     }
 }

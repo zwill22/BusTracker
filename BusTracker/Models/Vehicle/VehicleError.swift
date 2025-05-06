@@ -7,24 +7,24 @@
 
 import Foundation
 
-enum BusError: Error {
+enum VehicleError: Error {
     case missingData
     case networkError
     case dataFormatError
     case unexpectedError(error: Error)
 }
 
-extension BusError: LocalizedError {
+extension VehicleError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .missingData:
             return NSLocalizedString(
-                "Found and will discard a bus missing a valid code, location, or time.",
+                "Found and will discard a vehicle missing a valid code, location, or time.",
                 comment: ""
             )
         case .networkError:
             return NSLocalizedString(
-                "Error fetching bus data from the server",
+                "Error fetching vehicle data from the server",
                 comment: ""
             )
         case .dataFormatError:

@@ -32,7 +32,9 @@ actor OperatorClient {
     
     var operators: [Operator] {
         get async throws {
-            let data = try await downloader.httpData(from: feedURL)
+            guard let data = try? await downloader.httpData(from: feedURL) else {
+                throw OperatorError.networkError
+            }
             let allOperators = try decoder.decode([Operator].self, from: data)
             
             return allOperators

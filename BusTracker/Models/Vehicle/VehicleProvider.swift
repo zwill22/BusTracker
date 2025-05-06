@@ -1,5 +1,5 @@
 //
-//  BusProvider.swift
+//  VehicleProvider.swift
 //  BusTracker
 //
 //  Created by Zack Williams on 12-11-2024.
@@ -10,18 +10,18 @@ import SwiftUI
 import MapKit
 
 @MainActor
-class BusProvider: ObservableObject {
-    @Published var buses: [Bus] = []
+class VehicleProvider: ObservableObject {
+    @Published var vehicles: [Vehicle] = []
     
-    let client: BusClient
+    let client: VehicleClient
     let maxDelta: Double = 1
     
-    func fetchBuses(
+    func fetchVehicles(
         position: MapCameraPosition,
         userLocation: CLLocationCoordinate2D = .init(latitude: 0, longitude: 0)
     ) async throws {
         if (position.region == nil) {
-            throw BusError.dataFormatError
+            throw VehicleError.dataFormatError
         }
         
         let region = position.region!
@@ -35,24 +35,24 @@ class BusProvider: ObservableObject {
         let maxLatitude = region.center.latitude + deltaLatitude
 
         
-        let nearestBuses = try await client.buses(
+        let nearestVehicles = try await client.vehicles(
             minLongitude: minLongitude, minLatitude: minLatitude,
             maxLongitude: maxLongitude, maxLatitude: maxLatitude,
             userLongitude: userLocation.longitude, userLatitude: userLocation.latitude);
-        self.buses = nearestBuses
+        self.vehicles = nearestVehicles
     }
     
-    func updateBus(atOffset: Int) async throws {
-        let vehicleRef = buses[atOffset].details.vehicleRef
-        let updatedBus = try await client.bus(vehicleRef: vehicleRef)
-        self.buses[atOffset] = updatedBus
+    func updateVehicle(atOffset: Int) async throws {
+        let vehicleRef = vehicles[atOffset].details.vehicleRef
+        let updatedVehicle = try await client.vehicle(vehicleRef: vehicleRef)
+        self.vehicles[atOffset] = updatedVehicle
     }
     
-    func deleteBuses(atOffsets offsets: IndexSet) {
-        buses.remove(atOffsets: offsets)
+    func deleteVehicles(atOffsets offsets: IndexSet) {
+        vehicles.remove(atOffsets: offsets)
     }
     
-    init(client: BusClient = BusClient()) {
+    init(client: VehicleClient = VehicleClient()) {
         self.client = client
     }
 }

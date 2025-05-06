@@ -1,5 +1,5 @@
 //
-//  BusDetail.swift
+//  VehicleDetailView.swift
 //  BusTracker
 //
 //  Created by Zack Williams on 12-11-2024.
@@ -8,28 +8,29 @@
 import SwiftUI
 import WrappingHStack
 
-struct BusDetail: View {
-    var bus: Bus
+struct VehicleDetail: View {
+    var vehicle: Vehicle
     
     var body: some View {
-        let location = self.bus.details.location
+        let location = self.vehicle.details.location
         VStack(alignment: .leading) {
-            BusDetailMap(location: location, tintColour: bus.primaryColour)
+            VehicleDetailMap(
+                location: location, tintColour: vehicle.primaryColour)
                 .ignoresSafeArea(.container)
             HStack {
-                RouteNumber(bus: bus, height: 80)
+                RouteNumber(vehicle: vehicle, height: 80)
                     .padding(.trailing, 10)
                 VStack(alignment: .leading) {
                     WrappingHStack(alignment: .leading) {
                         Group {
-                            Text(bus.details.origin)
+                            Text(vehicle.details.origin)
                             Image(systemName: "arrow.right")
-                            Text(bus.details.destination)
+                            Text(vehicle.details.destination)
                         }.lineLimit(1).font(.title3)
                     }
-                    Text("Operator: \(bus.details.operatorCode)")
+                    Text("Operator: \(vehicle.details.operatorCode)")
                         .font(.headline)
-                    Text("\(bus.time.formatted())")
+                    Text("\(vehicle.time.formatted())")
                         .foregroundStyle(Color.secondary)
                     Text("Latitude: \(location.latitude.formatted(.number.precision(.fractionLength(3))))")
                     Text("Longitude: \(location.longitude.formatted(.number.precision(.fractionLength(3))))")
@@ -41,5 +42,5 @@ struct BusDetail: View {
 }
 
 #Preview {
-    BusDetail(bus: Bus.preview)
+    VehicleDetail(vehicle: Vehicle.preview)
 }

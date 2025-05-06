@@ -278,7 +278,7 @@ let testOperatorData: Data = """
 }]
 """.data(using: .utf8)!
 
-let testBusData: Data = """
+let testVehicleData: Data = """
 <Siri version="2.0" xmlns="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.siri.org.uk/siri http://www.siri.org.uk/schema/2.0/xsd/siri.xsd">
   <ServiceDelivery>
     <ResponseTimestamp>2025-04-17T11:11:11.437+00:00</ResponseTimestamp>

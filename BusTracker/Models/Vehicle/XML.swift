@@ -8,11 +8,11 @@
 import Foundation
 import XMLCoder
 
-private struct Vehicles: Decodable {
-    var buses: [Bus]
+private struct VehicleList: Decodable {
+    var vehicles: [Vehicle]
     
     enum CodingKeys: String, CodingKey {
-        case buses = "VehicleActivity"
+        case vehicles = "VehicleActivity"
     }
 }
 
@@ -26,13 +26,13 @@ struct XML: Decodable {
         case vehicleMonitoringDelivery = "VehicleMonitoringDelivery"
     }
     
-    private(set) var buses: [Bus] = []
+    private(set) var vehicles: [Vehicle] = []
     
     init (from decoder: Decoder) throws {
         let rootContainer = try decoder.container(keyedBy: RootCodingKeys.self)
         let serviceDeliveryContainer = try rootContainer.nestedContainer(keyedBy: ServiceDeliveryCodingKeys.self, forKey: .serviceDelivery)
-        let vehicles = try serviceDeliveryContainer.decode(Vehicles.self, forKey: .vehicleMonitoringDelivery)
+        let vehicleList = try serviceDeliveryContainer.decode(VehicleList.self, forKey: .vehicleMonitoringDelivery)
         
-        buses = vehicles.buses
+        vehicles = vehicleList.vehicles
     }
 }

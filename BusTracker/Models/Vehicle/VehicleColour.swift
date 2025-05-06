@@ -1,5 +1,5 @@
 //
-//  BusColour.swift
+//  VehicleColour.swift
 //  BusTracker
 //
 //  Created by Zack Williams on 12-11-2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension Bus {
+extension Vehicle {
     var primaryColour: Color {
         switch details.operatorCode {
         case "ACYM":

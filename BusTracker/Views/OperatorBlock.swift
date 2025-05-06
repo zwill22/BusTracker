@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct OperatorBlock: View {
-    @Environment(\.colorScheme) var colorScheme
     var transportOperator: Operator
+    var height: CGFloat = 60
     
     var body: some View {
         RoundedRectangle(cornerRadius: 8)
             .fill(transportOperator.primaryColour)
-            .frame(width: 64, height: 64)
+            .frame(width: 80, height: height)
             .overlay {
                 Image(systemName: transportOperator.mode.image())
                     .font(.title)

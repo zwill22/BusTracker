@@ -11,13 +11,14 @@ import MapKit
 struct MapView: View {
     @Namespace var mapScope
     @Binding var position: MapCameraPosition
-    @Binding var buses: [Bus]
+    @Binding var vehicles: [Vehicle]
     
     var body: some View {
         Map(position: $position) {
-            ForEach(buses) { bus in
-                Marker("", systemImage: "bus", coordinate: bus.details.location.getPlace())
-                    .tint(bus.primaryColour)
+            ForEach(vehicles) { vehicle in
+                Marker("", systemImage: "bus",
+                       coordinate: VehiclePlace(location: vehicle.details.location).location)
+                    .tint(vehicle.primaryColour)
             }
         }
             .onMapCameraChange(frequency: .onEnd) { context in

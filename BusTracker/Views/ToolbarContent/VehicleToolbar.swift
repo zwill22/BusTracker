@@ -1,5 +1,5 @@
 //
-//  BusesToolbar.swift
+//  VehicleToolbar.swift
 //  BusTracker
 //
 //  Created by Zack Williams on 13-11-2024.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-extension Buses {
+extension Vehicles {
     
     @ToolbarContentBuilder
     func toolbarContent() -> some ToolbarContent {
         ToolbarItemGroup(placement: .bottomBar) {
             RefreshButton {
                 Task {
-                    await fetchBuses()
+                    await fetchVehicles()
                 }
             }
             
@@ -22,7 +22,7 @@ extension Buses {
             ToolbarStatus(
                 isLoading: isLoading,
                 lastUpdated: lastUpdated,
-                busCount: provider.buses.count
+                vehicleCount: provider.vehicles.count
             )
             Spacer()
         }

@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct RouteNumber: View {
-    var bus: Bus
+    var vehicle: Vehicle
     var height: CGFloat = 60
     
     var body: some View {
         RoundedRectangle(cornerRadius: 8)
-            .fill(bus.primaryColour)
+            .fill(vehicle.primaryColour)
             .frame(width: 80, height: height)
             .overlay {
-                Text(bus.details.lineNumber)
+                Text(vehicle.details.lineNumber)
                     .font(.title)
                     .bold()
-                    .foregroundStyle(bus.secondaryColour)
+                    .foregroundStyle(vehicle.secondaryColour)
             }
     }
 }
 
 #Preview {
-    RouteNumber(bus: Bus.preview)
+    RouteNumber(vehicle: Vehicle.preview)
 }
