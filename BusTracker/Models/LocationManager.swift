@@ -6,22 +6,11 @@
 //
 
 import MapKit
-import SwiftUI
-
-struct MapLocation {
-    var centreLongitude: Double
-    var centreLatitude: Double
-    var longitudeDelta: Double
-    var latitudeDelta: Double
-}
 
 final class LocationManager: NSObject, ObservableObject {
     private let locationManager = CLLocationManager()
     
     @Published var location : CLLocation?
-    @Published var defaultDelta = 0.1
-    @Published var maxDelta = 1.0
-    @Published var position : MapCameraPosition = .automatic
     
     override init() {
         super.init()
@@ -42,30 +31,7 @@ final class LocationManager: NSObject, ObservableObject {
             break
         }
         
-        updatePosition()
-    }
-    
-    func updatePosition() {
-        if let location = locationManager.location {
-            position = MapCameraPosition.region(MKCoordinateRegion(
-                center: location.coordinate,
-                span: MKCoordinateSpan(latitudeDelta: defaultDelta, longitudeDelta: defaultDelta)
-            ))
-        }
-    }
-    
-    func mapLocation() -> MapLocation? {
-        guard let region = position.region else { return nil }
-        
-        let deltaLatitude = min(region.span.latitudeDelta, maxDelta) / 2
-        let deltaLongitude = min(region.span.longitudeDelta, maxDelta) / 2
-        
-        return MapLocation(
-            centreLongitude: region.center.longitude,
-            centreLatitude: region.center.latitude,
-            longitudeDelta: deltaLongitude,
-            latitudeDelta: deltaLatitude
-        )
+        location = locationManager.location
     }
 }
 

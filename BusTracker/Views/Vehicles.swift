@@ -13,7 +13,7 @@ struct Vehicles: View {
     
     @EnvironmentObject var vehicleProvider: VehicleProvider
     @EnvironmentObject var operatorProvider: OperatorProvider
-    @EnvironmentObject var locationManager: LocationManager
+    @EnvironmentObject var locationProvider: LocationProvider
     
     @State var isLoading: Bool = false
     @State var selection: Set<String> = []
@@ -23,7 +23,7 @@ struct Vehicles: View {
     var body: some View {
         NavigationStack {
             MapView(vehicles: $vehicleProvider.vehicles)
-                .environmentObject(locationManager)
+                .environmentObject(locationProvider)
             List(selection: $selection) {
                 ForEach(vehicleProvider.vehicles) { vehicle in
                     NavigationLink(destination: VehicleDetail(vehicle: vehicle)) {
@@ -43,7 +43,7 @@ struct Vehicles: View {
     func fetchVehicles() async {
         isLoading = true
         do {
-            guard let location = locationManager.mapLocation() else { return }
+            guard let location = locationProvider.mapLocation() else { return }
             try await vehicleProvider.fetchVehicles(mapLocation: location)
         } catch {
             self.error = error as? VehicleError ?? .unexpectedError(error: error)
@@ -57,6 +57,6 @@ struct Vehicles: View {
 #Preview {
     Vehicles()
         .environmentObject(VehicleProvider.preview)
-        .environmentObject(LocationManager())
+        .environmentObject(LocationProvider())
 }
 

@@ -10,13 +10,15 @@ import SwiftUI
 struct MainView: View {
     @EnvironmentObject var operatorProvider: OperatorProvider
     @EnvironmentObject var vehicleProvider: VehicleProvider
-    @EnvironmentObject var locationManager: LocationManager
+    @EnvironmentObject var locationProvider: LocationProvider
     
     var body: some View {
         TabView {
             Tab("Vehicles", systemImage: "bus") {
-                Vehicles().environmentObject(vehicleProvider).environmentObject(locationManager)
+                Vehicles()
+                    .environmentObject(vehicleProvider)
                     .environmentObject(operatorProvider)
+                    .environmentObject(locationProvider)
             }
             
             Tab("Operators", systemImage: "cablecar.fill") {
