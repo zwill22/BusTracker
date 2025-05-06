@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CEA153AC2CE38D9A00C86380 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = CEA153AB2CE38D9A00C86380 /* XMLCoder */; };
-		CEA153E42CE4FF7D00C86380 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = CEA153E32CE4FF7D00C86380 /* WrappingHStack */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +27,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEA153E42CE4FF7D00C86380 /* WrappingHStack in Frameworks */,
 				CEA153AC2CE38D9A00C86380 /* XMLCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,7 +71,6 @@
 			name = BusTracker;
 			packageProductDependencies = (
 				CEA153AB2CE38D9A00C86380 /* XMLCoder */,
-				CEA153E32CE4FF7D00C86380 /* WrappingHStack */,
 			);
 			productName = BusTracker;
 			productReference = CE0DDF7A2CDE161C00A1D84B /* BusTracker.app */;
@@ -105,7 +102,6 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				CEA153AA2CE38D9A00C86380 /* XCRemoteSwiftPackageReference "XMLCoder" */,
-				CEA153E22CE4FF7D00C86380 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CE0DDF7B2CDE161C00A1D84B /* Products */;
@@ -371,14 +367,6 @@
 				minimumVersion = 0.17.1;
 			};
 		};
-		CEA153E22CE4FF7D00C86380 /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:ksemianov/WrappingHStack.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -386,11 +374,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CEA153AA2CE38D9A00C86380 /* XCRemoteSwiftPackageReference "XMLCoder" */;
 			productName = XMLCoder;
-		};
-		CEA153E32CE4FF7D00C86380 /* WrappingHStack */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CEA153E22CE4FF7D00C86380 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
-			productName = WrappingHStack;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

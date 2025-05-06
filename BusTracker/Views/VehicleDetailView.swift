@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import WrappingHStack
 
 struct VehicleDetail: View {
     var vehicle: Vehicle
@@ -20,7 +19,7 @@ struct VehicleDetail: View {
                 RouteNumber(vehicle: vehicle, height: 80)
                     .padding(.trailing, 10)
                 VStack(alignment: .leading) {
-                    WrappingHStack(alignment: .leading) {
+                    HStack(alignment: .center) {
                         Group {
                             Text(vehicle.details.origin)
                             Image(systemName: "arrow.right")
