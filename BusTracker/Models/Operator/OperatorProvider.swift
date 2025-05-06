@@ -19,6 +19,16 @@ class OperatorProvider: ObservableObject {
         self.busOperators = operators
     }
     
+    func fetchOperator(opCode: String) async throws -> Operator {
+        let operators = busOperators.filter { $0.opCode == opCode }
+        
+        if operators.count == 1 {
+            return operators[0]
+        }
+        
+        throw OperatorError.dataFormatError
+    }
+    
     var filteredOperators: [Operator] {
         guard !searchText.isEmpty else {
             return busOperators

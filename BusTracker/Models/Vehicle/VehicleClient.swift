@@ -8,44 +8,60 @@
 import Foundation
 import XMLCoder
 
-func distance(vehicle: Vehicle, userLongitude: Double, userLatitude: Double) -> Double {
+func distance(vehicle: Vehicle, longitude: Double, latitude: Double) -> Double {
     let vehicleLongitude = vehicle.details.location.longitude
     let vehicleLatitude = vehicle.details.location.latitude
     
-    let deltaLongitude = vehicleLongitude - vehicleLongitude
-    let deltaLatitude = vehicleLatitude - vehicleLatitude
+    let deltaLongitude = vehicleLongitude - longitude
+    let deltaLatitude = vehicleLatitude - latitude
     
     return sqrt(pow(deltaLongitude, 2) + pow(deltaLatitude, 2))
 }
 
 actor VehicleClient {
     
-    func vehicles(
-        minLongitude: Double, minLatitude: Double,
-        maxLongitude: Double, maxLatitude: Double,
-        userLongitude: Double, userLatitude: Double
-    ) async throws -> [Vehicle] {
-        let feedURL: URL = getFeedURL(minLongitude: minLongitude, minLatitude: minLatitude, maxLongitude: maxLongitude, maxLatitude: maxLatitude)
+    func vehicles(mapLocation: MapLocation, maxVehicles: Int, maxTime: Int) async throws -> [Vehicle] {
+        let minLongitude = mapLocation.centreLongitude - mapLocation.longitudeDelta
+        let maxLongitude = mapLocation.centreLongitude + mapLocation.longitudeDelta
+        let minLatitude = mapLocation.centreLatitude - mapLocation.latitudeDelta
+        let maxLatitude = mapLocation.centreLatitude + mapLocation.latitudeDelta
+        
+        let feedURL: URL = getFeedURL(
+            minLongitude: minLongitude,
+            minLatitude: minLatitude,
+            maxLongitude: maxLongitude,
+            maxLatitude: maxLatitude
+        )
         guard let data = try? await downloader.httpData(from: feedURL) else {
             throw VehicleError.networkError
         }
         let allVehicles = try decoder.decode(XML.self, from: data)
         
         // Only return recent buses if
-        if (allVehicles.vehicles.count < 500) {
+        if (allVehicles.vehicles.count < maxVehicles) {
             return allVehicles.vehicles
         }
         
-        var filteredVehicles: [Vehicle] = allVehicles.vehicles.filter({ $0.time.timeIntervalSinceNow > -3600})
+        var filteredVehicles: [Vehicle] = allVehicles.vehicles.filter(
+            { $0.time.timeIntervalSinceNow > -3600}
+        )
         
         filteredVehicles.sort {
-            distance(vehicle: $0, userLongitude: userLongitude, userLatitude: userLatitude) < distance(vehicle: $1, userLongitude: userLongitude, userLatitude: userLatitude)
+            distance(
+                vehicle: $0,
+                longitude: mapLocation.centreLongitude,
+                latitude: mapLocation.centreLatitude
+            ) < distance(
+                vehicle: $1,
+                longitude: mapLocation.centreLongitude,
+                latitude: mapLocation.centreLatitude
+            )
         }
         
         
         
-        if (filteredVehicles.count > 500) {
-            return Array(filteredVehicles[0..<500])
+        if (filteredVehicles.count > maxVehicles) {
+            return Array(filteredVehicles[0..<maxVehicles])
         }
         
         return filteredVehicles
@@ -53,11 +69,13 @@ actor VehicleClient {
     
     func vehicle(vehicleRef: String) async throws -> Vehicle {
         let feedURL:URL = getFeedURL(vehicleRef: vehicleRef)
-        let data = try await downloader.httpData(from: feedURL)
+        guard let data = try? await downloader.httpData(from: feedURL) else {
+            throw VehicleError.networkError
+        }
         let vehicleData = try decoder.decode(XML.self, from: data)
         
         if (vehicleData.vehicles.count != 1) {
-            throw VehicleError.networkError
+            throw VehicleError.dataFormatError
         }
         
         return vehicleData.vehicles[0]
@@ -70,8 +88,11 @@ actor VehicleClient {
     }()
     
 
-    private func getFeedURL(minLongitude: Double, minLatitude: Double, maxLongitude: Double, maxLatitude: Double
-        
+    private func getFeedURL(
+        minLongitude: Double,
+        minLatitude: Double,
+        maxLongitude: Double,
+        maxLatitude: Double
     ) -> URL {
         let urlRoot = "http://localhost:5134/location/area/"
         

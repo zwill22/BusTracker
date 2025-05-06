@@ -9,12 +9,12 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
+    @EnvironmentObject var locationManager: LocationManager
     @Namespace var mapScope
-    @Binding var position: MapCameraPosition
     @Binding var vehicles: [Vehicle]
     
     var body: some View {
-        Map(position: $position) {
+        Map(position: $locationManager.position) {
             ForEach(vehicles) { vehicle in
                 Marker("", systemImage: "bus",
                        coordinate: VehiclePlace(location: vehicle.details.location).location)
@@ -22,7 +22,7 @@ struct MapView: View {
             }
         }
             .onMapCameraChange(frequency: .onEnd) { context in
-                position = .region(context.region)
+                locationManager.position = .region(context.region)
             }
             .mapControls {
                 VStack {

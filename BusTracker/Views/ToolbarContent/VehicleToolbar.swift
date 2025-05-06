@@ -22,7 +22,7 @@ extension Vehicles {
             ToolbarStatus(
                 isLoading: isLoading,
                 lastUpdated: lastUpdated,
-                vehicleCount: provider.vehicles.count
+                vehicleCount: vehicleProvider.vehicles.count
             )
             Spacer()
         }

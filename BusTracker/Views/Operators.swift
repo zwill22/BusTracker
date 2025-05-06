@@ -12,6 +12,7 @@ struct Operators: View {
     
     @AppStorage("lastUpdated")
     var lastUpdated = Date.distantFuture.timeIntervalSince1970
+    
     @State var isLoading: Bool = false
     @State private var error: OperatorError?
     @State private var hasError = false
@@ -26,9 +27,6 @@ struct Operators: View {
                 }
             }
             .listStyle(.inset)
-            .refreshable {
-                await fetchOperators()
-            }
             .navigationTitle(title)
             .alert(isPresented: $hasError, error: error) {}
             .padding(EdgeInsets(top: 0, leading:5, bottom: 0, trailing: 5))
@@ -38,7 +36,7 @@ struct Operators: View {
             await fetchOperators()
         }
     }
-    
+
     var title: String {
         return "Transport Operators"
     }

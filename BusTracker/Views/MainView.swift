@@ -8,17 +8,15 @@
 import SwiftUI
 
 struct MainView: View {
-    @AppStorage("lastUpdated")
-    var lastUpdated = Date.distantFuture.timeIntervalSince1970
-    
     @EnvironmentObject var operatorProvider: OperatorProvider
     @EnvironmentObject var vehicleProvider: VehicleProvider
-    @StateObject var locationManager = LocationManager()
+    @EnvironmentObject var locationManager: LocationManager
     
     var body: some View {
         TabView {
             Tab("Vehicles", systemImage: "bus") {
                 Vehicles().environmentObject(vehicleProvider).environmentObject(locationManager)
+                    .environmentObject(operatorProvider)
             }
             
             Tab("Operators", systemImage: "cablecar.fill") {
@@ -30,4 +28,5 @@ struct MainView: View {
 
 #Preview {
     MainView().environmentObject(VehicleProvider.preview).environmentObject(OperatorProvider.preview)
+        .environmentObject(LocationManager())
 }
