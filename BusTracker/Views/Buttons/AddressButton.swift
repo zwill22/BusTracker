@@ -10,8 +10,6 @@ import SwiftUI
 struct AddressButton: View {
   var address: String
     
-    
-    
     var body: some View {
         BaseButton(
             strings: address.components(separatedBy: ", "),

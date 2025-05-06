@@ -11,6 +11,7 @@ struct Vehicle: Identifiable {
     let time: Date
     let details: VehicleDetails
     let id: String
+    let vehicleOperator: Operator?
 }
 
 extension Vehicle: Decodable {
@@ -39,5 +40,13 @@ extension Vehicle: Decodable {
         self.time = time
         self.id = id
         self.details = details
+        self.vehicleOperator = nil
+    }
+    
+    init (vehicle: Vehicle, operators: [Operator]) {
+        self.time = vehicle.time
+        self.details = vehicle.details
+        self.id = vehicle.id
+        self.vehicleOperator = operators.first { $0.opCode == vehicle.details.operatorCode }
     }
 }

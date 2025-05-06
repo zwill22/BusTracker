@@ -13,7 +13,10 @@ struct OperatorDetailView: View {
     
     var body: some View {
         VStack {
-            OperatorBlock(transportOperator: transportOperator).padding(.top)
+            OperatorBlock(
+                transportOperator: transportOperator,
+                height: 80
+            ).padding(.top)
             Text(transportOperator.mode.rawValue).font(.title2).padding(.bottom)
             Text(transportOperator.name).font(.largeTitle).padding(.bottom)
             List {

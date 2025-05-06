@@ -13,13 +13,16 @@ struct RouteNumber: View {
     
     var body: some View {
         RoundedRectangle(cornerRadius: 8)
-            .fill(vehicle.primaryColour)
+            .fill(vehicle.vehicleOperator?.primaryColour ?? .primary.opacity(0.8)
+            )
             .frame(width: 80, height: height)
             .overlay {
                 Text(vehicle.details.lineNumber)
                     .font(.title)
                     .bold()
-                    .foregroundStyle(vehicle.secondaryColour)
+                    .foregroundStyle(
+                        vehicle.vehicleOperator?.secondaryColour ?? .accentColor
+                    )
             }
     }
 }

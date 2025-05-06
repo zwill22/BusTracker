@@ -21,7 +21,10 @@ struct Operators: View {
         NavigationStack {
             List {
                 ForEach(provider.filteredOperators) { busOperator in
-                    NavigationLink(destination: OperatorDetailView(transportOperator: busOperator)) {
+                    NavigationLink(
+                        destination: OperatorDetailView(
+                            transportOperator: busOperator
+                        )) {
                         OperatorRow(busOperator: busOperator)
                     }
                 }

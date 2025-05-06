@@ -16,9 +16,12 @@ struct MapView: View {
     var body: some View {
         Map(position: $locationProvider.position) {
             ForEach(vehicles) { vehicle in
-                Marker("", systemImage: "bus",
-                       coordinate: VehiclePlace(location: vehicle.details.location).location)
-                    .tint(vehicle.primaryColour)
+                Marker(
+                    "",
+                    systemImage: vehicle.vehicleOperator?.mode.image() ?? "bus.fill",
+                    coordinate: VehiclePlace(location: vehicle.details.location).location
+                )
+                .tint(vehicle.vehicleOperator?.primaryColour ?? .primary)
             }
         }
             .onMapCameraChange(frequency: .onEnd) { context in

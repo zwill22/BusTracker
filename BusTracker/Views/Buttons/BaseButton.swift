@@ -35,9 +35,9 @@ struct BaseButton: View {
                 }.contentShape(Rectangle())
             }.foregroundColor(.primary)
                 .simultaneousGesture(TapGesture(count: 2).onEnded {
-                    #if os(iOS) || os(tvOS) || targetEnvironment(macCatalyst)
-                    UIPasteboard.general.string = String(strings.joined(separator: " "))
-                    #endif
+                    UIPasteboard.general.string = String(
+                        strings.joined(separator: " ")
+                    )
                     copied = true
                 })
             

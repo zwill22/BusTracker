@@ -23,7 +23,20 @@ extension Vehicle {
         let previewVehicle = Vehicle(
             time: Date(timeIntervalSinceNow: 0),
             details: previewDetails,
-            id: "1234567890"
+            id: "1234567890",
+            vehicleOperator: Operator(
+                id: "123456789",
+                name: "A Fake Operator",
+                opCode: "ARV",
+                mode: .bus,
+                enquiries: [
+                    Enquiry(string: "0123456789"),
+                    Enquiry(string: "email@example.com")
+                ],
+                address: "1 Fake Street, Anytown, UK",
+                twitter: "@twitter",
+                website: "https://www.example.com"
+            )
         )
     
         return previewVehicle

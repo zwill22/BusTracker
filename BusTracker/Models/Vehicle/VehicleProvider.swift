@@ -15,7 +15,10 @@ class VehicleProvider: ObservableObject {
     
     let client: VehicleClient
     
-    func fetchVehicles(mapLocation: MapLocation) async throws {
+    func fetchVehicles(
+        mapLocation: MapLocation,
+        operators: [Operator]
+    ) async throws {
     
         let nearestVehicles = try await client.vehicles(
             mapLocation: mapLocation,
@@ -23,7 +26,7 @@ class VehicleProvider: ObservableObject {
             maxTime: maxTime
         )
         
-        self.vehicles = nearestVehicles
+        self.vehicles = nearestVehicles.map({ Vehicle(vehicle: $0, operators: operators) })
     }
     
     func updateVehicle(atOffset: Int) async throws {

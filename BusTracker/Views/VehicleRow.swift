@@ -21,10 +21,17 @@ struct VehicleRow: View {
                     Text(vehicle.details.destination).font(.title)
                         .lineLimit(1, reservesSpace: true)
                 }
-                Text("Operator: \(vehicle.details.operatorCode)").foregroundStyle(.secondary)
+                
+                if let transportOperator = vehicle.vehicleOperator {
+                    Text("Operator: \(transportOperator.name)").foregroundStyle(.secondary)
                         .lineLimit(1, reservesSpace: true)
+                } else {
+                    Text("Operator: \(vehicle.details.operatorCode)").foregroundStyle(.secondary)
+                        .lineLimit(1, reservesSpace: true)
+                }
+                
                 Text("Origin: \(vehicle.details.origin)").foregroundColor(.secondary)
-                        .lineLimit(1, reservesSpace: true)
+                    .lineLimit(1, reservesSpace: true)
             }
         }
         .padding(.vertical, 10)

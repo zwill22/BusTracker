@@ -14,8 +14,7 @@ struct VehicleDetail: View {
     var body: some View {
         let location = self.vehicle.details.location
         VStack(alignment: .leading) {
-            VehicleDetailMap(
-                location: location, tintColour: vehicle.primaryColour)
+            VehicleDetailMap(vehicle: vehicle)
                 .ignoresSafeArea(.container)
             HStack {
                 RouteNumber(vehicle: vehicle, height: 80)
@@ -28,8 +27,17 @@ struct VehicleDetail: View {
                             Text(vehicle.details.destination)
                         }.lineLimit(1).font(.title3)
                     }
-                    Text("Operator: \(vehicle.details.operatorCode)")
-                        .font(.headline)
+                    if let transportOperator = vehicle.vehicleOperator {
+                        NavigationLink(destination: OperatorDetailView(
+                            transportOperator: transportOperator
+                        )) {
+                            Text("Operator: \(transportOperator.name)")
+                                .font(.headline).lineLimit(1, reservesSpace: true)
+                        }
+                    } else {
+                        Text("Operator: \(vehicle.details.operatorCode)")
+                            .font(.headline).lineLimit(1, reservesSpace: true)
+                    }
                     Text("\(vehicle.time.formatted())")
                         .foregroundStyle(Color.secondary)
                     Text("Latitude: \(location.latitude.formatted(.number.precision(.fractionLength(3))))")

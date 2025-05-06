@@ -26,7 +26,9 @@ struct Vehicles: View {
                 .environmentObject(locationProvider)
             List(selection: $selection) {
                 ForEach(vehicleProvider.vehicles) { vehicle in
-                    NavigationLink(destination: VehicleDetail(vehicle: vehicle)) {
+                    NavigationLink(
+                        destination: VehicleDetail(vehicle: vehicle)
+                    ) {
                         VehicleRow(vehicle: vehicle)
                     }
                 }
@@ -36,7 +38,17 @@ struct Vehicles: View {
             .alert(isPresented: $hasError, error: error) {}
         }
         .task {
+            await fetchOperators()
             await fetchVehicles()
+        }
+    }
+    
+    func fetchOperators() async {
+        do {
+            try await operatorProvider.fetchOperators()
+        } catch {
+            self.error = error as? VehicleError ?? .unexpectedError(error: error)
+            self.hasError = true
         }
     }
     
@@ -44,7 +56,10 @@ struct Vehicles: View {
         isLoading = true
         do {
             guard let location = locationProvider.mapLocation() else { return }
-            try await vehicleProvider.fetchVehicles(mapLocation: location)
+            try await vehicleProvider.fetchVehicles(
+                mapLocation: location,
+                operators: operatorProvider.busOperators
+            )
         } catch {
             self.error = error as? VehicleError ?? .unexpectedError(error: error)
             self.hasError = true
@@ -57,6 +72,7 @@ struct Vehicles: View {
 #Preview {
     Vehicles()
         .environmentObject(VehicleProvider.preview)
+        .environmentObject(OperatorProvider.preview)
         .environmentObject(LocationProvider())
 }
 

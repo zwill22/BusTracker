@@ -20,7 +20,11 @@ func distance(vehicle: Vehicle, longitude: Double, latitude: Double) -> Double {
 
 actor VehicleClient {
     
-    func vehicles(mapLocation: MapLocation, maxVehicles: Int, maxTime: Int) async throws -> [Vehicle] {
+    func vehicles(
+        mapLocation: MapLocation,
+        maxVehicles: Int,
+        maxTime: Int
+    ) async throws -> [Vehicle] {
         let minLongitude = mapLocation.centreLongitude - mapLocation.longitudeDelta
         let maxLongitude = mapLocation.centreLongitude + mapLocation.longitudeDelta
         let minLatitude = mapLocation.centreLatitude - mapLocation.latitudeDelta

@@ -14,9 +14,9 @@ struct VehicleDetailMap: View {
     private let place: VehiclePlace
     @State private var position: MapCameraPosition = .region(MKCoordinateRegion())
     
-    init(location: VehicleLocation, tintColour: Color) {
-        self.location = location
-        self.tintColour = tintColour
+    init(vehicle: Vehicle) {
+        self.location = vehicle.details.location
+        self.tintColour = vehicle.vehicleOperator?.primaryColour ?? .primary.opacity(0.80)
         self.place = VehiclePlace(location: location)
     }
     
