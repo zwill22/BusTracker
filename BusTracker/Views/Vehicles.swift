@@ -58,7 +58,7 @@ struct Vehicles: View {
             guard let location = locationProvider.mapLocation() else { return }
             try await vehicleProvider.fetchVehicles(
                 mapLocation: location,
-                operators: operatorProvider.busOperators
+                operators: operatorProvider.vehicleOperators
             )
         } catch {
             self.error = error as? VehicleError ?? .unexpectedError(error: error)

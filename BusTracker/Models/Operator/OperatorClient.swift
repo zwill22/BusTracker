@@ -8,22 +8,7 @@
 import Foundation
 import XMLCoder
 
-enum CacheEntry {
-    case inProgress(Task<Operator, Error>)
-    case ready(Operator)
-}
-
-final class CacheEntryObject {
-    let entry: CacheEntry
-    
-    init(entry: CacheEntry) {
-        self.entry = entry
-    }
-}
-
 actor OperatorClient {
-    private let operatorCache: NSCache<NSString, CacheEntryObject> = NSCache()
-    
     private let feedURL: URL = URL(string: "http://localhost:5134/operators/data")!
     
     private lazy var decoder = JSONDecoder();

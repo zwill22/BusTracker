@@ -37,7 +37,6 @@ class LocationProvider: ObservableObject {
         }
     }
     
-    
     func mapLocation() -> MapLocation? {
         guard let region = position.region else { return nil }
         

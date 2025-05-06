@@ -9,32 +9,28 @@ import Foundation
 
 @MainActor
 class OperatorProvider: ObservableObject {
-    @Published var busOperators: [Operator] = []
+    @Published var vehicleOperators: [Operator] = []
     @Published var searchText: String = ""
+    @Published var initialised: Bool = false
     
     private let client: OperatorClient
     
     func fetchOperators() async throws {
-        let operators = try await client.operators;
-        self.busOperators = operators
-    }
-    
-    func fetchOperator(opCode: String) async throws -> Operator {
-        let operators = busOperators.filter { $0.opCode == opCode }
-        
-        if operators.count == 1 {
-            return operators[0]
+        if initialised {
+            return
         }
         
-        throw OperatorError.dataFormatError
+        let operators = try await client.operators;
+        self.vehicleOperators = operators
+        self.initialised = true
     }
     
     var filteredOperators: [Operator] {
         guard !searchText.isEmpty else {
-            return busOperators
+            return vehicleOperators
         }
         
-        return busOperators.filter {
+        return vehicleOperators.filter {
             $0.name.lowercased().contains(searchText.lowercased()) ||
             $0.opCode.lowercased().contains(searchText.lowercased())
         

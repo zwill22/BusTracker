@@ -12,6 +12,8 @@ class VehicleProvider: ObservableObject {
     @Published var vehicles: [Vehicle] = []
     @Published var maxVehicles = 500
     @Published var maxTime = 3600
+    @Published var timeout = 60
+    
     
     let client: VehicleClient
     
@@ -19,7 +21,6 @@ class VehicleProvider: ObservableObject {
         mapLocation: MapLocation,
         operators: [Operator]
     ) async throws {
-    
         let nearestVehicles = try await client.vehicles(
             mapLocation: mapLocation,
             maxVehicles: maxVehicles,
