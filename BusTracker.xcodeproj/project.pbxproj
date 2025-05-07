@@ -10,14 +10,32 @@
 		CEA153AC2CE38D9A00C86380 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = CEA153AB2CE38D9A00C86380 /* XMLCoder */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CEE15C812DCA85E400A1414D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		CE0DDF7A2CDE161C00A1D84B /* BusTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEE15C832DCA85E400A1414D /* BusTrackerLogo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BusTrackerLogo; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		CE0DDF7C2CDE161C00A1D84B /* BusTracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = BusTracker;
+			sourceTree = "<group>";
+		};
+		CEE15C842DCA85E400A1414D /* BusTrackerLogo */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BusTrackerLogo;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -31,6 +49,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CEE15C802DCA85E400A1414D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -38,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				CE0DDF7C2CDE161C00A1D84B /* BusTracker */,
+				CEE15C842DCA85E400A1414D /* BusTrackerLogo */,
 				CE0DDF7B2CDE161C00A1D84B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				CE0DDF7A2CDE161C00A1D84B /* BusTracker.app */,
+				CEE15C832DCA85E400A1414D /* BusTrackerLogo */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,6 +103,28 @@
 			productReference = CE0DDF7A2CDE161C00A1D84B /* BusTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CEE15C822DCA85E400A1414D /* BusTrackerLogo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEE15C872DCA85E400A1414D /* Build configuration list for PBXNativeTarget "BusTrackerLogo" */;
+			buildPhases = (
+				CEE15C7F2DCA85E400A1414D /* Sources */,
+				CEE15C802DCA85E400A1414D /* Frameworks */,
+				CEE15C812DCA85E400A1414D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				CEE15C842DCA85E400A1414D /* BusTrackerLogo */,
+			);
+			name = BusTrackerLogo;
+			packageProductDependencies = (
+			);
+			productName = BusTrackerLogo;
+			productReference = CEE15C832DCA85E400A1414D /* BusTrackerLogo */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -88,6 +137,9 @@
 				TargetAttributes = {
 					CE0DDF792CDE161C00A1D84B = {
 						CreatedOnToolsVersion = 16.1;
+					};
+					CEE15C822DCA85E400A1414D = {
+						CreatedOnToolsVersion = 16.3;
 					};
 				};
 			};
@@ -109,6 +161,7 @@
 			projectRoot = "";
 			targets = (
 				CE0DDF792CDE161C00A1D84B /* BusTracker */,
+				CEE15C822DCA85E400A1414D /* BusTrackerLogo */,
 			);
 		};
 /* End PBXProject section */
@@ -125,6 +178,13 @@
 
 /* Begin PBXSourcesBuildPhase section */
 		CE0DDF762CDE161C00A1D84B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEE15C7F2DCA85E400A1414D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -335,6 +395,28 @@
 			};
 			name = Release;
 		};
+		CEE15C882DCA85E400A1414D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CEE15C892DCA85E400A1414D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -352,6 +434,15 @@
 			buildConfigurations = (
 				CE0DDF9F2CDE161D00A1D84B /* Debug */,
 				CE0DDFA02CDE161D00A1D84B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEE15C872DCA85E400A1414D /* Build configuration list for PBXNativeTarget "BusTrackerLogo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEE15C882DCA85E400A1414D /* Debug */,
+				CEE15C892DCA85E400A1414D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
