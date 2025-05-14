@@ -9,7 +9,7 @@ import Foundation
 import XMLCoder
 
 actor OperatorClient {
-    private let feedURL: URL = URL(string: "http://localhost:5134/operators/data")!
+    private let feedURL: URL = Server().getURLRoot(path: "/operators/data")
     
     private lazy var decoder = JSONDecoder();
     

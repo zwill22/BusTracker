@@ -19,6 +19,7 @@ func distance(vehicle: Vehicle, longitude: Double, latitude: Double) -> Double {
 }
 
 actor VehicleClient {
+    private var server = Server()
     
     func vehicles(
         mapLocation: MapLocation,
@@ -98,19 +99,15 @@ actor VehicleClient {
         maxLongitude: Double,
         maxLatitude: Double
     ) -> URL {
-        let urlRoot = "http://localhost:5134/location/area/"
+        let urlRoot = server.getURLRoot(path: "/location/area/")
         
-        let result = urlRoot + minLatitude.description + "/" + minLongitude.description + "/" + maxLatitude.description + "/" + maxLongitude.description
+        let path = minLatitude.description + "/" + minLongitude.description + "/" + maxLatitude.description + "/" + maxLongitude.description
         
-        return URL(string: result)!
+        return urlRoot.appending(path: path)
     }
     
     private func getFeedURL(vehicleRef: String) -> URL {
-        let urlRoot = "http://localhost:5134/vehicle/"
-        
-        let result = urlRoot + vehicleRef
-        
-        return URL(string: result)!
+        return server.getURLRoot(path: "/vehicle/" + vehicleRef)
     }
     
     private let downloader: any HTTPDataDownloader
