@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct VehicleLocation {
+struct VehicleLocation: Hashable {
     var latitude: Double
     var longitude: Double
 }

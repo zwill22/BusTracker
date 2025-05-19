@@ -12,6 +12,7 @@ struct BusTrackerApp: App {
     @StateObject var vehicleProvider = VehicleProvider()
     @StateObject var operatorProvider = OperatorProvider()
     @StateObject var locationProvider = LocationProvider()
+    @StateObject var stopProvider = StopProvider()
     
     var body: some Scene {
         WindowGroup {
@@ -19,6 +20,7 @@ struct BusTrackerApp: App {
                 .environmentObject(vehicleProvider)
                 .environmentObject(operatorProvider)
                 .environmentObject(locationProvider)
+                .environmentObject(stopProvider)
         }
     }
 }

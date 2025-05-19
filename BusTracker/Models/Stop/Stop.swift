@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Stop: Identifiable {
+struct Stop: Identifiable, Hashable {
     let id: String
     let name: String
     let shortName: String?

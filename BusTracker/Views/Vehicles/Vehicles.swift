@@ -14,15 +14,17 @@ struct Vehicles: View {
     @EnvironmentObject var vehicleProvider: VehicleProvider
     @EnvironmentObject var operatorProvider: OperatorProvider
     @EnvironmentObject var locationProvider: LocationProvider
+    @EnvironmentObject var stopProvider: StopProvider
     
     @State var isLoading: Bool = false
     @State var selection: Set<String> = []
     @State private var error: VehicleError?
     @State private var hasError = false
+    @State var stops: [Stop] = []
     
     var body: some View {
         NavigationStack {
-            MapView(vehicles: $vehicleProvider.vehicles)
+            MapView(vehicles: $vehicleProvider.vehicles, stops: $stops)
                 .environmentObject(locationProvider)
             List(selection: $selection) {
                 ForEach(vehicleProvider.vehicles) { vehicle in
