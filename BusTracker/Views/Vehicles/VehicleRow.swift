@@ -15,9 +15,6 @@ struct VehicleRow: View {
             RouteNumber(vehicle: vehicle, height: 75)
             VStack(alignment: .leading) {
                 HStack{
-                    Text("\(vehicle.details.originDepartureTime.formatted(date: .omitted, time: .shortened))").font(.title)
-                        .lineLimit(1, reservesSpace: true)
-                    Image(systemName: "arrow.right").font(.title)
                     if let destination = vehicle.destination {
                         if let shortName = destination.shortName {
                             Text(shortName).font(.title)
@@ -32,24 +29,28 @@ struct VehicleRow: View {
                     }
                 }
                 
+                Group {
+                    HStack {
+                        Text("Departed:")
+                        if let origin = vehicle.origin {
+                            if let shortName = origin.shortName {
+                                Text(shortName)
+                            } else {
+                                Text(origin.name)
+                            }
+                        } else {
+                            Text(vehicle.details.origin)
+                        }
+                        
+                        Text("(\(vehicle.details.originDepartureTime.formatted(date: .omitted, time: .shortened)))")
+                    }
+                }.foregroundStyle(.secondary).lineLimit(1, reservesSpace: true)
+                
                 if let transportOperator = vehicle.vehicleOperator {
                     Text("Operator: \(transportOperator.name)").foregroundStyle(.secondary)
                         .lineLimit(1, reservesSpace: true)
                 } else {
                     Text("Operator: \(vehicle.details.operatorCode)").foregroundStyle(.secondary)
-                        .lineLimit(1, reservesSpace: true)
-                }
-                
-                if let origin = vehicle.origin {
-                    if let shortName = origin.shortName {
-                        Text("Origin: \(shortName)").foregroundColor(.secondary)
-                            .lineLimit(1, reservesSpace: true)
-                    } else {
-                        Text("Origin: \(origin.name)").foregroundColor(.secondary)
-                            .lineLimit(1, reservesSpace: true)
-                    }
-                } else {
-                    Text("Origin: \(vehicle.details.origin)").foregroundColor(.secondary)
                         .lineLimit(1, reservesSpace: true)
                 }
             }
