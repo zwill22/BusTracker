@@ -55,4 +55,13 @@ extension Vehicle: Decodable {
         self.origin = nil
         self.destination = nil
     }
+    
+    init (vehicle: Vehicle, stops: [Stop]) {
+        self.time = vehicle.time
+        self.details = vehicle.details
+        self.id = vehicle.id
+        self.vehicleOperator = vehicle.vehicleOperator
+        self.origin = stops.first { $0.id == vehicle.details.originRef }
+        self.destination = stops.first { $0.id == vehicle.details.destinationRef }
+    }
 }

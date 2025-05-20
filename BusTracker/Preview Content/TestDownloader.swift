@@ -24,3 +24,8 @@ class TestOperatorDownloader: HTTPDataDownloader {
     }
 }
 
+class TestStopDownloader: HTTPDataDownloader {
+    func httpData(from url: URL) async throws -> Data {
+        return try await simulateHTTPData(data: testStopData)
+    }
+}

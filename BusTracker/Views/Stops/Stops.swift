@@ -8,45 +8,55 @@
 import SwiftUI
 
 struct Stops: View {
+    @AppStorage("lastUpdated")
+    var lastUpdated = Date.distantFuture.timeIntervalSince1970
+    
     @EnvironmentObject var stopProvider: StopProvider
     @EnvironmentObject var locationProvider: LocationProvider
     
     @State var isLoading: Bool = false
-    @State private var hasError: Bool = false
-    @State private var error: VehicleError?
-    @State private var vehicles: [Vehicle] = []
+    @State private var error: StopError?
+    @State private var hasError = false
     
     var body: some View {
         NavigationStack {
-            MapView(vehicles: $vehicles, stops: $stopProvider.stops)
-                    .environmentObject(locationProvider)
+            StopMap(stops: $stopProvider.stops)
+                .environmentObject(locationProvider)
             List {
                 ForEach(stopProvider.stops) { stop in
-                    StopRow(stop: stop)
+                    NavigationLink(
+                        destination: StopDetailView(stop: stop)
+                    ) {
+                        StopRow(stop: stop)
+                    }
                 }
             }
             .listStyle(.inset)
             .alert(isPresented: $hasError, error: error) {}
-        }.task {
+        }
+        .task {
             await fetchStops()
         }
     }
     
+    
     func fetchStops() async {
         isLoading = true
         do {
-            guard let location = locationProvider.mapLocation() else {
-                return
-            }
-            try await stopProvider.fetchStopsArea(mapLocation: location, stops: stopProvider.stops)
+            guard let location = locationProvider.mapLocation() else { return }
+            try await stopProvider.fetchStopsArea(mapLocation: location)
         } catch {
-            self.error = error as? VehicleError ?? .unexpectedError(error: error)
+            self.error = error as? StopError ?? .unexpectedError(error: error)
             self.hasError = true
         }
+        lastUpdated = Date().timeIntervalSince1970
         isLoading = false
     }
 }
 
 #Preview {
-    Stops().environmentObject(StopProvider()).environmentObject(LocationProvider())
+    Stops()
+        .environmentObject(StopProvider.preview)
+        .environmentObject(LocationProvider())
 }
+

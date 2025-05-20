@@ -11,23 +11,41 @@ import MapKit
 struct VehicleDetailMap: View {
     let location: VehicleLocation
     let tintColour: Color
+    private let height = CGFloat(24)
     private let place: VehiclePlace
+    private let destinationPlace: VehiclePlace?
     @State private var position: MapCameraPosition = .region(MKCoordinateRegion())
     
-    init(vehicle: Vehicle) {
+    
+    init(vehicle: Vehicle, destination: Stop?) {
         self.location = vehicle.details.location
         self.tintColour = vehicle.vehicleOperator?.primaryColour ?? .primary.opacity(0.80)
         self.place = VehiclePlace(location: location)
+
+        if let destinationLocation = destination?.location {
+            self.destinationPlace = VehiclePlace(location: destinationLocation)
+        } else {
+            self.destinationPlace = nil
+        }
     }
     
     var body: some View {
         Map(position: $position) {
             Marker("", systemImage: "bus", coordinate: place.location)
                 .tint(tintColour)
+
+            if let location = destinationPlace?.location {
+                Annotation("", coordinate: location) {
+                    ZStack {
+                        Circle().fill(.red).frame(width: height, height: height)
+                        Image(systemName: "xmark.circle").resizable().frame(width: height, height: height)
+                    }
+                }
+            }
         }
             .onAppear {
                 withAnimation {
-                    position = .region(MKCoordinateRegion(center: place.location, span: .init(latitudeDelta: 0.05, longitudeDelta: 0.05)))
+                    position = .automatic
                 }
             }
     }

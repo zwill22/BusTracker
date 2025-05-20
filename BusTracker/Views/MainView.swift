@@ -28,6 +28,7 @@ struct MainView: View {
             
             Tab("Stops", systemImage: "mappin.circle.fill") {
                 Stops().environmentObject(stopProvider)
+                    .environmentObject(locationProvider)
             }
         }
     }

@@ -13,19 +13,22 @@ struct VehicleDetail: View {
     var body: some View {
         let location = self.vehicle.details.location
         VStack(alignment: .leading) {
-            VehicleDetailMap(vehicle: vehicle)
+            VehicleDetailMap(vehicle: vehicle, destination: vehicle.destination)
                 .ignoresSafeArea(.container)
             HStack {
                 RouteNumber(vehicle: vehicle, height: 80)
                     .padding(.trailing, 10)
                 VStack(alignment: .leading) {
-                    HStack(alignment: .center) {
-                        Group {
-                            Text(vehicle.details.origin)
-                            Image(systemName: "arrow.right")
-                            Text(vehicle.details.destination)
-                        }.lineLimit(1).font(.title3)
+                    if let destination = vehicle.destination {
+                        Text(destination.name).lineLimit(1).font(.title)
+                    } else {
+                        Text(vehicle.details.destination).lineLimit(1, reservesSpace: true).font(.title)
                     }
+                    
+                    if let origin = vehicle.origin {
+                        Text("Origin: \(origin.name)").lineLimit(1, reservesSpace: true).font(.headline)
+                    }
+                    
                     if let transportOperator = vehicle.vehicleOperator {
                         NavigationLink(destination: OperatorDetailView(
                             transportOperator: transportOperator

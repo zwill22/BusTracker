@@ -36,6 +36,10 @@ class VehicleProvider: ObservableObject {
         self.vehicles[atOffset] = updatedVehicle
     }
     
+    func updateVehicles(stops: [Stop]) {
+        self.vehicles = self.vehicles.map { Vehicle(vehicle: $0, stops: stops) }
+    }
+    
     init(client: VehicleClient = VehicleClient()) {
         self.client = client
     }

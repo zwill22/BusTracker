@@ -12,22 +12,11 @@ class StopProvider: ObservableObject {
     @Published var stops: [Stop] = []
     @Published var maxStops: Int = 500
     
-    private var versionOK = false
-    
     private let client: StopClient
     
-    func fetchVersion() async throws {
-        if !versionOK {
-            try await client.checkVersion();
-            versionOK = true
-        }
-    }
-    
     func fetchStopsArea(
-        mapLocation: MapLocation,
-        stops: [Stop]
+        mapLocation: MapLocation
     ) async throws {
-        try await fetchVersion()
         
         let newStops = try await client.stops(
             mapLocation: mapLocation,
@@ -40,7 +29,6 @@ class StopProvider: ObservableObject {
     func fetchStopCodes(
         codes: [String]
     ) async throws {
-        try await fetchVersion()
         
         let newStops: [Stop] = try await client.stops(stopCodes: codes)
         

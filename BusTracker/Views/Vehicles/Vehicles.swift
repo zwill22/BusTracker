@@ -24,7 +24,7 @@ struct Vehicles: View {
     
     var body: some View {
         NavigationStack {
-            MapView(vehicles: $vehicleProvider.vehicles, stops: $stops)
+            MapView(vehicles: $vehicleProvider.vehicles)
                 .environmentObject(locationProvider)
             List(selection: $selection) {
                 ForEach(vehicleProvider.vehicles) { vehicle in
@@ -54,6 +54,20 @@ struct Vehicles: View {
         }
     }
     
+    func fetchStops() async throws {
+        var codes: [String] = []
+        for vehicle in vehicleProvider.vehicles {
+            if vehicle.details.originRef != "" {
+                codes.append(vehicle.details.originRef)
+            }
+            if vehicle.details.destinationRef != "" {
+                codes.append(vehicle.details.destinationRef)
+            }
+        }
+        
+        try await stopProvider.fetchStopCodes(codes: codes)
+    }
+    
     func fetchVehicles() async {
         isLoading = true
         do {
@@ -62,6 +76,9 @@ struct Vehicles: View {
                 mapLocation: location,
                 operators: operatorProvider.vehicleOperators
             )
+            try await fetchStops()
+            
+            vehicleProvider.updateVehicles(stops: stopProvider.stops)
         } catch {
             self.error = error as? VehicleError ?? .unexpectedError(error: error)
             self.hasError = true
@@ -76,5 +93,6 @@ struct Vehicles: View {
         .environmentObject(VehicleProvider.preview)
         .environmentObject(OperatorProvider.preview)
         .environmentObject(LocationProvider())
+        .environmentObject(StopProvider.preview)
 }
 

@@ -12,7 +12,7 @@ struct StopRow: View {
     
     var strings: [String] {
         
-        var strings: [String] = [stop.stopType, stop.name, stop.locality]
+        let strings: [String] = [stop.stopType, stop.name, stop.locality]
         
         
         return strings
@@ -25,17 +25,5 @@ struct StopRow: View {
 
 
 #Preview {
-    StopRow(stop: Stop(
-        id: "0100BRX32922",
-        name: "Queen Square",
-        shortName: nil,
-        street: "Prince Street",
-        localityCode: "N0076879",
-        locality: "Bristol City Centre",
-        parentLocality: "Bristol",
-        location: VehicleLocation(latitude: -2.59652, longitude: 51.45116),
-        stopType: "MKD",
-        busStopType: "OTH",
-        bearing: "N")
-    )
+    StopRow(stop: Stop.preview)
 }

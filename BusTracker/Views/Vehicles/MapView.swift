@@ -10,9 +10,8 @@ import MapKit
 
 struct MapView: View {
     @EnvironmentObject var locationProvider: LocationProvider
-    @Namespace var mapScope
+    @Namespace var vehicleMapScope
     @Binding var vehicles: [Vehicle]
-    @Binding var stops: [Stop]
     
     var body: some View {
         Map(position: $locationProvider.position) {
@@ -24,23 +23,14 @@ struct MapView: View {
                 )
                 .tint(vehicle.vehicleOperator?.primaryColour ?? .primary)
             }
-            
-            ForEach(stops) { stop in
-                Marker(
-                    "",
-                    systemImage: "mappin.circle.fill",
-                    coordinate: VehiclePlace(location: stop.location).location
-                )
-                .tint(.red)
-            }
         }
             .onMapCameraChange(frequency: .onEnd) { context in
                 locationProvider.position = .region(context.region)
             }
             .mapControls {
                 VStack {
-                    MapUserLocationButton(scope: mapScope)
-                    MapScaleView(scope: mapScope)
+                    MapUserLocationButton(scope: vehicleMapScope)
+                    MapScaleView(scope: vehicleMapScope)
                 }
             }
     }

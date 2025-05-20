@@ -18,8 +18,18 @@ struct VehicleRow: View {
                     Text("\(vehicle.details.originDepartureTime.formatted(date: .omitted, time: .shortened))").font(.title)
                         .lineLimit(1, reservesSpace: true)
                     Image(systemName: "arrow.right").font(.title)
-                    Text(vehicle.details.destination).font(.title)
-                        .lineLimit(1, reservesSpace: true)
+                    if let destination = vehicle.destination {
+                        if let shortName = destination.shortName {
+                            Text(shortName).font(.title)
+                                .lineLimit(1, reservesSpace: true)
+                        } else {
+                            Text(destination.name).font(.title)
+                                .lineLimit(1, reservesSpace: true)
+                        }
+                    } else {
+                        Text(vehicle.details.destination).font(.title)
+                            .lineLimit(1, reservesSpace: true)
+                    }
                 }
                 
                 if let transportOperator = vehicle.vehicleOperator {
@@ -30,8 +40,18 @@ struct VehicleRow: View {
                         .lineLimit(1, reservesSpace: true)
                 }
                 
-                Text("Origin: \(vehicle.details.origin)").foregroundColor(.secondary)
-                    .lineLimit(1, reservesSpace: true)
+                if let origin = vehicle.origin {
+                    if let shortName = origin.shortName {
+                        Text("Origin: \(shortName)").foregroundColor(.secondary)
+                            .lineLimit(1, reservesSpace: true)
+                    } else {
+                        Text("Origin: \(origin.name)").foregroundColor(.secondary)
+                            .lineLimit(1, reservesSpace: true)
+                    }
+                } else {
+                    Text("Origin: \(vehicle.details.origin)").foregroundColor(.secondary)
+                        .lineLimit(1, reservesSpace: true)
+                }
             }
         }
         .padding(.vertical, 10)

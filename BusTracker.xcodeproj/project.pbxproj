@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE8755012DD4CDA100954A47 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = CE8755002DD4CDA100954A47 /* CodableCSV */; };
 		CEA153AC2CE38D9A00C86380 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = CEA153AB2CE38D9A00C86380 /* XMLCoder */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +45,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE8755012DD4CDA100954A47 /* CodableCSV in Frameworks */,
 				CEA153AC2CE38D9A00C86380 /* XMLCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,7 +98,6 @@
 			name = BusTracker;
 			packageProductDependencies = (
 				CEA153AB2CE38D9A00C86380 /* XMLCoder */,
-				CE8755002DD4CDA100954A47 /* CodableCSV */,
 			);
 			productName = BusTracker;
 			productReference = CE0DDF7A2CDE161C00A1D84B /* BusTracker.app */;
@@ -157,7 +154,6 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				CEA153AA2CE38D9A00C86380 /* XCRemoteSwiftPackageReference "XMLCoder" */,
-				CE8754FF2DD4CDA100954A47 /* XCRemoteSwiftPackageReference "CodableCSV" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CE0DDF7B2CDE161C00A1D84B /* Products */;
@@ -458,14 +454,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CE8754FF2DD4CDA100954A47 /* XCRemoteSwiftPackageReference "CodableCSV" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:dehesa/CodableCSV.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.6.7;
-			};
-		};
 		CEA153AA2CE38D9A00C86380 /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CoreOffice/XMLCoder.git";
@@ -477,11 +465,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CE8755002DD4CDA100954A47 /* CodableCSV */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE8754FF2DD4CDA100954A47 /* XCRemoteSwiftPackageReference "CodableCSV" */;
-			productName = CodableCSV;
-		};
 		CEA153AB2CE38D9A00C86380 /* XMLCoder */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CEA153AA2CE38D9A00C86380 /* XCRemoteSwiftPackageReference "XMLCoder" */;

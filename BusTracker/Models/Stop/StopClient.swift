@@ -8,6 +8,21 @@
 import Foundation
 import CodableCSV
 
+
+func distance(stop: Stop, longitude: Double, latitude: Double) -> Double {
+    guard let stopLongitude = stop.location?.longitude,
+          let stopLatitude = stop.location?.latitude else {
+        return .infinity
+    }
+    
+    return distance(
+        latitude: stopLatitude,
+        longitude: stopLongitude,
+        centreLatitude: latitude,
+        centreLongitude: longitude
+    )
+}
+
 actor StopClient {
     private var server = Server()
     private lazy var decoder = JSONDecoder();
@@ -31,14 +46,37 @@ actor StopClient {
         
         let allStops = try decoder.decode([Stop].self, from: data)
         
-        return allStops
+        var realStops = allStops.filter({$0.location != nil})
+        
+        if (realStops.count < maxStops) {
+            return realStops
+        }
+        
+        realStops.sort {
+            distance(
+                stop: $0,
+                longitude: mapLocation.centreLongitude,
+                latitude: mapLocation.centreLatitude
+            ) < distance(
+                stop: $1,
+                longitude: mapLocation.centreLongitude,
+                latitude: mapLocation.centreLatitude
+            )
+        }
+        
+        if (realStops.count > maxStops) {
+            return Array(realStops[0..<maxStops])
+        }
+        
+        return realStops
     }
+    
     
     func stops(stopCodes: [String]) async throws -> [Stop] {
         let feedURL: URL = getFeedURL(stopCodes: stopCodes)
         
         guard let data = try? await downloader.httpData(from: feedURL) else {
-            throw VehicleError.networkError
+            throw StopError.networkError
         }
         
         let stops = try decoder.decode([Stop].self, from: data)
@@ -46,20 +84,6 @@ actor StopClient {
         return stops
     }
     
-    func checkVersion() async throws {
-        let feedURL: URL = server.getURLRoot(path: "/version")
-        
-        guard let version = try? await downloader.httpData(from: feedURL) else {
-            throw VehicleError.networkError
-        }
-        
-        let version_string = String(data: version, encoding: .utf8)!
-        
-        if version_string != "0.4.0" {
-            throw VehicleError.missingData
-        }
-    }
-
     private func getFeedURL(
         minLongitude: Double,
         minLatitude: Double,
