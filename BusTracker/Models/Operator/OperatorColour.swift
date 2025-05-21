@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-extension Color {
+typealias Colour = Color
+
+extension Colour {
     init(hex: Int, opacity: Double = 1.0) {
         let red = Double((hex & 0xff0000) >> 16) / 255.0
         let green = Double((hex & 0xff00) >> 8) / 255.0
@@ -17,7 +19,7 @@ extension Color {
 }
 
 extension Operator {
-    var primaryColour: Color {
+    var primaryColour: Colour {
         if name.lowercased().contains("arriva") {
             return .green
         }
@@ -31,13 +33,13 @@ extension Operator {
         }
         
         if opCode == "LLCO" {
-            return Color(Color.init(hex: 0xBD0E19))
+            return Colour(Colour.init(hex: 0xBD0E19))
         }
         
         return .primary.opacity(0.8)
     }
         
-    var secondaryColour: Color {
+    var secondaryColour: Colour {
         if name.lowercased().contains("arriva") {
             return .white
         }
@@ -51,7 +53,7 @@ extension Operator {
         }
         
         if opCode == "LLCO" {
-            return Color(Color.init(hex: 0xAF991D))
+            return Colour(Colour.init(hex: 0xAF991D))
         }
         
         return .accentColor

@@ -10,7 +10,7 @@ import MapKit
 
 struct VehicleDetailMap: View {
     private let location: VehicleLocation
-    private let tintColour: Color
+    private let tintColour: Colour
     private let height = CGFloat(24)
     private let place: VehiclePlace
     private let destinationPlace: VehiclePlace?

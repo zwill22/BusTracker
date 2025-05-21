@@ -10,20 +10,18 @@ import SwiftUI
 struct StopRow: View {
     var stop: Stop
     
-    var strings: [String] {
-        
-        let strings: [String] = [stop.name, stop.locality]
-        
-        
-        return strings
-    }
-    
     var body: some View {
-        DetailRow(strings: strings, image: Image(systemName: "mappin.circle.fill"))
+        HStack {
+            StopBlock(stop: stop, height: 75)
+            VStack(alignment: .leading) {
+                Text(stop.name).lineLimit(1, reservesSpace: true).font(.title)
+                Text(stop.locality).lineLimit(1, reservesSpace: true).font(.title2)
+            }
+        }
+        .padding(.vertical, 10)
     }
 }
 
-
-#Preview {
+#Preview(traits: .sizeThatFitsLayout) {
     StopRow(stop: Stop.preview)
 }

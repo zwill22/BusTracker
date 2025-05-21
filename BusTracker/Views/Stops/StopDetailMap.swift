@@ -13,13 +13,16 @@ struct StopDetailMap: View {
     private let height = CGFloat(24)
     private let place: VehiclePlace?
     private let tintColour: Color
+    private let stopType: StopType?
     @State private var position: MapCameraPosition = .region(MKCoordinateRegion())
     
     
     init(stop: Stop) {
         if let location = stop.location {
             self.place = VehiclePlace(location: location)
+            self.stopType = stop.stopType
         } else {
+            self.stopType = nil
             self.place = nil
         }
         
@@ -29,8 +32,11 @@ struct StopDetailMap: View {
     var body: some View {
         Map(position: $position) {
             if let location = place?.location {
-                Marker("", systemImage: "bus", coordinate: location)
-    
+                if let stopType = stopType {
+                    Annotation("", coordinate: location) {
+                        stopType.view(height: 32)
+                    }
+                }
             }
         }
             .onAppear {

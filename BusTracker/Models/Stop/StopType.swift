@@ -29,67 +29,73 @@ enum StopType: String, Decodable {
     case railPlatform = "RPL"
     
     
-    private func imageView(image: Image, height: CGFloat,
-                           colour: Color,
-                           accentColour: Color,
-                           scaleFactor: CGFloat
-    ) -> some View {
+    var colour: Colour {
+        switch self {
+        case .railStationEntrance, .railAccess, .railPlatform:
+            return .white
+        case .tramMetroAccess, .undergroundPlatform, .undergroundEntrance:
+            return .dark
+        case .busStopStreet:
+            return .primary
+        case .busStationBay, .busStationEntrance, .busAccess, .busStationVariableBay:
+            return .busBlue
+        case .sharedTaxiRank, .taxiRank:
+            return .taxiYellow
+        case .ferryTerminalEntrance, .ferryAccess, .ferryBerth:
+            return .purple
+        case .airportEntrance, .airAccessArea:
+            return .black
+        }
+    }
+    
+    var secondaryColour: Colour {
+        switch self {
+        case .railStationEntrance, .railAccess, .railPlatform:
+            return .railRed
+        case .sharedTaxiRank, .taxiRank:
+            return .dirtyBrown
+        default:
+            return .offWhite
+        }
+    }
+    
+    private func imageView(image: Image, height: CGFloat, scaleFactor: CGFloat = 0.6) -> some View {
         
         ZStack {
             Circle().fill(colour).frame(width: height, height: height)
             Image(systemName: "circle").resizable().frame(width: height, height: height)
-                .foregroundStyle(accentColour)
+                .foregroundStyle(secondaryColour)
             image.resizable().scaledToFit().frame(width: height * scaleFactor, height: height * scaleFactor)
         }
     }
     
-    private func imageView(image: String, height: CGFloat,
-                           colour: Color = .primary,
-                           accentColour: Color = .white,
-                           scaleFactor: CGFloat = 0.6
-    ) -> some View {
-        return imageView(
-            image: Image(systemName: image),
-            height: height,
-            colour: colour,
-            accentColour: accentColour,
-            scaleFactor: scaleFactor
-        )
+    private func imageView(image: String, height: CGFloat) -> some View {
+        return imageView(image: Image(systemName: image), height: height)
     }
     
-    private func dot(height: CGFloat, colour: Color) -> some View {
-        return Circle().fill(colour).frame(width: height, height: height)
+    private func dot(height: CGFloat, dotColour: Colour) -> some View {
+        return Circle().fill(dotColour).frame(width: height, height: height)
     }
     
     @ViewBuilder
     func view(height: CGFloat = 24) -> some View {
         switch self {
         case .railStationEntrance:
-            dot(height: 4, colour: .railRed)
+            dot(height: height / 6, dotColour: secondaryColour)
         case .tramMetroAccess:
-            imageView(image: "lightrail.fill", height: height, colour: .dark, accentColour: .offWhite)
+            imageView(image: "lightrail.fill", height: height)
         case .busStationBay, .busStationVariableBay:
-            imageView(image: "bus.fill", height: height, colour: .busBlue, accentColour: .offWhite)
+            imageView(image: "bus.fill", height: height)
         case .sharedTaxiRank, .taxiRank:
-            imageView(image: "car.fill", height: height, colour: .taxiYellow, accentColour: .dirtyBrown)
+            imageView(image: "car.fill", height: height)
         case .railAccess:
-            imageView(image: Image(.nationalRail), height: height, colour: .white, accentColour: .railRed, scaleFactor: 0.7)
-        case .busStationEntrance, .busAccess:
-            dot(height: 4, colour: .busBlue)
-        case .busStopStreet:
-            dot(height: 4, colour: .primary)
+            imageView(image: Image(.nationalRail), height: height, scaleFactor: 0.7)
         case .airAccessArea:
-            imageView(image: "airplane.departure", height: height, colour: .black, accentColour: .offWhite)
-        case .airportEntrance:
-            dot(height: 4, colour: .black)
+            imageView(image: "airplane.departure", height: height)
         case .ferryAccess:
-            imageView(image: "ferry.fill", height: height, colour: .purple, accentColour: .offWhite)
-        case .ferryTerminalEntrance, .ferryBerth:
-            dot(height: 4, colour: .purple)
-        case .undergroundEntrance:
-            dot(height: 4, colour: .dark)
+            imageView(image: "ferry.fill", height: height)
         default:
-            dot(height: 1, colour: .primary)
+            dot(height: height / 6, dotColour: colour)
         
         }
     }
