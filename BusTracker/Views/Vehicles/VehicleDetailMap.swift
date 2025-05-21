@@ -15,6 +15,7 @@ struct VehicleDetailMap: View {
     private let place: VehiclePlace
     private let destinationPlace: VehiclePlace?
     private let destinationType: StopType?
+    private let destinationBusType: BusStopType?
     @State private var position: MapCameraPosition = .region(MKCoordinateRegion())
     
     
@@ -25,11 +26,12 @@ struct VehicleDetailMap: View {
 
         if let destinationLocation = destination?.location {
             self.destinationPlace = VehiclePlace(location: destinationLocation)
-            self.destinationType = destination?.stopType
         } else {
             self.destinationPlace = nil
-            self.destinationType = nil
         }
+        
+        self.destinationType = destination?.stopType
+        self.destinationBusType = destination?.busStopType
     }
     
     func updatePosition(latitudeScale: CGFloat = 2.0, longitudeScale: CGFloat = 1.2) -> MapCameraPosition {
@@ -40,8 +42,6 @@ struct VehicleDetailMap: View {
             
             let deltaLatitude = max(abs(place.location.latitude - destinationLocation.latitude), 0.001)
             let deltaLongitude = max(abs(place.location.longitude - destinationLocation.longitude), 0.001)
-            print("Longitude: \(deltaLongitude)")
-            print("Latitude: \(deltaLatitude)")
             
             let span  = MKCoordinateSpan(
                 latitudeDelta: latitudeScale * deltaLatitude,
@@ -60,7 +60,11 @@ struct VehicleDetailMap: View {
                 .tint(tintColour)
             
             if let location = destinationPlace?.location {
-                if let view = destinationType?.view() {
+                if let busStopView = destinationBusType?.view(height: 24) {
+                    Annotation("", coordinate: location) {
+                        busStopView
+                    }
+                } else if let view = destinationType?.view(height: 24) {
                     Annotation("", coordinate: location) {
                         view
                     }

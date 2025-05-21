@@ -73,6 +73,9 @@ actor StopClient {
     
     
     func stops(stopCodes: [String]) async throws -> [Stop] {
+        if stopCodes.isEmpty {
+            return []
+        }
         let feedURL: URL = getFeedURL(stopCodes: stopCodes)
         
         guard let data = try? await downloader.httpData(from: feedURL) else {
