@@ -48,7 +48,7 @@ extension Vehicle {
             town: "Big Town",
             suburb: "Out of Town",
             location: VehicleLocation(latitude: 53.05, longitude: -3.00),
-            stopType: "BUS",
+            stopType: .busStationEntrance,
             busStopType: "FAKE",
             bearing: "SE"
         )

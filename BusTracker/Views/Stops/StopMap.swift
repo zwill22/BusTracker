@@ -13,17 +13,15 @@ struct StopMap: View {
     @EnvironmentObject var locationProvider: LocationProvider
     @Namespace var stopMapScope
     @Binding var stops: [Stop]
+    @State var height = CGFloat(24)
     
     var body: some View {
         Map(position: $locationProvider.position) {
             ForEach(stops) { stop in
                 if let location = stop.location {
-                    Marker(
-                        "",
-                        systemImage: "mappin.circle.fill",
-                        coordinate: VehiclePlace(location: location).location
-                    )
-                    .tint(.red)
+                    Annotation("", coordinate: VehiclePlace(location: location).location) {
+                        stop.stopType.view()
+                    }
                 }
             }
         }

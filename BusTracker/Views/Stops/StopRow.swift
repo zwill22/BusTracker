@@ -12,7 +12,7 @@ struct StopRow: View {
     
     var strings: [String] {
         
-        let strings: [String] = [stop.stopType, stop.name, stop.locality]
+        let strings: [String] = [stop.name, stop.locality]
         
         
         return strings
