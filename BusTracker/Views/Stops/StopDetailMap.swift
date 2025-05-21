@@ -14,17 +14,18 @@ struct StopDetailMap: View {
     private let place: VehiclePlace?
     private let tintColour: Color
     private let stopType: StopType?
+    private let busStopType: BusStopType?
     @State private var position: MapCameraPosition = .region(MKCoordinateRegion())
     
     
     init(stop: Stop) {
         if let location = stop.location {
             self.place = VehiclePlace(location: location)
-            self.stopType = stop.stopType
         } else {
-            self.stopType = nil
             self.place = nil
         }
+        self.stopType = stop.stopType
+        self.busStopType = stop.busStopType
         
         self.tintColour = .primary.opacity(0.8)
     }
@@ -32,7 +33,11 @@ struct StopDetailMap: View {
     var body: some View {
         Map(position: $position) {
             if let location = place?.location {
-                if let stopType = stopType {
+                if let busStopType = busStopType {
+                    Annotation("", coordinate: location) {
+                        busStopType.view(height: 24)
+                    }
+                } else if let stopType = stopType {
                     Annotation("", coordinate: location) {
                         stopType.view(height: 32)
                     }

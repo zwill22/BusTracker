@@ -49,7 +49,7 @@ extension Vehicle {
             suburb: "Out of Town",
             location: VehicleLocation(latitude: 53.05, longitude: -3.00),
             stopType: .busStationEntrance,
-            busStopType: "FAKE",
+            busStopType: nil,
             bearing: "SE"
         )
             

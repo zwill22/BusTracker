@@ -17,7 +17,11 @@ struct StopBlock: View {
             .fill(stop.stopType.colour)
             .frame(width: width, height: height)
             .overlay {
-                stop.stopType.view(height: min(height, width) * 0.8)
+                if let busStopType = stop.busStopType {
+                    busStopType.view(height: min(height, width) * 0.9)
+                } else {
+                    stop.stopType.view(height: min(height, width) * 0.9)
+                }
             }
         
     }

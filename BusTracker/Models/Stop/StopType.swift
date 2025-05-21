@@ -36,7 +36,7 @@ enum StopType: String, Decodable {
         case .tramMetroAccess, .undergroundPlatform, .undergroundEntrance:
             return .dark
         case .busStopStreet:
-            return .primary
+            return .neutral
         case .busStationBay, .busStationEntrance, .busAccess, .busStationVariableBay:
             return .busBlue
         case .sharedTaxiRank, .taxiRank:
@@ -65,7 +65,7 @@ enum StopType: String, Decodable {
             Circle().fill(colour).frame(width: height, height: height)
             Image(systemName: "circle").resizable().frame(width: height, height: height)
                 .foregroundStyle(secondaryColour)
-            image.resizable().scaledToFit().frame(width: height * scaleFactor, height: height * scaleFactor)
+            image.resizable().scaledToFit().frame(width: height * scaleFactor, height: height * scaleFactor).foregroundStyle(secondaryColour)
         }
     }
     

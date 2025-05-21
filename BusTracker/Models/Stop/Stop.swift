@@ -20,7 +20,7 @@ struct Stop: Identifiable, Hashable {
     let suburb: String?
     let location: VehicleLocation?
     let stopType: StopType
-    let busStopType: String?
+    let busStopType: BusStopType?
     let bearing: String?
 }
 
@@ -72,7 +72,7 @@ extension Stop: Decodable {
         self.parentLocality = try? values.decode(String.self, forKey: .parentLocality)
         self.town = try? values.decode(String.self, forKey: .town)
         self.suburb = try? values.decode(String.self, forKey: .suburb)
-        self.busStopType = try? values.decode(String.self, forKey: .busStopType)
+        self.busStopType = try? values.decode(BusStopType.self, forKey: .busStopType)
         self.bearing = try? values.decode(String.self, forKey: .bearing)
     }
 }
