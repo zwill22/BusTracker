@@ -9,11 +9,12 @@ import SwiftUI
 import MapKit
 
 struct VehicleDetailMap: View {
-    let location: VehicleLocation
-    let tintColour: Color
+    private let location: VehicleLocation
+    private let tintColour: Color
     private let height = CGFloat(24)
     private let place: VehiclePlace
     private let destinationPlace: VehiclePlace?
+    private let destinationType: StopType?
     @State private var position: MapCameraPosition = .region(MKCoordinateRegion())
     
     
@@ -24,28 +25,51 @@ struct VehicleDetailMap: View {
 
         if let destinationLocation = destination?.location {
             self.destinationPlace = VehiclePlace(location: destinationLocation)
+            self.destinationType = destination?.stopType
         } else {
             self.destinationPlace = nil
+            self.destinationType = nil
         }
+    }
+    
+    func updatePosition(latitudeScale: CGFloat = 2.0, longitudeScale: CGFloat = 1.2) -> MapCameraPosition {
+        if let destinationLocation = destinationPlace?.location {
+            let sumLatitude = place.location.latitude + destinationLocation.latitude
+            let sumLongitude = place.location.longitude + destinationLocation.longitude
+            let centre = CLLocationCoordinate2D(latitude: sumLatitude / 2, longitude: sumLongitude / 2)
+            
+            let deltaLatitude = max(abs(place.location.latitude - destinationLocation.latitude), 0.001)
+            let deltaLongitude = max(abs(place.location.longitude - destinationLocation.longitude), 0.001)
+            print("Longitude: \(deltaLongitude)")
+            print("Latitude: \(deltaLatitude)")
+            
+            let span  = MKCoordinateSpan(
+                latitudeDelta: latitudeScale * deltaLatitude,
+                longitudeDelta: longitudeScale * deltaLongitude
+            )
+            
+            return .region(.init(center: centre, span: span))
+        }
+        
+        return .automatic
     }
     
     var body: some View {
         Map(position: $position) {
             Marker("", systemImage: "bus", coordinate: place.location)
                 .tint(tintColour)
-
+            
             if let location = destinationPlace?.location {
-                Annotation("", coordinate: location) {
-                    ZStack {
-                        Circle().fill(.red).frame(width: height, height: height)
-                        Image(systemName: "xmark.circle").resizable().frame(width: height, height: height)
+                if let view = destinationType?.view() {
+                    Annotation("", coordinate: location) {
+                        view
                     }
                 }
             }
         }
             .onAppear {
                 withAnimation {
-                    position = .automatic
+                    position = updatePosition()
                 }
             }
     }

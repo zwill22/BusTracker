@@ -62,29 +62,28 @@ enum StopType: String, Decodable {
     }
     
     @ViewBuilder
-    func view() -> some View {
-        let h = CGFloat(24)
+    func view(height: CGFloat = 24) -> some View {
         switch self {
         case .railStationEntrance:
             dot(height: 4, colour: .railRed)
         case .tramMetroAccess:
-            imageView(image: "lightrail.fill", height: h, colour: .dark, accentColour: .offWhite)
+            imageView(image: "lightrail.fill", height: height, colour: .dark, accentColour: .offWhite)
         case .busStationBay, .busStationVariableBay:
-            imageView(image: "bus.fill", height: h, colour: .busBlue, accentColour: .offWhite)
+            imageView(image: "bus.fill", height: height, colour: .busBlue, accentColour: .offWhite)
         case .sharedTaxiRank, .taxiRank:
-            imageView(image: "car.fill", height: h, colour: .taxiYellow, accentColour: .dirtyBrown)
+            imageView(image: "car.fill", height: height, colour: .taxiYellow, accentColour: .dirtyBrown)
         case .railAccess:
-            imageView(image: Image(.nationalRail), height: h, colour: .white, accentColour: .railRed, scaleFactor: 0.7)
+            imageView(image: Image(.nationalRail), height: height, colour: .white, accentColour: .railRed, scaleFactor: 0.7)
         case .busStationEntrance, .busAccess:
             dot(height: 4, colour: .busBlue)
         case .busStopStreet:
-            dot(height: 3, colour: .primary)
+            dot(height: 4, colour: .primary)
         case .airAccessArea:
-            imageView(image: "airplane.departure", height: h, colour: .black, accentColour: .offWhite)
+            imageView(image: "airplane.departure", height: height, colour: .black, accentColour: .offWhite)
         case .airportEntrance:
             dot(height: 4, colour: .black)
         case .ferryAccess:
-            imageView(image: "ferry.fill", height: h, colour: .purple, accentColour: .offWhite)
+            imageView(image: "ferry.fill", height: height, colour: .purple, accentColour: .offWhite)
         case .ferryTerminalEntrance, .ferryBerth:
             dot(height: 4, colour: .purple)
         case .undergroundEntrance:
