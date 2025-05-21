@@ -11,7 +11,7 @@ import Foundation
 class StopProvider: ObservableObject {
     @Published var stops: [Stop] = []
     @Published var maxStops: Int = 500
-    
+    @Published var searchText: String = ""
     private let client: StopClient
     
     func fetchStopsArea(
@@ -33,6 +33,18 @@ class StopProvider: ObservableObject {
         let newStops: [Stop] = try await client.stops(stopCodes: codes)
         
         self.stops = newStops
+    }
+    
+    var filteredStops: [Stop] {
+        guard !searchText.isEmpty else {
+            return stops
+        }
+        
+        return stops.filter {
+            $0.name.lowercased().contains(searchText.lowercased()) ||
+            $0.landmark?.lowercased().contains(searchText.lowercased()) ?? false ||
+            $0.shortName?.lowercased().contains(searchText.lowercased()) ?? false
+        }
     }
     
     init(client: StopClient = StopClient()) {

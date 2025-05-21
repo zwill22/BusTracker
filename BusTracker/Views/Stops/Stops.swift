@@ -20,10 +20,10 @@ struct Stops: View {
     
     var body: some View {
         NavigationStack {
-            StopMap(stops: $stopProvider.stops)
+            StopMap(stops: stopProvider.filteredStops)
                 .environmentObject(locationProvider)
             List {
-                ForEach(stopProvider.stops) { stop in
+                ForEach(stopProvider.filteredStops) { stop in
                     NavigationLink(
                         destination: StopDetailView(stop: stop)
                     ) {
@@ -33,6 +33,7 @@ struct Stops: View {
             }
             .listStyle(.inset)
             .alert(isPresented: $hasError, error: error) {}
+            .searchable(text: $stopProvider.searchText)
         }
         .task {
             await fetchStops()
