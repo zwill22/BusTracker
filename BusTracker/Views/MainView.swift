@@ -42,6 +42,6 @@ struct MainView: View {
 
 #Preview {
     MainView().environmentObject(VehicleProvider.preview).environmentObject(OperatorProvider.preview)
-        .environmentObject(LocationManager())
+        .environmentObject(LocationProvider())
         .environmentObject(StopProvider())
 }
