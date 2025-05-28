@@ -30,6 +30,12 @@ struct MainView: View {
                 Stops().environmentObject(stopProvider)
                     .environmentObject(locationProvider)
             }
+            Tab("Settings", systemImage: "gear") {
+                Settings().environmentObject(operatorProvider)
+                    .environmentObject(vehicleProvider)
+                    .environmentObject(locationProvider)
+                    .environmentObject(stopProvider)
+            }
         }
     }
 }
