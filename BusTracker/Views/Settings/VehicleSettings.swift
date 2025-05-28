@@ -30,7 +30,7 @@ struct VehicleSettings: View {
     
     var body: some View {
             VStack(alignment: .leading) {
-                Text("Maximum vehicles to load")
+                Text("Vehicle Limit")
                     HStack{
                         Slider(
                             value: IntDoubleBinding($maxVehicles).doubleValue,

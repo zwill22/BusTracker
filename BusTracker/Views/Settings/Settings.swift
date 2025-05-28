@@ -41,6 +41,12 @@ struct Settings: View {
                 }
                 
                 Section(header: Text("Additional information")) {
+                    BaseLink(
+                        label: "GitHub Repository",
+                        urlString: "https://github.com/zwill22/BusTracker",
+                        image: Image(uiImage: .githubLogo).renderingMode(.template)
+                    )
+                    Text("Support my work:")
                     HStack {
                         Spacer()
                         BuyMeButton().frame(height: 60)

@@ -12,7 +12,7 @@ struct StopSettings: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Max Stops")
+            Text("Stop Limit")
             HStack{
                 Slider(
                     value: IntDoubleBinding($maxStops).doubleValue,
