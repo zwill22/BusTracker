@@ -10,9 +10,9 @@ import Foundation
 @MainActor
 class VehicleProvider: ObservableObject {
     @Published var vehicles: [Vehicle] = []
-    @Published var maxVehicles = 500
-    @Published var maxTime = 3600
-    @Published var timeout = 60
+    @Published var maxVehicles: Int = 500
+    @Published var maxTime: Int = 3600
+    @Published var timeout: Int = 60
     
     
     let client: VehicleClient
@@ -34,6 +34,10 @@ class VehicleProvider: ObservableObject {
         let vehicleRef = vehicles[atOffset].details.vehicleRef
         let updatedVehicle = try await client.vehicle(vehicleRef: vehicleRef)
         self.vehicles[atOffset] = updatedVehicle
+    }
+    
+    func updateVehicles(stops: [Stop]) {
+        self.vehicles = self.vehicles.map { Vehicle(vehicle: $0, stops: stops) }
     }
     
     init(client: VehicleClient = VehicleClient()) {

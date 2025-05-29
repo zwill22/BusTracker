@@ -11,6 +11,7 @@ struct MainView: View {
     @EnvironmentObject var operatorProvider: OperatorProvider
     @EnvironmentObject var vehicleProvider: VehicleProvider
     @EnvironmentObject var locationProvider: LocationProvider
+    @EnvironmentObject var stopProvider: StopProvider
     
     var body: some View {
         TabView {
@@ -24,11 +25,23 @@ struct MainView: View {
             Tab("Operators", systemImage: "cablecar.fill") {
                 Operators().environmentObject(operatorProvider)
             }
+            
+            Tab("Stops", systemImage: "mappin.circle.fill") {
+                Stops().environmentObject(stopProvider)
+                    .environmentObject(locationProvider)
+            }
+            Tab("Settings", systemImage: "gear") {
+                Settings().environmentObject(operatorProvider)
+                    .environmentObject(vehicleProvider)
+                    .environmentObject(locationProvider)
+                    .environmentObject(stopProvider)
+            }
         }
     }
 }
 
 #Preview {
     MainView().environmentObject(VehicleProvider.preview).environmentObject(OperatorProvider.preview)
-        .environmentObject(LocationManager())
+        .environmentObject(LocationProvider())
+        .environmentObject(StopProvider())
 }

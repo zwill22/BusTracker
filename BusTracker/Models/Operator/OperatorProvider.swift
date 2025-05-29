@@ -11,7 +11,7 @@ import Foundation
 class OperatorProvider: ObservableObject {
     @Published var vehicleOperators: [Operator] = []
     @Published var searchText: String = ""
-    @Published var initialised: Bool = false
+    private var initialised: Bool = false
     
     private let client: OperatorClient
     

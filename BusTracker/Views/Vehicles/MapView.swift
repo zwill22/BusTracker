@@ -10,7 +10,7 @@ import MapKit
 
 struct MapView: View {
     @EnvironmentObject var locationProvider: LocationProvider
-    @Namespace var mapScope
+    @Namespace var vehicleMapScope
     @Binding var vehicles: [Vehicle]
     
     var body: some View {
@@ -29,8 +29,8 @@ struct MapView: View {
             }
             .mapControls {
                 VStack {
-                    MapUserLocationButton(scope: mapScope)
-                    MapScaleView(scope: mapScope)
+                    MapUserLocationButton(scope: vehicleMapScope)
+                    MapScaleView(scope: vehicleMapScope)
                 }
             }
     }

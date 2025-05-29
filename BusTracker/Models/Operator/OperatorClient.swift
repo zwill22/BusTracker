@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import XMLCoder
 
 actor OperatorClient {
     private let feedURL: URL = Server().getURLRoot(path: "/operators/data")

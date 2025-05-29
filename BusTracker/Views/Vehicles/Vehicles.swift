@@ -14,11 +14,13 @@ struct Vehicles: View {
     @EnvironmentObject var vehicleProvider: VehicleProvider
     @EnvironmentObject var operatorProvider: OperatorProvider
     @EnvironmentObject var locationProvider: LocationProvider
+    @EnvironmentObject var stopProvider: StopProvider
     
     @State var isLoading: Bool = false
     @State var selection: Set<String> = []
     @State private var error: VehicleError?
     @State private var hasError = false
+    @State var stops: [Stop] = []
     
     var body: some View {
         NavigationStack {
@@ -52,6 +54,20 @@ struct Vehicles: View {
         }
     }
     
+    func fetchStops() async throws {
+        var codes: [String] = []
+        for vehicle in vehicleProvider.vehicles {
+            if vehicle.details.originRef != "" {
+                codes.append(vehicle.details.originRef)
+            }
+            if vehicle.details.destinationRef != "" {
+                codes.append(vehicle.details.destinationRef)
+            }
+        }
+        
+        try await stopProvider.fetchStopCodes(codes: codes)
+    }
+    
     func fetchVehicles() async {
         isLoading = true
         do {
@@ -60,6 +76,9 @@ struct Vehicles: View {
                 mapLocation: location,
                 operators: operatorProvider.vehicleOperators
             )
+            try await fetchStops()
+            
+            vehicleProvider.updateVehicles(stops: stopProvider.stops)
         } catch {
             self.error = error as? VehicleError ?? .unexpectedError(error: error)
             self.hasError = true
@@ -74,5 +93,6 @@ struct Vehicles: View {
         .environmentObject(VehicleProvider.preview)
         .environmentObject(OperatorProvider.preview)
         .environmentObject(LocationProvider())
+        .environmentObject(StopProvider.preview)
 }
 

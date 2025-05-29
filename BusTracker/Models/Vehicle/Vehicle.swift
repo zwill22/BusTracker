@@ -12,6 +12,8 @@ struct Vehicle: Identifiable {
     let details: VehicleDetails
     let id: String
     let vehicleOperator: Operator?
+    let origin: Stop?
+    let destination: Stop?
 }
 
 extension Vehicle: Decodable {
@@ -41,6 +43,8 @@ extension Vehicle: Decodable {
         self.id = id
         self.details = details
         self.vehicleOperator = nil
+        self.origin = nil
+        self.destination = nil
     }
     
     init (vehicle: Vehicle, operators: [Operator]) {
@@ -48,5 +52,16 @@ extension Vehicle: Decodable {
         self.details = vehicle.details
         self.id = vehicle.id
         self.vehicleOperator = operators.first { $0.opCode == vehicle.details.operatorCode }
+        self.origin = nil
+        self.destination = nil
+    }
+    
+    init (vehicle: Vehicle, stops: [Stop]) {
+        self.time = vehicle.time
+        self.details = vehicle.details
+        self.id = vehicle.id
+        self.vehicleOperator = vehicle.vehicleOperator
+        self.origin = stops.first { $0.id == vehicle.details.originRef }
+        self.destination = stops.first { $0.id == vehicle.details.destinationRef }
     }
 }

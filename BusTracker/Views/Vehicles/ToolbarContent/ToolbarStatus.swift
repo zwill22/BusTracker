@@ -20,12 +20,12 @@ struct ToolbarStatus: View {
             } else if lastUpdated == Date.distantFuture.timeIntervalSince1970 {
                 Spacer()
                 Text("\(vehicleCount) Vehicles")
-                    .foregroundStyle(Color.secondary)
+                    .foregroundStyle(.secondary)
             } else {
                 let lastUpdateDate = Date(timeIntervalSince1970: lastUpdated)
                 Text("Updated \(lastUpdateDate.formatted(.relative(presentation: .named)))")
                 Text("\(vehicleCount) Vehicles")
-                    .foregroundStyle(Color.secondary)
+                    .foregroundStyle(.secondary)
             }
         }
         .font(.caption)

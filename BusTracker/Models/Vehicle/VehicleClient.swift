@@ -8,14 +8,22 @@
 import Foundation
 import XMLCoder
 
+
+func distance(latitude: Double, longitude: Double, centreLatitude: Double, centreLongitude: Double) -> Double {
+    
+    
+    let deltaLongitude = longitude - centreLongitude
+    let deltaLatitude = latitude - centreLatitude
+    
+    return sqrt(pow(deltaLongitude, 2) + pow(deltaLatitude, 2))
+    
+}
+
 func distance(vehicle: Vehicle, longitude: Double, latitude: Double) -> Double {
     let vehicleLongitude = vehicle.details.location.longitude
     let vehicleLatitude = vehicle.details.location.latitude
     
-    let deltaLongitude = vehicleLongitude - longitude
-    let deltaLatitude = vehicleLatitude - latitude
-    
-    return sqrt(pow(deltaLongitude, 2) + pow(deltaLatitude, 2))
+    return distance(latitude: vehicleLatitude, longitude: vehicleLongitude, centreLatitude: latitude, centreLongitude: longitude)
 }
 
 actor VehicleClient {

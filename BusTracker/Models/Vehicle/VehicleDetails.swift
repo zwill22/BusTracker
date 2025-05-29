@@ -13,7 +13,9 @@ struct VehicleDetails {
     let vehicleRef: String
     let location: VehicleLocation
     let origin: String
+    let originRef: String
     let destination: String
+    let destinationRef: String
     let originDepartureTime: Date
 }
 
@@ -24,7 +26,9 @@ extension VehicleDetails: Decodable {
         case vehicleRef = "VehicleRef"
         case location = "VehicleLocation"
         case origin = "OriginName"
+        case originRef = "OriginRef"
         case destination = "DestinationName"
+        case destinationRef = "DestinationRef"
         case originDepartureTime = "OriginAimedDepartureTime"
     }
     
@@ -36,7 +40,9 @@ extension VehicleDetails: Decodable {
         let rawVehicleRef = try? values.decode(String.self, forKey: .vehicleRef)
         let rawLocation = try? values.decode(VehicleLocation.self, forKey: .location)
         let rawOrigin = try? values.decode(String.self, forKey: .origin)
+        let rawOriginRef = try? values.decode(String.self, forKey: .originRef)
         let rawDestination = try? values.decode(String.self, forKey: .destination)
+        let rawDestinationRef = try? values.decode(String.self, forKey: .destinationRef)
         let rawOriginDepartureTime = try? values.decode(Date.self, forKey: .originDepartureTime)
         
         guard let location = rawLocation,
@@ -52,7 +58,9 @@ extension VehicleDetails: Decodable {
         self.vehicleRef = vehicleRef
         self.location = location
         self.origin = rawOrigin ?? ""
+        self.originRef = rawOriginRef ?? ""
         self.destination = rawDestination ?? ""
+        self.destinationRef = rawDestinationRef ?? ""
         self.originDepartureTime = rawOriginDepartureTime ?? .distantPast
     }
 }
