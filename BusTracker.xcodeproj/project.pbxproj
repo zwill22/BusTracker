@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE1C8D052E00C32500C1F477 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = CE1C8D032E00C32500C1F477 /* LICENSE */; };
+		CE1C8D062E00C32500C1F477 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CE1C8D042E00C32500C1F477 /* README.md */; };
 		CEA153AC2CE38D9A00C86380 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = CEA153AB2CE38D9A00C86380 /* XMLCoder */; };
 /* End PBXBuildFile section */
 
@@ -24,13 +26,44 @@
 
 /* Begin PBXFileReference section */
 		CE0DDF7A2CDE161C00A1D84B /* BusTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE1C8D032E00C32500C1F477 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		CE1C8D042E00C32500C1F477 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CEE15C832DCA85E400A1414D /* BusTrackerLogo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BusTrackerLogo; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CE1C8B702E007FAB00C1F477 /* Exceptions for "Info" folder in "BusTracker" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Issues.md,
+			);
+			target = CE0DDF792CDE161C00A1D84B /* BusTracker */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		CE1C8B712E007FAB00C1F477 /* Exceptions for "Info" folder in "Compile Sources" phase from "BusTracker" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = CE0DDF762CDE161C00A1D84B /* Sources */;
+			membershipExceptions = (
+				Issues.md,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		CE0DDF7C2CDE161C00A1D84B /* BusTracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = BusTracker;
+			sourceTree = "<group>";
+		};
+		CE1C8B6C2E007F7200C1F477 /* Info */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CE1C8B702E007FAB00C1F477 /* Exceptions for "Info" folder in "BusTracker" target */,
+				CE1C8B712E007FAB00C1F477 /* Exceptions for "Info" folder in "Compile Sources" phase from "BusTracker" target */,
+			);
+			path = Info;
 			sourceTree = "<group>";
 		};
 		CEE15C842DCA85E400A1414D /* BusTrackerLogo */ = {
@@ -62,6 +95,9 @@
 		CE0DDF712CDE161C00A1D84B = {
 			isa = PBXGroup;
 			children = (
+				CE1C8D032E00C32500C1F477 /* LICENSE */,
+				CE1C8D042E00C32500C1F477 /* README.md */,
+				CE1C8B6C2E007F7200C1F477 /* Info */,
 				CE0DDF7C2CDE161C00A1D84B /* BusTracker */,
 				CEE15C842DCA85E400A1414D /* BusTrackerLogo */,
 				CE0DDF7B2CDE161C00A1D84B /* Products */,
@@ -94,6 +130,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				CE0DDF7C2CDE161C00A1D84B /* BusTracker */,
+				CE1C8B6C2E007F7200C1F477 /* Info */,
 			);
 			name = BusTracker;
 			packageProductDependencies = (
@@ -171,6 +208,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE1C8D052E00C32500C1F477 /* LICENSE in Resources */,
+				CE1C8D062E00C32500C1F477 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
