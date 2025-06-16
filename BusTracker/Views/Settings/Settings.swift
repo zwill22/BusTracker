@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct Settings: View {
-    @EnvironmentObject var vehicleProvider: VehicleProvider
-    @EnvironmentObject var operatorProvider: OperatorProvider
-    @EnvironmentObject var stopProvider: StopProvider
-    @EnvironmentObject var locationProvider: LocationProvider
+    @Bindable var locationProvider: LocationProvider
+    @Bindable var operatorProvider: OperatorProvider
+    @Bindable var stopProvider: StopProvider
+    @Bindable var vehicleProvider: VehicleProvider
     
     var body: some View {
         VStack {
@@ -60,9 +60,10 @@ struct Settings: View {
 }
 
 #Preview {
-    Settings()
-        .environmentObject(VehicleProvider.preview)
-        .environmentObject(OperatorProvider.preview)
-        .environmentObject(StopProvider.preview)
-        .environmentObject(LocationProvider())
+    Settings(
+        locationProvider: LocationProvider(),
+        operatorProvider: OperatorProvider.preview,
+        stopProvider: StopProvider.preview,
+        vehicleProvider: VehicleProvider.preview
+    )
 }

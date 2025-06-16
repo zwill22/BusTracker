@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct Operators: View {
-    @EnvironmentObject var provider: OperatorProvider
+    @Bindable var provider: OperatorProvider
     
-    @AppStorage("lastUpdated")
-    var lastUpdated = Date.distantFuture.timeIntervalSince1970
+    @AppStorage("operatorsLastUpdated")
+    var operatorsLastUpdated = Date.distantFuture.timeIntervalSince1970
     
     @State var isLoading: Bool = false
     @State private var error: OperatorError?
@@ -49,7 +49,7 @@ struct Operators: View {
         isLoading = true
         do {
             try await provider.fetchOperators()
-            lastUpdated = Date().timeIntervalSince1970
+            operatorsLastUpdated = Date().timeIntervalSince1970
         } catch {
             self.error = error as? OperatorError ?? .unexpectedError(error: error)
             self.hasError = true
@@ -59,7 +59,6 @@ struct Operators: View {
 }
 
 #Preview {
-    Operators()
-        .environmentObject(OperatorProvider.preview)
+    Operators(provider: OperatorProvider.preview)
 }
 

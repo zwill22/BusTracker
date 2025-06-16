@@ -17,12 +17,13 @@ struct MapLocation {
 }
 
 @MainActor
-class LocationProvider: ObservableObject {
+@Observable
+class LocationProvider {
     private let locationManager: LocationManager
     
-    @Published var defaultDelta = 0.1
-    @Published var maxDelta = 1.0
-    @Published var position : MapCameraPosition = .automatic
+    var defaultDelta = 0.1
+    var maxDelta = 1.0
+    var position : MapCameraPosition = .automatic
     
     func getLocation() -> CLLocation? {
         return locationManager.location
