@@ -13,6 +13,8 @@ struct Settings: View {
     @EnvironmentObject var stopProvider: StopProvider
     @EnvironmentObject var locationProvider: LocationProvider
     
+    @State var isReportingIssue: Bool = false
+    
     var body: some View {
         VStack {
             SettingsBlock(height: 80).padding(.top)
@@ -46,14 +48,22 @@ struct Settings: View {
                         urlString: "https://github.com/zwill22/BusTracker",
                         image: Image(uiImage: .githubLogo).renderingMode(.template)
                     )
-                    Text("Support my work:")
-                    HStack {
-                        Spacer()
-                        BuyMeButton().frame(height: 60)
-                        Spacer()
+                    Button("Report an issue") {
+                        isReportingIssue = true
+                    }
+                    VStack(alignment: .leading) {
+                        Text("Support my work:")
+                        HStack {
+                            Spacer()
+                            BuyMeButton().frame(height: 60)
+                            Spacer()
+                        }
                     }
                 }
             }
+        }
+        .sheet(isPresented: $isReportingIssue) {
+            ReportIssueView()
         }
     }
 
