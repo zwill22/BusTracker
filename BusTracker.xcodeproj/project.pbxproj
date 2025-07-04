@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE1C8D052E00C32500C1F477 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = CE1C8D032E00C32500C1F477 /* LICENSE */; };
 		CE1C8D062E00C32500C1F477 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CE1C8D042E00C32500C1F477 /* README.md */; };
+		CE258E212E16E3C40053EACE /* OctoKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE258E202E16E3C40053EACE /* OctoKit */; };
 		CEA153AC2CE38D9A00C86380 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = CEA153AB2CE38D9A00C86380 /* XMLCoder */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE258E212E16E3C40053EACE /* OctoKit in Frameworks */,
 				CEA153AC2CE38D9A00C86380 /* XMLCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,6 +137,7 @@
 			name = BusTracker;
 			packageProductDependencies = (
 				CEA153AB2CE38D9A00C86380 /* XMLCoder */,
+				CE258E202E16E3C40053EACE /* OctoKit */,
 			);
 			productName = BusTracker;
 			productReference = CE0DDF7A2CDE161C00A1D84B /* BusTracker.app */;
@@ -191,6 +194,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				CEA153AA2CE38D9A00C86380 /* XCRemoteSwiftPackageReference "XMLCoder" */,
+				CE258E1F2E16E3C40053EACE /* XCRemoteSwiftPackageReference "octokit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CE0DDF7B2CDE161C00A1D84B /* Products */;
@@ -493,6 +497,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CE258E1F2E16E3C40053EACE /* XCRemoteSwiftPackageReference "octokit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nerdishbynature/octokit.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.14.0;
+			};
+		};
 		CEA153AA2CE38D9A00C86380 /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CoreOffice/XMLCoder.git";
@@ -504,6 +516,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE258E202E16E3C40053EACE /* OctoKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE258E1F2E16E3C40053EACE /* XCRemoteSwiftPackageReference "octokit" */;
+			productName = OctoKit;
+		};
 		CEA153AB2CE38D9A00C86380 /* XMLCoder */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CEA153AA2CE38D9A00C86380 /* XCRemoteSwiftPackageReference "XMLCoder" */;

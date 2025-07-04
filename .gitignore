@@ -8,3 +8,4 @@ node_modules/
 image.png
 pnpm-lock.yaml
 .idea/
+token.txt
