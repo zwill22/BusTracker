@@ -13,6 +13,7 @@ struct Settings: View {
     @Bindable var stopProvider: StopProvider
     @Bindable var vehicleProvider: VehicleProvider
     
+    @State var isViewingIssues: Bool = false
     @State var isReportingIssue: Bool = false
     
     var body: some View {
@@ -48,6 +49,9 @@ struct Settings: View {
                         urlString: "https://github.com/zwill22/BusTracker",
                         image: Image(uiImage: .githubLogo).renderingMode(.template)
                     )
+                    Button("Known issues") {
+                        isViewingIssues = true
+                    }
                     Button("Report an issue") {
                         isReportingIssue = true
                     }
@@ -64,6 +68,9 @@ struct Settings: View {
         }
         .sheet(isPresented: $isReportingIssue) {
             ReportIssueView()
+        }
+        .sheet(isPresented: $isViewingIssues) {
+            IssueListView()
         }
     }
 
