@@ -8,40 +8,48 @@
 import SwiftUI
 
 struct MainView: View {
-    @EnvironmentObject var operatorProvider: OperatorProvider
-    @EnvironmentObject var vehicleProvider: VehicleProvider
-    @EnvironmentObject var locationProvider: LocationProvider
-    @EnvironmentObject var stopProvider: StopProvider
+    @Environment(LocationProvider.self) private var locationProvider
+    @Environment(OperatorProvider.self) private var operatorProvider
+    @Environment(StopProvider.self) private var stopProvider
+    @Environment(VehicleProvider.self) private var vehicleProvider
     
     var body: some View {
         TabView {
             Tab("Vehicles", systemImage: "bus") {
-                Vehicles()
-                    .environmentObject(vehicleProvider)
-                    .environmentObject(operatorProvider)
-                    .environmentObject(locationProvider)
+                Vehicles(
+                    locationProvider: locationProvider,
+                    operatorProvider: operatorProvider,
+                    stopProvider: stopProvider,
+                    vehicleProvider: vehicleProvider
+                )
             }
             
             Tab("Operators", systemImage: "cablecar.fill") {
-                Operators().environmentObject(operatorProvider)
+                Operators(provider: operatorProvider)
             }
             
             Tab("Stops", systemImage: "mappin.circle.fill") {
-                Stops().environmentObject(stopProvider)
-                    .environmentObject(locationProvider)
+                Stops(
+                    locationProvider: locationProvider,
+                    stopProvider: stopProvider
+                )
             }
             Tab("Settings", systemImage: "gear") {
-                Settings().environmentObject(operatorProvider)
-                    .environmentObject(vehicleProvider)
-                    .environmentObject(locationProvider)
-                    .environmentObject(stopProvider)
+                Settings(
+                    locationProvider: locationProvider,
+                    operatorProvider: operatorProvider,
+                    stopProvider: stopProvider,
+                    vehicleProvider: vehicleProvider
+                )
             }
         }
     }
 }
 
 #Preview {
-    MainView().environmentObject(VehicleProvider.preview).environmentObject(OperatorProvider.preview)
-        .environmentObject(LocationProvider())
-        .environmentObject(StopProvider())
+    MainView()
+        .environment(LocationProvider())
+        .environment(OperatorProvider.preview)
+        .environment(StopProvider.preview)
+        .environment(VehicleProvider.preview)
 }

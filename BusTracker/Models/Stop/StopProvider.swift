@@ -8,10 +8,11 @@
 import Foundation
 
 @MainActor
-class StopProvider: ObservableObject {
-    @Published var stops: [Stop] = []
-    @Published var maxStops: Int = 500
-    @Published var searchText: String = ""
+@Observable
+class StopProvider {
+    var stops: [Stop] = []
+    var maxStops: Int = 500
+    var searchText: String = ""
     private let client: StopClient
     
     func fetchStopsArea(

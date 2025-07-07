@@ -28,6 +28,10 @@ extension Operator {
             return .init(hex: 0x36A2F5)
         }
         
+        if name.lowercased().contains("bee network") {
+            return .init(hex: 0xF9DD62)
+        }
+        
         if opCode == "PATS" {
             return .white
         }
@@ -64,6 +68,38 @@ extension Operator {
             return .init(hex: 0xCA2727)
         }
         
+        if opCode == "CRDR" {
+            return .init(hex: 0xBB2C2C)
+        }
+        
+        if opCode == "ASHT" {
+            return .init(hex: 0x13315A)
+        }
+        
+        if opCode == "WBTR" {
+            return .init(hex: 0x113450)
+        }
+        
+        if opCode == "NATX" {
+            return .init(hex: 0xD42D3B)
+        }
+        
+        if opCode == "LAKC" {
+            return .init(hex: 0x21513B)
+        }
+        
+        if opCode == "SOST" {
+            return .init(hex: 0xE83E3A)
+        }
+        
+        if opCode == "HATT" {
+            return .init(hex: 0xFFFFFF)
+        }
+        
+        if opCode == "HIPK" {
+            return .init(hex: 0xE76345)
+        }
+        
         if let url = website {
             if url.contains("firstbus") {
                 return .init(hex: 0x2D007D)
@@ -80,6 +116,10 @@ extension Operator {
         
         if name.lowercased().contains("stagecoach") {
             return .init(hex: 0xF5B65F)
+        }
+        
+        if name.lowercased().contains("bee network") {
+            return .init(hex: 0x000000)
         }
         
         if opCode == "PATS" {
@@ -116,6 +156,38 @@ extension Operator {
         
         if opCode == "SARG" {
             return .init(hex: 0x746644)
+        }
+        
+        if opCode == "CRDR" {
+            return .init(hex: 0xFCEE4F)
+        }
+        
+        if opCode == "ASHT" {
+            return .init(hex: 0xF7D347)
+        }
+        
+        if opCode == "WBTR" {
+            return .init(hex: 0xFFFFFF)
+        }
+        
+        if opCode == "NATX" {
+            return .init(hex: 0x295EB6)
+        }
+        
+        if opCode == "LAKC" {
+            return .init(hex: 0xFFFFFF)
+        }
+        
+        if opCode == "SOST" {
+            return .init(hex: 0xFFFFFF)
+        }
+        
+        if opCode == "HATT" {
+            return .init(hex: 0x599BCE)
+        }
+        
+        if opCode == "HIPK" {
+            return .init(hex: 0xFFFFFF)
         }
         
         if let url = website {

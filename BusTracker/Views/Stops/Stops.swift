@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct Stops: View {
-    @AppStorage("lastUpdated")
-    var lastUpdated = Date.distantFuture.timeIntervalSince1970
+    @AppStorage("stopsLastUpdated")
+    var stopsLastUpdated = Date.distantFuture.timeIntervalSince1970
     
-    @EnvironmentObject var stopProvider: StopProvider
-    @EnvironmentObject var locationProvider: LocationProvider
+    @Bindable var locationProvider: LocationProvider
+    @Bindable var stopProvider: StopProvider
     
     @State var isLoading: Bool = false
     @State private var error: StopError?
@@ -20,8 +20,7 @@ struct Stops: View {
     
     var body: some View {
         NavigationStack {
-            StopMap(stops: stopProvider.filteredStops)
-                .environmentObject(locationProvider)
+            StopMap(position: $locationProvider.position, stops: $stopProvider.stops)
             List {
                 ForEach(stopProvider.filteredStops) { stop in
                     NavigationLink(
@@ -50,14 +49,12 @@ struct Stops: View {
             self.error = error as? StopError ?? .unexpectedError(error: error)
             self.hasError = true
         }
-        lastUpdated = Date().timeIntervalSince1970
+        stopsLastUpdated = Date().timeIntervalSince1970
         isLoading = false
     }
 }
 
 #Preview {
-    Stops()
-        .environmentObject(StopProvider.preview)
-        .environmentObject(LocationProvider())
+    Stops(locationProvider: LocationProvider(), stopProvider: StopProvider.preview)
 }
 

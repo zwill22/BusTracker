@@ -8,9 +8,10 @@
 import Foundation
 
 @MainActor
-class OperatorProvider: ObservableObject {
-    @Published var vehicleOperators: [Operator] = []
-    @Published var searchText: String = ""
+@Observable
+class OperatorProvider {
+    var vehicleOperators: [Operator] = []
+    var searchText: String = ""
     private var initialised: Bool = false
     
     private let client: OperatorClient

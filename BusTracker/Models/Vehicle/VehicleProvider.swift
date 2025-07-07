@@ -8,11 +8,12 @@
 import Foundation
 
 @MainActor
-class VehicleProvider: ObservableObject {
-    @Published var vehicles: [Vehicle] = []
-    @Published var maxVehicles: Int = 500
-    @Published var maxTime: Int = 3600
-    @Published var timeout: Int = 60
+@Observable
+class VehicleProvider {
+    var vehicles: [Vehicle] = []
+    var maxVehicles: Int = 500
+    var maxTime: Int = 3600
+    var timeout: Int = 60
     
     
     let client: VehicleClient

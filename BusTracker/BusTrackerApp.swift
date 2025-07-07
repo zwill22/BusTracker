@@ -9,18 +9,18 @@ import SwiftUI
 
 @main
 struct BusTrackerApp: App {
-    @StateObject var vehicleProvider = VehicleProvider()
-    @StateObject var operatorProvider = OperatorProvider()
-    @StateObject var locationProvider = LocationProvider()
-    @StateObject var stopProvider = StopProvider()
+    @State var locationProvider = LocationProvider()
+    @State var operatorProvider = OperatorProvider()
+    @State var stopProvider = StopProvider()
+    @State var vehicleProvider = VehicleProvider()
     
     var body: some Scene {
         WindowGroup {
             MainView()
-                .environmentObject(vehicleProvider)
-                .environmentObject(operatorProvider)
-                .environmentObject(locationProvider)
-                .environmentObject(stopProvider)
+                .environment(locationProvider)
+                .environment(operatorProvider)
+                .environment(stopProvider)
+                .environment(vehicleProvider)
         }
     }
 }

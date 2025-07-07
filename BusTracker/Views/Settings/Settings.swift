@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct Settings: View {
-    @EnvironmentObject var vehicleProvider: VehicleProvider
-    @EnvironmentObject var operatorProvider: OperatorProvider
-    @EnvironmentObject var stopProvider: StopProvider
-    @EnvironmentObject var locationProvider: LocationProvider
+    @Bindable var locationProvider: LocationProvider
+    @Bindable var operatorProvider: OperatorProvider
+    @Bindable var stopProvider: StopProvider
+    @Bindable var vehicleProvider: VehicleProvider
     
+    @State var isViewingIssues: Bool = false
     @State var isReportingIssue: Bool = false
     
     var body: some View {
@@ -48,6 +49,9 @@ struct Settings: View {
                         urlString: "https://github.com/zwill22/BusTracker",
                         image: Image(uiImage: .githubLogo).renderingMode(.template)
                     )
+                    Button("Known issues") {
+                        isViewingIssues = true
+                    }
                     Button("Report an issue") {
                         isReportingIssue = true
                     }
@@ -65,14 +69,18 @@ struct Settings: View {
         .sheet(isPresented: $isReportingIssue) {
             ReportIssueView()
         }
+        .sheet(isPresented: $isViewingIssues) {
+            IssueListView()
+        }
     }
 
 }
 
 #Preview {
-    Settings()
-        .environmentObject(VehicleProvider.preview)
-        .environmentObject(OperatorProvider.preview)
-        .environmentObject(StopProvider.preview)
-        .environmentObject(LocationProvider())
+    Settings(
+        locationProvider: LocationProvider(),
+        operatorProvider: OperatorProvider.preview,
+        stopProvider: StopProvider.preview,
+        vehicleProvider: VehicleProvider.preview
+    )
 }

@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct Vehicles: View {
-    @AppStorage("lastUpdated")
-    var lastUpdated = Date.distantFuture.timeIntervalSince1970
+    @AppStorage("vehiclesLastUpdated")
+    var vehiclesLastUpdated = Date.distantFuture.timeIntervalSince1970
     
-    @EnvironmentObject var vehicleProvider: VehicleProvider
-    @EnvironmentObject var operatorProvider: OperatorProvider
-    @EnvironmentObject var locationProvider: LocationProvider
-    @EnvironmentObject var stopProvider: StopProvider
+    @Bindable var locationProvider: LocationProvider
+    @Bindable var operatorProvider: OperatorProvider
+    @Bindable var stopProvider: StopProvider
+    @Bindable var vehicleProvider: VehicleProvider
     
     @State var isLoading: Bool = false
     @State var selection: Set<String> = []
@@ -24,8 +24,7 @@ struct Vehicles: View {
     
     var body: some View {
         NavigationStack {
-            MapView(vehicles: $vehicleProvider.vehicles)
-                .environmentObject(locationProvider)
+            MapView(position: $locationProvider.position, vehicles: $vehicleProvider.vehicles)
             List(selection: $selection) {
                 ForEach(vehicleProvider.vehicles) { vehicle in
                     NavigationLink(
@@ -83,16 +82,17 @@ struct Vehicles: View {
             self.error = error as? VehicleError ?? .unexpectedError(error: error)
             self.hasError = true
         }
-        lastUpdated = Date().timeIntervalSince1970
+        vehiclesLastUpdated = Date().timeIntervalSince1970
         isLoading = false
     }
 }
 
 #Preview {
-    Vehicles()
-        .environmentObject(VehicleProvider.preview)
-        .environmentObject(OperatorProvider.preview)
-        .environmentObject(LocationProvider())
-        .environmentObject(StopProvider.preview)
+    Vehicles(
+        locationProvider: LocationProvider(),
+        operatorProvider: OperatorProvider.preview,
+        stopProvider: StopProvider.preview,
+        vehicleProvider: VehicleProvider.preview
+    )
 }
 

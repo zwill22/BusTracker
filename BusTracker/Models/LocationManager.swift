@@ -7,10 +7,11 @@
 
 import MapKit
 
-final class LocationManager: NSObject, ObservableObject {
+@Observable
+final class LocationManager: NSObject {
     private let locationManager = CLLocationManager()
     
-    @Published var location : CLLocation?
+    var location : CLLocation?
     
     override init() {
         super.init()
