@@ -21,7 +21,7 @@ extension VehicleProvider {
         
         Task {
             do {
-                try await provider.fetchVehicles(mapLocation: mapLocation, operators: [])
+                try await provider.fetchVehicles(mapLocation: mapLocation)
             } catch {
                 print("Unable to fetch vehicles")
             }

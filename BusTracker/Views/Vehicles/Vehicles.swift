@@ -21,14 +21,17 @@ struct Vehicles: View {
     @State private var error: VehicleError?
     @State private var hasError = false
     @State var stops: [Stop] = []
+    @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State var time = 0
+        
     
     var body: some View {
         NavigationStack {
             MapView(position: $locationProvider.position, vehicles: $vehicleProvider.vehicles)
             List(selection: $selection) {
-                ForEach(vehicleProvider.vehicles) { vehicle in
+                ForEach(Array(vehicleProvider.vehicles.enumerated()), id: \.offset) { index, vehicle in
                     NavigationLink(
-                        destination: VehicleDetail(vehicle: vehicle)
+                        destination: VehicleDetail(offset: index, vehicleProvider: vehicleProvider)
                     ) {
                         VehicleRow(vehicle: vehicle)
                     }
@@ -38,9 +41,23 @@ struct Vehicles: View {
             .toolbar(content: toolbarContent)
             .alert(isPresented: $hasError, error: error) {}
         }
+        .onReceive(timer, perform: {_ in
+            checkTime()
+        })
         .task {
             await fetchOperators()
             await fetchVehicles()
+        }
+    }
+    
+    func checkTime() {
+        if time < vehicleProvider.refreshInterval {
+            time += 1
+        } else {
+            time = 0
+            Task {
+                await fetchVehicles()
+            }
         }
     }
     
@@ -71,13 +88,13 @@ struct Vehicles: View {
         isLoading = true
         do {
             guard let location = locationProvider.mapLocation() else { return }
-            try await vehicleProvider.fetchVehicles(
-                mapLocation: location,
-                operators: operatorProvider.vehicleOperators
-            )
+            try await vehicleProvider.fetchVehicles(mapLocation: location)
             try await fetchStops()
             
-            vehicleProvider.updateVehicles(stops: stopProvider.stops)
+            vehicleProvider.updateVehicles(
+                operators: operatorProvider.vehicleOperators,
+                stops: stopProvider.stops
+            )
         } catch {
             self.error = error as? VehicleError ?? .unexpectedError(error: error)
             self.hasError = true

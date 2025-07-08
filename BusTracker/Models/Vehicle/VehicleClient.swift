@@ -115,7 +115,7 @@ actor VehicleClient {
     }
     
     private func getFeedURL(vehicleRef: String) -> URL {
-        return server.getURLRoot(path: "/vehicle/" + vehicleRef)
+        return server.getURLRoot(path: "/location/vehicle/" + vehicleRef)
     }
     
     private let downloader: any HTTPDataDownloader

@@ -9,33 +9,25 @@ import SwiftUI
 import MapKit
 
 struct VehicleDetailMap: View {
-    private let location: VehicleLocation
-    private let tintColour: Colour
-    private let height = CGFloat(24)
-    private let place: VehiclePlace
-    private let destinationPlace: VehiclePlace?
-    private let destinationType: StopType?
-    private let destinationBusType: BusStopType?
+    @Binding var vehicle: Vehicle
     @State private var position: MapCameraPosition = .region(MKCoordinateRegion())
     
+    func getPlace() -> VehiclePlace {
+        return VehiclePlace(location: vehicle.details.location)
+    }
     
-    init(vehicle: Vehicle, destination: Stop?) {
-        self.location = vehicle.details.location
-        self.tintColour = vehicle.vehicleOperator?.primaryColour ?? .primary.opacity(0.80)
-        self.place = VehiclePlace(location: location)
-
-        if let destinationLocation = destination?.location {
-            self.destinationPlace = VehiclePlace(location: destinationLocation)
-        } else {
-            self.destinationPlace = nil
+    func getDestinationLocation() -> CLLocationCoordinate2D? {
+        if let destinationLocation = vehicle.destination?.location {
+            return VehiclePlace(location: destinationLocation).location
         }
         
-        self.destinationType = destination?.stopType
-        self.destinationBusType = destination?.busStopType
+        return nil
     }
     
     func updatePosition(latitudeScale: CGFloat = 2.0, longitudeScale: CGFloat = 1.2) -> MapCameraPosition {
-        if let destinationLocation = destinationPlace?.location {
+        let place = getPlace()
+        
+        if let destinationLocation = getDestinationLocation() {
             let sumLatitude = place.location.latitude + destinationLocation.latitude
             let sumLongitude = place.location.longitude + destinationLocation.longitude
             let centre = CLLocationCoordinate2D(latitude: sumLatitude / 2, longitude: sumLongitude / 2)
@@ -55,11 +47,16 @@ struct VehicleDetailMap: View {
     }
     
     var body: some View {
+        let place = getPlace()
+        let tintColour = vehicle.vehicleOperator? .primaryColour ?? .primary.opacity(0.80)
+        let destinationBusType = vehicle.destination?.busStopType ?? .none
+        let destinationType = vehicle.destination?.stopType ?? .none
+        
         Map(position: $position) {
             Marker("", systemImage: "bus", coordinate: place.location)
                 .tint(tintColour)
             
-            if let location = destinationPlace?.location {
+            if let location = getDestinationLocation() {
                 if let busStopView = destinationBusType?.view(height: 24) {
                     Annotation("", coordinate: location) {
                         busStopView
@@ -71,11 +68,11 @@ struct VehicleDetailMap: View {
                 }
             }
         }
-            .onAppear {
-                withAnimation {
-                    position = updatePosition()
-                }
+        .onChange(of: vehicle.details.location, initial: true) {
+            withAnimation {
+                position = updatePosition()
             }
+        }
     }
 }
 

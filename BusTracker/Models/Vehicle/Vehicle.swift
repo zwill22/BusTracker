@@ -24,6 +24,17 @@ extension Vehicle: Decodable {
         case monitoredJourney = "MonitoredVehicleJourney"
     }
     
+    func getStops() -> [Stop] {
+        var stops: [Stop] = []
+        if let vehicleOrigin = self.origin {
+            stops.append(vehicleOrigin)
+        }
+        if let vehicleDestination = self.destination {
+            stops.append(vehicleDestination)
+        }
+        return stops
+    }
+    
     init(from decoder: Decoder) throws {
         
         let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -47,20 +58,11 @@ extension Vehicle: Decodable {
         self.destination = nil
     }
     
-    init (vehicle: Vehicle, operators: [Operator]) {
+    init (vehicle: Vehicle, operators: [Operator], stops: [Stop]) {
         self.time = vehicle.time
         self.details = vehicle.details
         self.id = vehicle.id
         self.vehicleOperator = operators.first { $0.opCode == vehicle.details.operatorCode }
-        self.origin = nil
-        self.destination = nil
-    }
-    
-    init (vehicle: Vehicle, stops: [Stop]) {
-        self.time = vehicle.time
-        self.details = vehicle.details
-        self.id = vehicle.id
-        self.vehicleOperator = vehicle.vehicleOperator
         self.origin = stops.first { $0.id == vehicle.details.originRef }
         self.destination = stops.first { $0.id == vehicle.details.destinationRef }
     }
