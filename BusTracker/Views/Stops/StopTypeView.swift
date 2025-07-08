@@ -16,7 +16,7 @@ extension StopType {
         case .tramMetroAccess, .undergroundPlatform, .undergroundEntrance:
             return .dark
         case .busStopStreet:
-            return .neutral
+            return .inverse
         case .busStationBay, .busStationEntrance, .busAccess, .busStationVariableBay:
             return .busBlue
         case .sharedTaxiRank, .taxiRank:
