@@ -17,7 +17,7 @@ struct Settings: View {
     @State var isReportingIssue: Bool = false
     
     var body: some View {
-        VStack {
+        NavigationStack {
             SettingsBlock(height: 80).padding(.top)
             Text("Settings").font(.title).padding(.bottom)
             Form {
@@ -25,7 +25,9 @@ struct Settings: View {
                     VehicleSettings(
                         maxVehicles: $vehicleProvider.maxVehicles,
                         maxTime: $vehicleProvider.maxTime,
-                        timeout: $vehicleProvider.timeout
+                        timeout: $vehicleProvider.timeout,
+                        refreshRate: $vehicleProvider.refreshInterval,
+                        autoRefresh: $vehicleProvider.autoRefresh
                     )
                 }
                 Section(header: Text("Operator settings")) {

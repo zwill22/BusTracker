@@ -62,8 +62,12 @@ struct VehicleDetail: View {
                 .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 10))
             }
         }
+        .onChange(of: vehicleProvider.autoRefresh) {
+            autoRefresh = vehicleProvider.autoRefresh
+        }
         .onAppear(perform: {
-            autoRefresh = true
+            autoRefresh = vehicleProvider.autoRefresh
+            
             Task {
                 await updateVehicle()
             }

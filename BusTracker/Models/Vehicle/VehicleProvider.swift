@@ -12,9 +12,10 @@ import Foundation
 class VehicleProvider {
     var vehicles: [Vehicle] = []
     var maxVehicles: Int = 500
-    var maxTime: Int = 3600
-    var timeout: Int = 60
+    var maxTime: TimeInterval = 3600
+    var timeout: TimeInterval = 60
     var refreshInterval: TimeInterval = 30
+    var autoRefresh: Bool = true
     
     let client: VehicleClient
     

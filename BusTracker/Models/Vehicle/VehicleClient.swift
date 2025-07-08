@@ -32,7 +32,7 @@ actor VehicleClient {
     func vehicles(
         mapLocation: MapLocation,
         maxVehicles: Int,
-        maxTime: Int
+        maxTime: TimeInterval
     ) async throws -> [Vehicle] {
         let minLongitude = mapLocation.centreLongitude - mapLocation.longitudeDelta
         let maxLongitude = mapLocation.centreLongitude + mapLocation.longitudeDelta
