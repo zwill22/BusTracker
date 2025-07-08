@@ -14,7 +14,7 @@ class VehicleProvider {
     var maxVehicles: Int = 500
     var maxTime: Int = 3600
     var timeout: Int = 60
-    var refreshInterval: Int = 30
+    var refreshInterval: TimeInterval = 30
     
     let client: VehicleClient
     

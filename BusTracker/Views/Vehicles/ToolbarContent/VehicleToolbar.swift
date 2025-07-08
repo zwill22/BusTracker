@@ -12,9 +12,13 @@ extension Vehicles {
     @ToolbarContentBuilder
     func toolbarContent() -> some ToolbarContent {
         ToolbarItemGroup(placement: .bottomBar) {
-            RefreshButton {
-                Task {
-                    await fetchVehicles()
+            if isLoading {
+                ProgressView()
+            } else {
+                RefreshButton {
+                    Task {
+                        await fetchVehicles()
+                    }
                 }
             }
             

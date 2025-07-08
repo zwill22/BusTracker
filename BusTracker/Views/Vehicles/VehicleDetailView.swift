@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct VehicleDetail: View {
+    @Environment(\.scenePhase) var scenePhase
+    
+    @State var vehicleLastUpdated: TimeInterval = Date.now.timeIntervalSince1970
     @Bindable var vehicleProvider: VehicleProvider
     @State var vehicle: Vehicle
+    
     let offset: Int
     
-    @State var isLoading: Bool = false
+    @State private var isLoading: Bool = false
     @State private var error: VehicleError?
     @State private var hasError = false
+    @State private var autoRefresh: Bool = false
+    @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
         let location = vehicle.details.location
@@ -56,7 +62,30 @@ struct VehicleDetail: View {
                 .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 10))
             }
         }
+        .onAppear(perform: {
+            autoRefresh = true
+            Task {
+                await updateVehicle()
+            }
+        })
+        .onDisappear(perform: {
+            autoRefresh = false
+        })
+        .onReceive(timer, perform: { time in
+            refresh(time.timeIntervalSince1970)
+        })
         .toolbar(content: detailToolbar)
+    }
+    
+    func refresh(_ time: TimeInterval) {
+        if !autoRefresh { return }
+        
+        let timeInterval = time - vehicleLastUpdated
+        if timeInterval > vehicleProvider.refreshInterval {
+            Task {
+                await updateVehicle()
+            }
+        }
     }
     
     func updateVehicle() async {
@@ -68,15 +97,20 @@ struct VehicleDetail: View {
             self.error = error as? VehicleError ?? .unexpectedError(error: error)
             self.hasError = true
         }
+        self.vehicleLastUpdated = Date.now.timeIntervalSince1970
         isLoading = false
     }
     
     @ToolbarContentBuilder
     func detailToolbar() -> some ToolbarContent {
         ToolbarItemGroup {
-            RefreshButton {
-                Task {
-                    await updateVehicle()
+            if isLoading {
+                ProgressView()
+            } else {
+                RefreshButton {
+                    Task {
+                        await updateVehicle()
+                    }
                 }
             }
         }

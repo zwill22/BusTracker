@@ -17,18 +17,13 @@ struct Vehicles: View {
     @Bindable var vehicleProvider: VehicleProvider
     
     @State var isLoading: Bool = false
-    @State var selection: Set<String> = []
     @State private var error: VehicleError?
     @State private var hasError = false
-    @State var stops: [Stop] = []
-    @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State var time = 0
-        
     
     var body: some View {
         NavigationStack {
             MapView(position: $locationProvider.position, vehicles: $vehicleProvider.vehicles)
-            List(selection: $selection) {
+            List {
                 ForEach(Array(vehicleProvider.vehicles.enumerated()), id: \.offset) { index, vehicle in
                     NavigationLink(
                         destination: VehicleDetail(offset: index, vehicleProvider: vehicleProvider)
@@ -41,23 +36,9 @@ struct Vehicles: View {
             .toolbar(content: toolbarContent)
             .alert(isPresented: $hasError, error: error) {}
         }
-        .onReceive(timer, perform: {_ in
-            checkTime()
-        })
         .task {
             await fetchOperators()
             await fetchVehicles()
-        }
-    }
-    
-    func checkTime() {
-        if time < vehicleProvider.refreshInterval {
-            time += 1
-        } else {
-            time = 0
-            Task {
-                await fetchVehicles()
-            }
         }
     }
     
