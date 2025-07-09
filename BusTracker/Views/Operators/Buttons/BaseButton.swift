@@ -33,7 +33,7 @@ struct BaseButton: View {
                     DetailRow(strings: strings, image: image)
                     Spacer()
                 }.contentShape(Rectangle())
-            }.foregroundColor(.primary)
+            }.foregroundStyle(.primary)
                 .simultaneousGesture(TapGesture(count: 2).onEnded {
                     UIPasteboard.general.string = String(
                         strings.joined(separator: " ")

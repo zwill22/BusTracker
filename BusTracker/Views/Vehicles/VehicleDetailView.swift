@@ -21,6 +21,7 @@ struct VehicleDetail: View {
     @State private var hasError = false
     @State private var autoRefresh: Bool = false
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var showDirectionsOptions: Bool = false
 
     var body: some View {
         let location = vehicle.details.location
@@ -33,13 +34,17 @@ struct VehicleDetail: View {
                         .padding(.trailing, 10)
                     VStack(alignment: .leading) {
                         if let destination = vehicle.destination {
-                            Text(destination.name).lineLimit(1).font(.title)
+                            NavigationLink(destination: StopDetailView(stop: destination)) {
+                                Text(destination.name).lineLimit(1).font(.title)
+                            }.foregroundStyle(.primary)
                         } else {
                             Text(vehicle.details.destination).lineLimit(1, reservesSpace: true).font(.title)
                         }
                         
                         if let origin = vehicle.origin {
-                            Text("Origin: \(origin.name)").lineLimit(1, reservesSpace: true).font(.headline)
+                            NavigationLink(destination: StopDetailView(stop: origin)) {
+                                Text("Origin: \(origin.name)").lineLimit(1, reservesSpace: true).font(.headline)
+                            }.foregroundStyle(.primary)
                         }
                         
                         if let transportOperator = vehicle.vehicleOperator {
@@ -55,8 +60,14 @@ struct VehicleDetail: View {
                         }
                         Text("\(vehicle.time.formatted())")
                             .foregroundStyle(Color.secondary)
-                        Text("Latitude: \(location.latitude.formatted(.number.precision(.fractionLength(3))))")
-                        Text("Longitude: \(location.longitude.formatted(.number.precision(.fractionLength(3))))")
+                        Menu {
+                            DirectionsMenu(latitude: location.latitude, longitude: location.longitude)
+                        } label: {
+                            VStack(alignment: .leading) {
+                                Text("Latitude: \(location.latitude.formatted(.number.precision(.fractionLength(3))))")
+                                Text("Longitude: \(location.longitude.formatted(.number.precision(.fractionLength(3))))")
+                            }
+                        }.foregroundStyle(.primary)
                     }
                 }
                 .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 10))
