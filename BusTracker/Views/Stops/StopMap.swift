@@ -10,11 +10,8 @@ import MapKit
 
 
 struct StopMap: View {
-    @Namespace var stopMapScope
-    
     @Binding var position: MapCameraPosition
     @Binding var stops : [Stop]
-    @State var height = CGFloat(24)
     
     var body: some View {
         Map(position: $position) {
@@ -25,9 +22,6 @@ struct StopMap: View {
                     }
                 }
             }
-        }
-        .onAppear {
-            position = .automatic
         }
     }
 }

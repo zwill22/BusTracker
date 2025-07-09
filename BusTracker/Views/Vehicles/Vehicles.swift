@@ -22,7 +22,7 @@ struct Vehicles: View {
     
     var body: some View {
         NavigationStack {
-            MapView(position: $locationProvider.position, vehicles: $vehicleProvider.vehicles)
+            VehicleMap(position: $locationProvider.position, vehicles: $vehicleProvider.vehicles)
             List {
                 ForEach(Array(vehicleProvider.vehicles.enumerated()), id: \.offset) { index, vehicle in
                     NavigationLink(
@@ -93,4 +93,3 @@ struct Vehicles: View {
         vehicleProvider: VehicleProvider.preview
     )
 }
-

@@ -31,6 +31,7 @@ struct Operators: View {
             }
             .listStyle(.inset)
             .navigationTitle(title)
+            .navigationBarTitleDisplayMode(.inline)
             .alert(isPresented: $hasError, error: error) {}
             .padding(EdgeInsets(top: 0, leading:5, bottom: 0, trailing: 5))
             .searchable(text: $provider.searchText)

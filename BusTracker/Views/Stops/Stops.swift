@@ -30,6 +30,8 @@ struct Stops: View {
                     }
                 }
             }
+            .navigationTitle("Transport Stops")
+            .navigationBarTitleDisplayMode(.inline)
             .listStyle(.inset)
             .alert(isPresented: $hasError, error: error) {}
             .searchable(text: $stopProvider.searchText)
