@@ -14,11 +14,32 @@ struct Settings: View {
     @Bindable var vehicleProvider: VehicleProvider
     @Bindable var issueManager: IssueManager
     
+    @State var apiVersion: String?
+    @State var loadingAPIVersion: Bool = false
+    
+    func fetchAPIversion() async {
+        loadingAPIVersion = true
+        apiVersion = try? await vehicleProvider.apiVersion()
+        loadingAPIVersion = false
+    }
+    
     var body: some View {
         NavigationStack {
             SettingsBlock(height: 80).padding(.top)
             Text("Settings").font(.title).padding(.bottom)
             Form {
+                Section(header: Text("OpenBusAPI")) {
+                    if let version = apiVersion {
+                        HStack{
+                            Text("Version:")
+                            Spacer()
+                            Text("\(version)")
+                        }
+                    } else {
+                        ProgressView()
+                    }
+                }
+                
                 Section(header: Text("Vehicle Options")) {
                     VehicleSettings(
                         maxVehicles: $vehicleProvider.maxVehicles,
@@ -86,6 +107,9 @@ struct Settings: View {
                     }
                 }
             }
+        }
+        .task {
+            await fetchAPIversion()
         }
     }
 

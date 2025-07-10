@@ -14,6 +14,23 @@ struct MainView: View {
     @Environment(VehicleProvider.self) private var vehicleProvider
     @Environment(IssueManager.self) private var issueManager
     
+    @State private var error: BusTrackerError?
+    @State private var hasError: Bool = false
+    
+    func checkAPI() async {
+        let targetVersion = "0.4.1"
+        
+        let version: String = (try? await vehicleProvider.apiVersion()) ?? "0.0.0"
+        
+        let equalVersion = version.compare(targetVersion, options: .numeric) == .orderedSame
+        let validVersion = version.compare(targetVersion, options: .numeric) == .orderedDescending
+        
+        if (!(equalVersion || validVersion)) {
+            self.error = BusTrackerError.incompatibleOpenBusAPIVersion
+            self.hasError = true
+        }
+    }
+    
     var body: some View {
         TabView {
             Tab("Vehicles", systemImage: "bus") {
@@ -44,6 +61,10 @@ struct MainView: View {
                     issueManager: issueManager
                 )
             }
+        }
+        .alert(isPresented: $hasError, error: error) {}
+        .task {
+            await checkAPI()
         }
     }
 }

@@ -19,6 +19,10 @@ class VehicleProvider {
     
     let client: VehicleClient
     
+    func apiVersion() async throws -> String {
+        return try await client.version()
+    }
+
     func fetchVehicles(mapLocation: MapLocation) async throws {
         self.vehicles = try await client.vehicles(
             mapLocation: mapLocation,

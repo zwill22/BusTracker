@@ -12,6 +12,7 @@ enum BusTrackerError: Error {
     case networkError
     case dataFormatError
     case missingIssueValues
+    case incompatibleOpenBusAPIVersion
     case unexpectedError(error: Error)
 }
 
@@ -36,6 +37,11 @@ extension BusTrackerError: LocalizedError {
         case .missingIssueValues:
             return NSLocalizedString(
                 "Cannot submit issues without required values",
+                comment: ""
+            )
+        case .incompatibleOpenBusAPIVersion:
+            return NSLocalizedString(
+                "Incompatible OpenBus API version, app may not work as expected",
                 comment: ""
             )
         case .unexpectedError(let error):
