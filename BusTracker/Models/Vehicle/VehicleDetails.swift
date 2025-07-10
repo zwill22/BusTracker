@@ -50,7 +50,7 @@ extension VehicleDetails: Decodable {
               let operatorCode = rawOperatorCode,
               let vehicleRef = rawVehicleRef
         else {
-            throw VehicleError.missingData
+            throw BusTrackerError.missingData
         }
         
         self.lineNumber = lineNumber

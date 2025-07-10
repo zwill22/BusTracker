@@ -17,7 +17,7 @@ struct Vehicles: View {
     @Bindable var vehicleProvider: VehicleProvider
     
     @State var isLoading: Bool = false
-    @State private var error: VehicleError?
+    @State private var error: BusTrackerError?
     @State private var hasError = false
     
     var body: some View {
@@ -46,7 +46,7 @@ struct Vehicles: View {
         do {
             try await operatorProvider.fetchOperators()
         } catch {
-            self.error = error as? VehicleError ?? .unexpectedError(error: error)
+            self.error = error as? BusTrackerError ?? .unexpectedError(error: error)
             self.hasError = true
         }
     }
@@ -77,7 +77,7 @@ struct Vehicles: View {
                 stops: stopProvider.stops
             )
         } catch {
-            self.error = error as? VehicleError ?? .unexpectedError(error: error)
+            self.error = error as? BusTrackerError ?? .unexpectedError(error: error)
             self.hasError = true
         }
         vehiclesLastUpdated = Date().timeIntervalSince1970

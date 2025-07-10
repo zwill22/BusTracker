@@ -14,7 +14,7 @@ struct Issues: View {
     @Bindable var issueManager: IssueManager
     
     @State var isLoading: Bool = false
-    @State private var error: VehicleError?
+    @State private var error: BusTrackerError?
     @State private var hasError: Bool = false
     @State private var addIssue: Bool = false
     
@@ -44,7 +44,7 @@ struct Issues: View {
         do {
             try await issueManager.fetchIssues()
         } catch {
-            self.error = error as? VehicleError ?? .unexpectedError(error: error)
+            self.error = error as? BusTrackerError ?? .unexpectedError(error: error)
             self.hasError = true
         }
         issuesLastUpdated = Date().timeIntervalSince1970

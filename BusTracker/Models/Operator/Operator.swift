@@ -48,7 +48,7 @@ extension Operator: Decodable {
               let name = rawName,
               let opCode = rawOpCode
         else {
-            throw OperatorError.missingData
+            throw BusTrackerError.missingData
         }
         
         self.id = id

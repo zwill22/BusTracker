@@ -17,7 +17,7 @@ struct VehicleDetail: View {
     let offset: Int
     
     @State private var isLoading: Bool = false
-    @State private var error: VehicleError?
+    @State private var error: BusTrackerError?
     @State private var hasError = false
     @State private var autoRefresh: Bool = false
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -109,7 +109,7 @@ struct VehicleDetail: View {
             try await vehicleProvider.updateVehicle(atOffset: offset)
             vehicle = vehicleProvider.vehicles[offset]
         } catch {
-            self.error = error as? VehicleError ?? .unexpectedError(error: error)
+            self.error = error as? BusTrackerError ?? .unexpectedError(error: error)
             self.hasError = true
         }
         self.vehicleLastUpdated = Date.now.timeIntervalSince1970

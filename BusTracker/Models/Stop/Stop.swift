@@ -56,7 +56,7 @@ extension Stop: Decodable {
               let locality = rawLocality,
               let stopType = rawStopType
         else {
-            throw OperatorError.missingData // TODO: StopError
+            throw BusTrackerError.missingData
         }
         
         self.id = id

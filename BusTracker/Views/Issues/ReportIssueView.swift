@@ -15,7 +15,7 @@ struct ReportIssueView: View {
     
     @State private var isLoading: Bool = false
     @State private var isSubmitting: Bool = false
-    @State private var error: StopError?
+    @State private var error: BusTrackerError?
     @State private var hasError: Bool = false
     
     @State private var issueSubmitted: Bool = false
@@ -63,7 +63,7 @@ struct ReportIssueView: View {
         do {
             try await issueManager.checkClientAvailability()
         } catch {
-            self.error = error as? StopError ?? .unexpectedError(error: error)
+            self.error = error as? BusTrackerError ?? .unexpectedError(error: error)
             self.hasError = true
         }
         isLoading = false
@@ -79,7 +79,7 @@ struct ReportIssueView: View {
                     description: issueDescription
                 )
             } catch {
-                self.error = error as? StopError ?? .unexpectedError(error: error)
+                self.error = error as? BusTrackerError ?? .unexpectedError(error: error)
                 self.hasError = true
             }
         }

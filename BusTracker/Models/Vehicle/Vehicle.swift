@@ -47,7 +47,7 @@ extension Vehicle: Decodable {
               let id = rawID,
               let details = rawDetails
         else {
-            throw VehicleError.missingData
+            throw BusTrackerError.missingData
         }
         
         self.time = time

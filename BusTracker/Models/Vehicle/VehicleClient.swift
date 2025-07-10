@@ -46,7 +46,7 @@ actor VehicleClient {
             maxLatitude: maxLatitude
         )
         guard let data = try? await downloader.httpData(from: feedURL) else {
-            throw VehicleError.networkError
+            throw BusTrackerError.networkError
         }
         let allVehicles = try decoder.decode(XML.self, from: data)
         
@@ -83,12 +83,12 @@ actor VehicleClient {
     func vehicle(vehicleRef: String) async throws -> Vehicle {
         let feedURL:URL = getFeedURL(vehicleRef: vehicleRef)
         guard let data = try? await downloader.httpData(from: feedURL) else {
-            throw VehicleError.networkError
+            throw BusTrackerError.networkError
         }
         let vehicleData = try decoder.decode(XML.self, from: data)
         
         if (vehicleData.vehicles.count != 1) {
-            throw VehicleError.dataFormatError
+            throw BusTrackerError.dataFormatError
         }
         
         return vehicleData.vehicles[0]

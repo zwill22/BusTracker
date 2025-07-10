@@ -55,7 +55,7 @@ struct Enquiry: Decodable, Hashable {
         let rawString = try? container.decode(String.self)
         
         guard let string = rawString else {
-            throw OperatorError.missingData
+            throw BusTrackerError.missingData
         }
         
         self.init(string: string)

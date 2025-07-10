@@ -1,42 +1,43 @@
 //
-//  StopError.swift
+//  BusTrackerError.swift
 //  BusTracker
 //
-//  Created by Zack Williams on 20-05-2025.
+//  Created by Zack Williams on 10-07-2025.
 //
 
 import Foundation
 
-enum StopError: Error {
+enum BusTrackerError: Error {
     case missingData
     case networkError
     case dataFormatError
-    case versionError(_ version_string: String)
+    case missingIssueValues
     case unexpectedError(error: Error)
 }
 
-extension StopError: LocalizedError {
+extension BusTrackerError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .missingData:
             return NSLocalizedString(
-                "Found and will discard a stop missing a valid code, location, or time.",
+                "Object is missing data",
                 comment: ""
             )
         case .networkError:
             return NSLocalizedString(
-                "Error fetching stop data from the server",
+                "Error fetching data from the server",
                 comment: ""
             )
         case .dataFormatError:
             return NSLocalizedString(
-                "Data returned from server was not in the expected format",
+                "Data not in expected format",
                 comment: ""
             )
-        case .versionError(let version_string):
+        case .missingIssueValues:
             return NSLocalizedString(
-                "Invalid API version \(version_string)",
-                comment: "")
+                "Cannot submit issues without required values",
+                comment: ""
+            )
         case .unexpectedError(let error):
             return NSLocalizedString(
                 "Received unexpected error: \(error.localizedDescription)",
@@ -45,4 +46,3 @@ extension StopError: LocalizedError {
         }
     }
 }
-

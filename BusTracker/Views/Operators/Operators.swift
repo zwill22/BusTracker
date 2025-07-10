@@ -14,7 +14,7 @@ struct Operators: View {
     var operatorsLastUpdated = Date.distantFuture.timeIntervalSince1970
     
     @State var isLoading: Bool = false
-    @State private var error: OperatorError?
+    @State private var error: BusTrackerError?
     @State private var hasError = false
     
     var body: some View {
@@ -52,7 +52,7 @@ struct Operators: View {
             try await provider.fetchOperators()
             operatorsLastUpdated = Date().timeIntervalSince1970
         } catch {
-            self.error = error as? OperatorError ?? .unexpectedError(error: error)
+            self.error = error as? BusTrackerError ?? .unexpectedError(error: error)
             self.hasError = true
         }
         isLoading = false

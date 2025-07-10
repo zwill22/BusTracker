@@ -15,7 +15,7 @@ struct Stops: View {
     @Bindable var stopProvider: StopProvider
     
     @State var isLoading: Bool = false
-    @State private var error: StopError?
+    @State private var error: BusTrackerError?
     @State private var hasError = false
     
     var body: some View {
@@ -48,7 +48,7 @@ struct Stops: View {
             guard let location = locationProvider.mapLocation() else { return }
             try await stopProvider.fetchStopsArea(mapLocation: location)
         } catch {
-            self.error = error as? StopError ?? .unexpectedError(error: error)
+            self.error = error as? BusTrackerError ?? .unexpectedError(error: error)
             self.hasError = true
         }
         stopsLastUpdated = Date().timeIntervalSince1970

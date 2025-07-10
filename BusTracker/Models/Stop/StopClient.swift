@@ -40,7 +40,7 @@ actor StopClient {
             maxLatitude: maxLatitude
         )
         guard let data = try? await downloader.httpData(from: feedURL) else {
-            throw VehicleError.networkError
+            throw BusTrackerError.networkError
         }
         
         let allStops = try decoder.decode([Stop].self, from: data)
@@ -78,7 +78,7 @@ actor StopClient {
         let feedURL: URL = getFeedURL(stopCodes: stopCodes)
         
         guard let data = try? await downloader.httpData(from: feedURL) else {
-            throw StopError.networkError
+            throw BusTrackerError.networkError
         }
         
         let stops = try decoder.decode([Stop].self, from: data)

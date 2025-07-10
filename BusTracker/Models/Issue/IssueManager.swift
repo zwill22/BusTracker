@@ -26,7 +26,7 @@ class IssueManager {
     
     func sendIssue(title: String, description: String) async throws {
         if title.isEmpty || description.isEmpty {
-            throw VehicleError.missingData
+            throw BusTrackerError.missingIssueValues
         }
         try await client.submit(
             title: title,
