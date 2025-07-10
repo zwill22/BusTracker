@@ -23,21 +23,16 @@ actor IssueClient {
     }()
     
     func checkConfig() async throws {
-        let result = try await Octokit(config).me()
-        
-        print(result)
+        _ = try await Octokit(config).me()
     }
     
     func submit(title: String, description: String) async throws {
-        let result = try await Octokit(config).postIssue(
+        _ = try await Octokit(config).postIssue(
             owner: owner,
             repository: repository,
             title: title,
             body: description
         )
-        
-        
-        print(result)
     }
     
     func getIssues() async throws -> [GitIssue] {
