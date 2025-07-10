@@ -47,14 +47,19 @@ struct Settings: View {
                     BaseLink(
                         label: "UK Bus Open Data Service",
                         urlString: "https://data.bus-data.dft.gov.uk",
-                        image: Image(systemName: "tram.circle").renderingMode(.template)
+                        image: Image(systemName: "bus").renderingMode(.template)
                     )
                     
                     BaseLink(
                         label: "National Operator Code dataset (NOC)",
                         urlString: "https://www.travelinedata.org.uk/traveline-open-data/transport-operations/about-2/",
-                        image: Image(systemName: "lightrail.fill")
+                        image: Image(systemName: "cablecar.fill")
                     )
+                    
+                    BaseLink(
+                        label:"National Public Transport Access Nodes API",
+                        urlString: "https://naptan.api.dft.gov.uk/",
+                        image: Image(systemName: "mappin.circle.fill"))
                 }
                 
                 Section(header: Text("Additional information")) {
