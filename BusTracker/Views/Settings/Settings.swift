@@ -45,9 +45,23 @@ struct Settings: View {
                     )
                 }
                 
+                Section(header: Text("Data Sources")) {
+                    BaseLink(
+                        label: "UK Bus Open Data Service",
+                        urlString: "https://data.bus-data.dft.gov.uk",
+                        image: Image(systemName: "tram.circle").renderingMode(.template)
+                    )
+                    
+                    BaseLink(
+                        label: "National Operator Code dataset (NOC)",
+                        urlString: "https://www.travelinedata.org.uk/traveline-open-data/transport-operations/about-2/",
+                        image: Image(systemName: "lightrail.fill")
+                    )
+                }
+                
                 Section(header: Text("Additional information")) {
                     BaseLink(
-                        label: "GitHub Repository",
+                        label: "GitHub Repo",
                         urlString: "https://github.com/zwill22/BusTracker",
                         image: Image(uiImage: .githubLogo).renderingMode(.template)
                     )
