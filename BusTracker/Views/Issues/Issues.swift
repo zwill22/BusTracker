@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct IssueListView: View {
+struct Issues: View {
     @AppStorage("issuesLastUpdated")
     var issuesLastUpdated = Date.distantFuture.timeIntervalSince1970
     
@@ -52,7 +52,7 @@ struct IssueListView: View {
     }
     
     @ToolbarContentBuilder
-    func issueToolbar() -> some ToolbarContent {
+    func reportIssue() -> some ToolbarContent {
         ToolbarItem(placement: .confirmationAction) {
             if isLoading {
                 ProgressView()
@@ -65,9 +65,34 @@ struct IssueListView: View {
             }
         }
     }
+    
+    @ToolbarContentBuilder
+    func statusBar() -> some ToolbarContent {
+        ToolbarItemGroup(placement: .bottomBar) {
+            RefreshButton(isLoading: $isLoading) {
+                Task {
+                    await fetchIssues()
+                }
+            }
+            Spacer()
+            ToolbarStatus(
+                isLoading: isLoading,
+                lastUpdated: issuesLastUpdated,
+                count: issueManager.issues.count,
+                itemType: "Issues"
+            )
+            Spacer()
+        }
+    }
+    
+    @ToolbarContentBuilder
+    func issueToolbar() -> some ToolbarContent {
+        reportIssue()
+        statusBar()
+    }
 }
 
 
 #Preview {
-    IssueListView(issueManager: IssueManager())
+    Issues(issueManager: IssueManager())
 }

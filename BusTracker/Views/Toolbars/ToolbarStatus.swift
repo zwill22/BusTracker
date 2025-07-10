@@ -10,21 +10,22 @@ import SwiftUI
 struct ToolbarStatus: View {
     var isLoading: Bool
     var lastUpdated: TimeInterval
-    var vehicleCount: Int
+    var count: Int
+    var itemType: String
     
     var body: some View {
         VStack {
             if isLoading {
-                Text("Checking for transport vehicles...")
+                Text("Checking for \(itemType.lowercased())...")
                 Spacer()
             } else if lastUpdated == Date.distantFuture.timeIntervalSince1970 {
                 Spacer()
-                Text("\(vehicleCount) Vehicles")
+                Text("\(count) \(itemType)")
                     .foregroundStyle(.secondary)
             } else {
                 let lastUpdateDate = Date(timeIntervalSince1970: lastUpdated)
                 Text("Updated \(lastUpdateDate.formatted(.relative(presentation: .named)))")
-                Text("\(vehicleCount) Vehicles")
+                Text("\(count) \(itemType)")
                     .foregroundStyle(.secondary)
             }
         }
@@ -37,24 +38,28 @@ struct ToolbarStatus: View {
     ToolbarStatus(
         isLoading: true,
         lastUpdated: Date.distantPast.timeIntervalSince1970,
-        vehicleCount: 125
+        count: 125,
+        itemType: "Vehicles"
     )
     
     ToolbarStatus(
         isLoading: false,
         lastUpdated: Date.distantFuture.timeIntervalSince1970,
-        vehicleCount: 10_000
+        count: 10_000,
+        itemType: "Buses"
     )
     
     ToolbarStatus(
         isLoading: false,
         lastUpdated: Date.now.timeIntervalSince1970,
-        vehicleCount: 10000
+        count: 10000,
+        itemType: "Issues"
     )
     
     ToolbarStatus(
         isLoading: false,
         lastUpdated: Date.distantPast.timeIntervalSince1970,
-        vehicleCount: 10000
+        count: 10000,
+        itemType: "Routes"
     )
 }

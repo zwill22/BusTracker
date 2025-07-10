@@ -64,7 +64,7 @@ struct Settings: View {
                         image: Image(uiImage: .githubLogo).renderingMode(.template)
                     )
                     
-                    NavigationLink(destination: IssueListView(issueManager: issueManager)) {
+                    NavigationLink(destination: Issues(issueManager: issueManager)) {
                         DetailRow(
                             strings: ["Issues"],
                             image: Image(systemName: "exclamationmark.triangle")

@@ -119,13 +119,9 @@ struct VehicleDetail: View {
     @ToolbarContentBuilder
     func detailToolbar() -> some ToolbarContent {
         ToolbarItemGroup {
-            if isLoading {
-                ProgressView()
-            } else {
-                RefreshButton {
-                    Task {
-                        await updateVehicle()
-                    }
+            RefreshButton(isLoading: $isLoading) {
+                Task {
+                    await updateVehicle()
                 }
             }
         }

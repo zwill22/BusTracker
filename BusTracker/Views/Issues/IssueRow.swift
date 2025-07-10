@@ -11,7 +11,13 @@ struct IssueRow: View {
     @State var issue: GitIssue
     
     var body: some View {
-        Text(issue.title)
+        DisclosureGroup {
+            if let description = issue.description {
+                Text(description)
+            }
+        } label: {
+            Text(issue.title)
+        }
     }
 }
 
