@@ -12,9 +12,7 @@ struct Settings: View {
     @Bindable var operatorProvider: OperatorProvider
     @Bindable var stopProvider: StopProvider
     @Bindable var vehicleProvider: VehicleProvider
-    
-    @State var isViewingIssues: Bool = false
-    @State var isReportingIssue: Bool = false
+    @Bindable var issueManager: IssueManager
     
     var body: some View {
         NavigationStack {
@@ -65,12 +63,14 @@ struct Settings: View {
                         urlString: "https://github.com/zwill22/BusTracker",
                         image: Image(uiImage: .githubLogo).renderingMode(.template)
                     )
-                    Button("Known issues") {
-                        isViewingIssues = true
+                    
+                    NavigationLink(destination: IssueListView(issueManager: issueManager)) {
+                        DetailRow(
+                            strings: ["Issues"],
+                            image: Image(systemName: "exclamationmark.triangle")
+                        )
                     }
-                    Button("Report an issue") {
-                        isReportingIssue = true
-                    }
+                    
                     VStack(alignment: .leading) {
                         Text("Support my work:")
                         HStack {
@@ -82,12 +82,6 @@ struct Settings: View {
                 }
             }
         }
-        .sheet(isPresented: $isReportingIssue) {
-            ReportIssueView()
-        }
-        .sheet(isPresented: $isViewingIssues) {
-            IssueListView()
-        }
     }
 
 }
@@ -97,6 +91,7 @@ struct Settings: View {
         locationProvider: LocationProvider(),
         operatorProvider: OperatorProvider.preview,
         stopProvider: StopProvider.preview,
-        vehicleProvider: VehicleProvider.preview
+        vehicleProvider: VehicleProvider.preview,
+        issueManager: IssueManager()
     )
 }

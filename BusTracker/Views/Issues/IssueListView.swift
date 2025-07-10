@@ -6,41 +6,62 @@
 //
 
 import SwiftUI
-import MarkdownUI
 
 struct IssueListView: View {
-    @Environment(\.dismiss) var dismiss
+    @AppStorage("issuesLastUpdated")
+    var issuesLastUpdated = Date.distantFuture.timeIntervalSince1970
     
-    private let issueList: String? = {
-        var issues: String? = nil
-
-        if let path = Bundle.main.path(forResource: "Issues", ofType: "md") {
-            issues = try? String(contentsOfFile: path, encoding: .utf8)
-        }
-        
-        return issues
-    }()
+    @Bindable var issueManager: IssueManager
+    
+    @State var isLoading: Bool = false
+    @State private var error: VehicleError?
+    @State private var hasError: Bool = false
+    @State private var addIssue: Bool = false
     
     var body: some View {
         NavigationStack {
-            VStack {
-                if let issues = issueList {
-                    Markdown(issues)
-                } else {
-                    Text("Issues not available")
+            List {
+                ForEach(issueManager.issues) { issue in
+                    IssueRow(issue: issue)
                 }
             }
-            .padding(.horizontal)
+            .listStyle(.inset)
             .toolbar(content: issueToolbar)
+            .alert(isPresented: $hasError, error: error) {}
+            .navigationTitle("Issues")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        
+        .task {
+            await fetchIssues()
+        }
+        .sheet(isPresented: $addIssue) {
+            ReportIssueView(issueManager: issueManager)
+        }
+    }
+    
+    func fetchIssues() async {
+        isLoading = true
+        do {
+            try await issueManager.fetchIssues()
+        } catch {
+            self.error = error as? VehicleError ?? .unexpectedError(error: error)
+            self.hasError = true
+        }
+        issuesLastUpdated = Date().timeIntervalSince1970
+        isLoading = false
     }
     
     @ToolbarContentBuilder
     func issueToolbar() -> some ToolbarContent {
         ToolbarItem(placement: .confirmationAction) {
-            Button("Done") {
-                dismiss()
+            if isLoading {
+                ProgressView()
+            } else {
+                Button(
+                    "Add Issue",
+                    systemImage: "plus") {
+                        addIssue = true
+                    }
             }
         }
     }
@@ -48,5 +69,5 @@ struct IssueListView: View {
 
 
 #Preview {
-    IssueListView()
+    IssueListView(issueManager: IssueManager())
 }

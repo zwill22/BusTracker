@@ -39,4 +39,12 @@ actor IssueClient {
         
         print(result)
     }
+    
+    func getIssues() async throws -> [GitIssue] {
+        let allIssues = try await Octokit(config).issues(owner: owner, repository: repository)
+        
+        let issues = allIssues.map { GitIssue(title: $0.title ?? "", description: $0.body, id: $0.id) }
+        
+        return issues.filter { $0.title != "" }
+    }
 }

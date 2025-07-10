@@ -7,8 +7,17 @@
 
 import Foundation
 
+struct GitIssue: Codable, Identifiable {
+    let title: String
+    let description: String?
+    let id: Int
+}
+
 @MainActor
+@Observable
 class IssueManager {
+    var issues: [GitIssue] = []
+    
     private let client: IssueClient
     
     func checkClientAvailability() async throws {
@@ -23,6 +32,10 @@ class IssueManager {
             title: title,
             description: description
         )
+    }
+    
+    func fetchIssues() async throws {
+        self.issues = try await client.getIssues()
     }
     
     init(client: IssueClient = IssueClient()) {

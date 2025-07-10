@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ReportIssueView: View {
+    @Bindable var issueManager: IssueManager
+    
     @State private var issueTitle: String = ""
     @State private var issueDescription: String = ""
     
@@ -17,7 +19,6 @@ struct ReportIssueView: View {
     @State private var hasError: Bool = false
     
     @State private var issueSubmitted: Bool = false
-    @State private var issueManager: IssueManager = IssueManager()
     
     @Environment(\.dismiss) var dismiss
     
@@ -89,5 +90,5 @@ struct ReportIssueView: View {
 }
 
 #Preview {
-    ReportIssueView()
+    ReportIssueView(issueManager: IssueManager())
 }

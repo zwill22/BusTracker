@@ -12,6 +12,7 @@ struct MainView: View {
     @Environment(OperatorProvider.self) private var operatorProvider
     @Environment(StopProvider.self) private var stopProvider
     @Environment(VehicleProvider.self) private var vehicleProvider
+    @Environment(IssueManager.self) private var issueManager
     
     var body: some View {
         TabView {
@@ -39,7 +40,8 @@ struct MainView: View {
                     locationProvider: locationProvider,
                     operatorProvider: operatorProvider,
                     stopProvider: stopProvider,
-                    vehicleProvider: vehicleProvider
+                    vehicleProvider: vehicleProvider,
+                    issueManager: issueManager
                 )
             }
         }
@@ -52,4 +54,5 @@ struct MainView: View {
         .environment(OperatorProvider.preview)
         .environment(StopProvider.preview)
         .environment(VehicleProvider.preview)
+        .environment(IssueManager())
 }
