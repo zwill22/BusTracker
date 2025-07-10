@@ -38,9 +38,9 @@
 			path = BusTracker;
 			sourceTree = "<group>";
 		};
-		CE1C8B6C2E007F7200C1F477 /* Info */ = {
+		CE1C8B6C2E007F7200C1F477 /* Screenshots */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Info;
+			path = Screenshots;
 			sourceTree = "<group>";
 		};
 		CEE15C842DCA85E400A1414D /* BusTrackerLogo */ = {
@@ -75,7 +75,7 @@
 			children = (
 				CE1C8D032E00C32500C1F477 /* LICENSE */,
 				CE1C8D042E00C32500C1F477 /* README.md */,
-				CE1C8B6C2E007F7200C1F477 /* Info */,
+				CE1C8B6C2E007F7200C1F477 /* Screenshots */,
 				CE0DDF7C2CDE161C00A1D84B /* BusTracker */,
 				CEE15C842DCA85E400A1414D /* BusTrackerLogo */,
 				CE0DDF7B2CDE161C00A1D84B /* Products */,
@@ -108,7 +108,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				CE0DDF7C2CDE161C00A1D84B /* BusTracker */,
-				CE1C8B6C2E007F7200C1F477 /* Info */,
+				CE1C8B6C2E007F7200C1F477 /* Screenshots */,
 			);
 			name = BusTracker;
 			packageProductDependencies = (

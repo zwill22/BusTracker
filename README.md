@@ -18,9 +18,9 @@ This is a bus tracking app for UK Bus services using location data from
 the [Bus Open Data Service](https://www.bus-data.dft.gov.uk).
 This app aims to provide users with real-time location data for buses across the UK.
 
-<img src="Info/Images/MainView.png" alt="Main view showing buses around Cardiff, UK" height=720/>
-<img src="Info/Images/OperatorList.png" alt="View showing list of transport operators" height=720/>
-<img src="Info/Images/StopView.png" alt="View showing stops and stations around Cardiff, UK" height=720/>
+<img src="Screenshots/MainView.png" alt="Main view showing buses around Cardiff, UK" height=720/>
+<img src="Screenshots/OperatorList.png" alt="View showing list of transport operators" height=720/>
+<img src="Screenshots/StopView.png" alt="View showing stops and stations around Cardiff, UK" height=720/>
 
 The app can be used to find bus services currently running, information about transport operators, and
 the locations of bus stops and other transport access locations.
@@ -35,6 +35,7 @@ the locations of bus stops and other transport access locations.
 
 - [Open Bus API](https://github.com/zwill22/OpenBusAPI.git): Data access
 - [XMLCoder library](https://github.com/CoreOffice/XMLCoder.git): Decoding location data
+- [Octokit.Swift](https://github.com/nerdishbynature/octokit.swift): GitHub interactions
 
 The Bus location data is in XML format using the
 [SIRI-VM](https://www.gov.uk/government/publications/technical-guidance-publishing-location-data-using-the-bus-open-data-service-siri-vm)
@@ -50,9 +51,9 @@ Clicking on an item in the bus list directs the user to a more detailed view abo
 This includes its current location and the location of its destination.
 More detailed information is provided about its location, origin, and when the information was obtained.
 
-<img src="Info/Images/BusDetailView.png" alt="View showing details of a bus in Cardiff, UK" height=720/>
-<img src="Info/Images/OperatorDetailView.png" alt="View showing transport operator details" height=720/>
-<img src="Info/Images/StopDetailView.png" alt="View showing details of a UK bus station" height=720/>
+<img src="Screenshots/BusDetailView.png" alt="View showing details of a bus in Cardiff, UK" height=720/>
+<img src="Screenshots/OperatorDetailView.png" alt="View showing transport operator details" height=720/>
+<img src="Screenshots/StopDetailView.png" alt="View showing details of a UK bus station" height=720/>
 
 The bus detail view includes a link to details about the bus operator including their website, contact information,
 and social media (see above).
@@ -72,9 +73,9 @@ If I had never missed a bus which left early and had to wait half an hour for an
 I would never have made this app.
 
 Thank you to anyone who has used the app. If you have any suggestions, issues, bugs, or notes, please report them in the
-[issues tab](https://github.com/zwill22/BusTracker/issues), or check the 
-[issues list](Info/Issues.md).
+[issues tab](https://github.com/zwill22/BusTracker/issues),
+these may also be added through the app.
 If you found the app use, please consider supporting my work:
 
-<img src="BusTracker/Assets.xcassets/buymeacoffee.imageset/coffee.png" alt="Buy Me A Cherry Cola" height="48">
+[<img src="BusTracker/Assets.xcassets/buymeacoffee.imageset/coffee.png" alt="Buy Me A Cherry Cola" height="48">](https://coff.ee/zmwill)
 
