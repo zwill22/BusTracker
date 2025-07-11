@@ -16,11 +16,12 @@ class VehicleProvider {
     var timeout: TimeInterval = 60
     var refreshInterval: TimeInterval = 30
     var autoRefresh: Bool = true
+    var apiVersion: String?
     
     let client: VehicleClient
     
-    func apiVersion() async throws -> String {
-        return try await client.version()
+    func fetchAPIVersion() async throws {
+        self.apiVersion = try await client.version()
     }
 
     func fetchVehicles(mapLocation: MapLocation) async throws {
