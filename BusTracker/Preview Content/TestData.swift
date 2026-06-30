@@ -7,81 +7,496 @@
 
 import Foundation
 
-let testBusData: Data = """
+let testOperatorData: Data = """
+[{
+    "NOCCODE": "1CTL",
+    "OperatorPublicName":"1st Choice Transport Ltd",
+    "PubNmId":"93089",
+    "Mode":"Bus",
+    "TTRteEnq":"info@1stchoiceltd.co.uk",
+    "FareEnq":"01554759888",
+    "ComplEnq":"The Transport Depot, Sandy Road, Llanelli SA15 4DP",
+    "Twitter":null,
+    "Website":"www.1stchoiceltdcoachhire.co.uk#http://www.1stchoiceltdcoachhire.co.uk#"
+},
+{
+    "NOCCODE":"247T",
+    "OperatorPublicName":"247 Taxis",
+    "PubNmId":"95943",
+    "Mode":null,
+    "TTRteEnq":null,
+    "FareEnq":"01603 782247",
+    "ComplEnq":null,
+    "Twitter":null,
+    "Website":"#http://247taxiswroxham.tel#"
+},
+{
+    "NOCCODE":"2WTR",
+    "OperatorPublicName":"2 Way Transport",
+    "PubNmId":"93090",
+    "Mode":"Bus",
+    "TTRteEnq":null,
+    "FareEnq":"01724289399",
+    "ComplEnq":"29-30 High Santon Villas, High Santon, Scunthorpe DN15 0DG",
+    "Twitter":null,
+    "Website":"www.2waytransport-scunthorpe.co.uk/#http://www.2waytransport-scunthorpe.co.uk/#"
+},
+{
+    "NOCCODE":"3DCO",
+    "OperatorPublicName":"3D Coaches",
+    "PubNmId":"93092",
+    "Mode":"Bus",
+    "TTRteEnq":null,
+    "FareEnq":null,
+    "ComplEnq":null,
+    "Twitter":null,
+    "Website":null
+},
+{
+    "NOCCODE":"5STR",
+    "OperatorPublicName":"Five Star International Travel",
+    "PubNmId":"94084",
+    "Mode":"Bus",
+    "TTRteEnq":null,
+    "FareEnq":null,
+    "ComplEnq":null,
+    "Twitter":null,
+    "Website":null},
+{
+    "NOCCODE":"=AW",
+    "OperatorPublicName":"Transport for Wales",
+    "PubNmId":"93292",
+    "Mode":"Rail",
+    "TTRteEnq":"customer.relations@tfwrail.wales",
+    "FareEnq":"03333211202",
+    "ComplEnq":"Customer Relations, Transport for Wales, Rail Services, St. Mary's House, 47 Penarth Road, Cardiff CF10 5DJ",
+    "Twitter":"@tfwrail",
+    "Website":"#https://tfwrail.wales/homepage#"},
+{
+    "NOCCODE":"=CC",
+    "OperatorPublicName":"c2c",
+    "PubNmId":"93532",
+    "Mode":"Rail",
+    "TTRteEnq":"contact@c2crail.co.uk",
+    "FareEnq":"03457444422",
+    "ComplEnq":"FREEPOST ADM3968, Southend SS1 1ZS",
+    "Twitter":"@c2c_Rail",
+    "Website":"www.c2c-online.co.uk#http://www.c2c-online.co.uk#"},
+{
+    "NOCCODE":"=CH",
+    "OperatorPublicName":"Chiltern Railways",
+    "PubNmId":"93634",
+    "Mode":"Rail",
+    "TTRteEnq":"customer.service@chilternrailways.co.uk",
+    "FareEnq":"03456005165",
+    "ComplEnq":"Banbury ICC, Merton Street, Banbury OX16 4RN",
+    "Twitter":"@chilternrailway",
+    "Website":"www.chilternrailways.co.uk#http://www.chilternrailways.co.uk#"},
+{
+    "NOCCODE":"=CS",
+    "OperatorPublicName":"Caledonian Sleeper",
+    "PubNmId":"93540",
+    "Mode":"Rail",
+    "TTRteEnq":"enquiry@sleeper.scot",
+    "FareEnq":"03300600500",
+    "ComplEnq":"1 Union Street, Inverness, IV1 1PP",
+    "Twitter":"@CalSleeper",
+    "Website":"www.sleeper.scot#http://www.sleeper.scot#"},
+{
+    "NOCCODE":"=EM",
+    "OperatorPublicName":"East Midlands Railway",
+    "PubNmId":"93922",
+    "Mode":"Rail",
+    "TTRteEnq":"contact@eastmidlandsrailway.co.uk",
+    "FareEnq":"03457125678",
+    "ComplEnq":"Hudson Way, Pride Park, Derby DE24 8HS",
+    "Twitter":"@EastMidRailway",
+    "Website":"#https://www.eastmidlandsrailway.co.uk/#"},
+{
+    "NOCCODE":"=ES",
+    "OperatorPublicName":"Eurostar",
+    "PubNmId":"93990",
+    "Mode":"Rail",
+    "TTRteEnq":"traveller.care@eurostar.com",
+    "FareEnq":"01777 777879",
+    "ComplEnq":"Eurostar Traveller Care team, 2nd Floor, Kent House, 81 Station Road, Ashford TN23 1AP",
+    "Twitter":"@Eurostar",
+    "Website":"#http://www.eurostar.com/uk-en#"},
+{
+    "NOCCODE":"=FC",
+    "OperatorPublicName":"First Capital Connect",
+    "PubNmId":"94048",
+    "Mode":"Rail",
+    "TTRteEnq":null,
+    "FareEnq":null,
+    "ComplEnq":null,
+    "Twitter":null,
+    "Website":null
+},
+{
+    "NOCCODE":"=GC",
+    "OperatorPublicName":"Grand Central",
+    "PubNmId":"94210",
+    "Mode":"Rail",
+    "TTRteEnq":"customer.services@grandcentralrail.com",
+    "FareEnq":"03456034852",
+    "ComplEnq":"Customer Relations Manager, Grand Central Rail, PO Box 5871, Sheffield S1 9GP",
+    "Twitter":"@GC_Rail",
+    "Website":"#https://www.grandcentralrail.com/#"
+},
+{
+    "NOCCODE":"=GN",
+    "OperatorPublicName":"Great Northern",
+    "PubNmId":"94217",
+    "Mode":"Rail",
+    "TTRteEnq":"customerservice@greatnorthernrail.com",
+    "FareEnq":"03450264700",
+    "ComplEnq":"PO BOX 10240, Ashby-De-La-Zouch LE65 9EB",
+    "Twitter":"@GNRailUK",
+    "Website":"www.greatnorthernrail.com#http://www.greatnorthernrail.com#"
+},
+{
+    "NOCCODE":"=GR",
+    "OperatorPublicName":"London North Eastern Railway",
+    "PubNmId":"95773",
+    "Mode":"Rail",
+    "TTRteEnq":"customers@LNER.co.uk",
+    "FareEnq":"03457225333",
+    "ComplEnq":"Customer Solutions Centre, Freepost RTUH-TUGH-GCLZ, Cramlington NE23 1WG",
+    "Twitter":"@LNER",
+    "Website":"#https://www.lner.co.uk/#"
+},
+{
+    "NOCCODE":"=GW",
+    "OperatorPublicName":"Great Western Railway",
+    "PubNmId":"94055",
+    "Mode":"Rail",
+    "TTRteEnq":"GWRfeedback@GWR.com",
+    "FareEnq":"03457000125",
+    "ComplEnq":"Freepost GWR CUSTOMER SUPPORT",
+    "Twitter":"@GWRHelp",
+    "Website":"#https://www.gwr.com/#"
+},
+{
+    "NOCCODE":"=GX",
+    "OperatorPublicName":"Gatwick Express",
+    "PubNmId":"94144",
+    "Mode":"Rail",
+    "TTRteEnq":"customerservices@gatwickexpress.com",
+    "FareEnq":"03458501530",
+    "ComplEnq":"Gatwick Express Customer Services, PO Box 10240 Ashby-De-La-Zouch",
+    "Twitter":"@GatwickExpress",
+    "Website":"www.gatwickexpress.com#http://www.gatwickexpress.com#"
+},
+{
+    "NOCCODE":"=HC",
+    "OperatorPublicName":"Heathrow Connect",
+    "PubNmId":"94309",
+    "Mode":"Rail",
+    "TTRteEnq":"queries@heathrowconnect.com",
+    "FareEnq":"03456 041515 (customer services) 0844 824 3115 (lost property)",
+    "ComplEnq":"Freepost RLRZ-TZXE-BYKY, 3rd Floor, 30 Eastbourne Terrace, London W2 6LE",
+    "Twitter":null,
+    "Website":"www.heathrowconnect.com#http://www.heathrowconnect.com#"
+},
+{
+    "NOCCODE":"=HT",
+    "OperatorPublicName":"Hull Trains",
+    "PubNmId":"94057",
+    "Mode":"Rail",
+    "TTRteEnq":"customer.services@hulltrains.co.uk",
+    "FareEnq":"03450710222",
+    "ComplEnq":"Hull Trains, FREEPOST RLYY-XSTG-YXCK, 4th Floor, Europa House, 184 Ferensway, Hull HU1 3UT",
+    "Twitter":"@Hull_Trains",
+    "Website":"#http://www.hulltrains.co.uk/#"
+},
+{
+    "NOCCODE":"=HX",
+    "OperatorPublicName":"Heathrow Express",
+    "PubNmId":"94310",
+    "Mode":"Rail",
+    "TTRteEnq":"hex_feedback@baa.co.uk",
+    "FareEnq":"08456001515",
+    "ComplEnq":"Customer Relations Department, Freepost RTXU-CZKK-YYEJ, The Compass Centre, Nelson Road, London Heathrow Airport, Hounslow TW6 2GW",
+    "Twitter":"@HeathrowExpress",
+    "Website":"#http://www.heathrowexpress.com/#"
+},
+{
+    "NOCCODE":"=IL",
+    "OperatorPublicName":"Island Line",
+    "PubNmId":"94410",
+    "Mode":"Rail",
+    "TTRteEnq":"customerrelations@swrailway.com",
+    "FareEnq":"03456000650",
+    "ComplEnq":"Freepost: SWR CUSTOMER RELATIONS",
+    "Twitter":"@IsleOfWightRail",
+    "Website":"#https://www.southwesternrailway.com/#"
+},
+{
+    "NOCCODE":"=LE",
+    "OperatorPublicName":"Greater Anglia",
+    "PubNmId":"94218",
+    "Mode":"Rail",
+    "TTRteEnq":"contactcentre@greateranglia.co.uk",
+    "FareEnq":"03456007245",
+    "ComplEnq":"FREEPOST RSCZ-UXZJ-EHHE, Abellio Greater Anglia Contact Centre, Norwich Railway Station, Station Approach, Norwich NR1 1EF",
+    "Twitter":"@greateranglia",
+    "Website":"#https://www.greateranglia.co.uk/#"
+},
+{
+    "NOCCODE":"=LM",
+    "OperatorPublicName":"West Midlands Trains",
+    "PubNmId":"94641",
+    "Mode":"Rail",
+    "TTRteEnq":null,
+    "FareEnq":"03333110039",
+    "ComplEnq":null,
+    "Twitter":"@WestMidRailway",
+    "Website":"#https://www.wmtrains.co.uk/#"
+},
+{
+    "NOCCODE":"=LO",
+    "OperatorPublicName":"London Overground",
+    "PubNmId":"94642",
+    "Mode":"Rail",
+    "TTRteEnq":"overgroundinfo@tfl.gov.uk",
+    "FareEnq":"03432221234",
+    "ComplEnq":"TfL Customer Services, 4th floor, 14 Pier Walk, London SE10 0ES",
+    "Twitter":"@LDNOverground",
+    "Website":"www.tfl.gov.uk/overground#http://www.tfl.gov.uk/overground#"
+},
+{
+    "NOCCODE":"=ME",
+    "OperatorPublicName":"Merseyrail",
+    "PubNmId":"94774",
+    "Mode":"Rail",
+    "TTRteEnq":"comment@merseyrail.org",
+    "FareEnq":"01515551111",
+    "ComplEnq":"9th Floor, Rail House, Lord Nelson Street, Liverpool L1 1JF",
+    "Twitter":"@merseyrail",
+    "Website":"www.merseyrail.org#http://www.merseyrail.org#"
+}]
+""".data(using: .utf8)!
+
+let testVehicleData: Data = """
 <Siri version="2.0" xmlns="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.siri.org.uk/siri http://www.siri.org.uk/schema/2.0/xsd/siri.xsd">
   <ServiceDelivery>
-    <ResponseTimestamp>2024-11-12T11:55:12.437+00:00</ResponseTimestamp>
-    <ProducerRef>DepartmentForTransport</ProducerRef>
+    <ResponseTimestamp>2025-04-17T11:11:11.437+00:00</ResponseTimestamp>
+    <ProducerRef>FakeDataSource</ProducerRef>
     <VehicleMonitoringDelivery>
-      <ResponseTimestamp>2024-11-12T11:55:12.437+00:00</ResponseTimestamp>
-      <RequestMessageRef>1cfe601f-b2cc-4d84-9e91-5ad9099ee338</RequestMessageRef>
-      <ValidUntil>2024-11-12T12:00:12.437+00:00</ValidUntil>
-      <ShortestPossibleCycle>PT5S</ShortestPossibleCycle>
+      <ResponseTimestamp>2025-04-17T11:11:11.437+00:00</ResponseTimestamp>
+      <RequestMessageRef>1234567890</RequestMessageRef>
+      <ValidUntil>2025-04-17T11:22:22.437+00:00</ValidUntil>
+      <ShortestPossibleCycle>Cycle</ShortestPossibleCycle>
       <VehicleActivity>
-        <RecordedAtTime>2024-11-12T11:55:06+00:00</RecordedAtTime>
-        <ItemIdentifier>SCBODS:VEHICLESTATUSRT:18056:128545</ItemIdentifier>
-        <ValidUntilTime>2024-11-12T12:00:12.437+00:00</ValidUntilTime>
+        <RecordedAtTime>2025-04-17T11:11:00+00:00</RecordedAtTime>
+        <ItemIdentifier>SCBODS:VEHICLESTATUSRT:123456:654321</ItemIdentifier>
+        <ValidUntilTime>2025-04-17T11:22:22.437+00:00</ValidUntilTime>
         <MonitoredVehicleJourney>
-          <LineRef>471</LineRef>
+          <LineRef>111</LineRef>
           <DirectionRef>inbound</DirectionRef>
           <FramedVehicleJourneyRef>
-            <DataFrameRef>2024-11-12</DataFrameRef>
-            <DatedVehicleJourneyRef>1032</DatedVehicleJourneyRef>
+            <DataFrameRef>2025-04-17</DataFrameRef>
+            <DatedVehicleJourneyRef>1234</DatedVehicleJourneyRef>
           </FramedVehicleJourneyRef>
-          <PublishedLineName>471</PublishedLineName>
-          <OperatorRef>SCMY</OperatorRef>
+          <PublishedLineName>123</PublishedLineName>
+          <OperatorRef>OPTA</OperatorRef>
           <OriginRef>2800S29001D</OriginRef>
-          <OriginName>Heswall Bus Stn-D</OriginName>
+          <OriginName>A Bus Station</OriginName>
           <DestinationRef>2800S42061D</DestinationRef>
-          <DestinationName>Cook St (alighting)</DestinationName>
-          <OriginAimedDepartureTime>2024-11-12T10:55:00+00:00</OriginAimedDepartureTime>
+          <DestinationName>California St</DestinationName>
+          <OriginAimedDepartureTime>2025-04-17T10:55:00+00:00</OriginAimedDepartureTime>
           <Monitored>true</Monitored>
           <VehicleLocation>
-            <Longitude>-2.988233</Longitude>
-            <Latitude>53.405571</Latitude>
+            <Longitude>-122.00190</Longitude>
+            <Latitude>37.3312</Latitude>
           </VehicleLocation>
           <Bearing>156</Bearing>
-          <VehicleRef>SCMY-10882</VehicleRef>
+          <VehicleRef>OpA-10001</VehicleRef>
         </MonitoredVehicleJourney>
         <Extensions>
           <VehicleJourney>
-            <DriverRef>75942</DriverRef>
+            <DriverRef>10001</DriverRef>
           </VehicleJourney>
         </Extensions>
       </VehicleActivity>
       <VehicleActivity>
-        <RecordedAtTime>2024-11-12T11:54:55+00:00</RecordedAtTime>
-        <ItemIdentifier>SCBODS:VEHICLESTATUSRT:18057:123281</ItemIdentifier>
-        <ValidUntilTime>2024-11-12T12:00:12.437+00:00</ValidUntilTime>
+        <RecordedAtTime>2025-04-17T11:11:11+00:00</RecordedAtTime>
+        <ItemIdentifier>SCBODS:VEHICLESTATUSRT:789012:345678</ItemIdentifier>
+        <ValidUntilTime>2025-04-17T11:22:22.437+00:00</ValidUntilTime>
         <MonitoredVehicleJourney>
           <LineRef>X1</LineRef>
           <DirectionRef>outbound</DirectionRef>
           <FramedVehicleJourneyRef>
-            <DataFrameRef>2024-11-12</DataFrameRef>
-            <DatedVehicleJourneyRef>333</DatedVehicleJourneyRef>
+            <DataFrameRef>2025-04-17</DataFrameRef>
+            <DatedVehicleJourneyRef>111</DatedVehicleJourneyRef>
           </FramedVehicleJourneyRef>
           <PublishedLineName>X1</PublishedLineName>
-          <OperatorRef>SCMY</OperatorRef>
-          <OriginRef>0610CH19166</OriginRef>
+          <OperatorRef>OPTB</OperatorRef>
+          <OriginRef>1234CA246802</OriginRef>
           <OriginName>Bus Interchange</OriginName>
-          <DestinationRef>2800S42042C</DestinationRef>
-          <DestinationName>Whitechapel Gb</DestinationName>
-          <OriginAimedDepartureTime>2024-11-12T10:25:00+00:00</OriginAimedDepartureTime>
+          <DestinationRef>2800S42022C</DestinationRef>
+          <DestinationName>Final Destination Gb</DestinationName>
+          <OriginAimedDepartureTime>2025-04-17T10:25:00+00:00</OriginAimedDepartureTime>
           <Monitored>true</Monitored>
           <VehicleLocation>
-            <Longitude>-3.014628</Longitude>
-            <Latitude>53.385883</Latitude>
+            <Longitude>-122.0087</Longitude>
+            <Latitude>37.34002</Latitude>
           </VehicleLocation>
           <Bearing>30</Bearing>
-          <VehicleRef>SCMY-10883</VehicleRef>
+          <VehicleRef>SCMY-12321</VehicleRef>
         </MonitoredVehicleJourney>
         <Extensions>
           <VehicleJourney>
-            <DriverRef>8501021</DriverRef>
+            <DriverRef>123456</DriverRef>
           </VehicleJourney>
         </Extensions>
       </VehicleActivity>
     </VehicleMonitoringDelivery>
   </ServiceDelivery>
 </Siri>
+""".data(using: .utf8)!
+
+
+let testStopData: Data = """
+[{
+    "ATCOCode":"5140AWQ26507",
+    "NaptanCode":"wregjtm",
+    "PlateCode":null,
+    "CommonName":"Mount Sion Library",
+    "ShortCommonName":null,
+    "Landmark":null,
+    "Street":"Offa Street",
+    "Indicator":"before",
+    "Bearing":"S",
+    "NptgLocalityCode":"N0075796",
+    "LocalityName":"Mount Sion",
+    "ParentLocalityName":null,
+    "Town":null,
+    "Suburb":null,
+    "LocalityCentre":"true",
+    "GridType":"UKOS",
+    "Longitude":-3.058350858,
+    "Latitude":53.077974464,
+    "StopType":"BCT",
+    "BusStopType":"MKD",
+    "TimingStatus":"OTH",
+    "AdministrativeAreaCode":67,
+    "CreationDateTime":"2000-01-01T00:00:00",
+    "ModificationDateTime":"2024-05-02T10:29:19",
+    "RevisionNumber":3.0,
+    "Modification":"revise"
+},
+{
+    "ATCOCode":"5140WDB25298",
+    "NaptanCode":"wrejgtp",
+    "PlateCode":null,
+    "CommonName":"Wrexham Bus Station 2",
+    "ShortCommonName":null,
+    "Landmark":null,
+    "Street":"King Street",
+    "Indicator":"at",
+    "Bearing":null,
+    "NptgLocalityCode":"E0043570",
+    "LocalityName":"Wrexham",
+    "ParentLocalityName":null,
+    "Town":null,
+    "Suburb":null,
+    "LocalityCentre":"true",
+    "GridType":"UKOS",
+    "Longitude":-2.996231861,
+    "Latitude":53.048068,
+    "StopType":"BCS",
+    "BusStopType":null,
+    "TimingStatus":null,
+    "AdministrativeAreaCode":67,
+    "CreationDateTime":"2000-01-01T00:00:00",
+    "ModificationDateTime":"2024-11-06T13:43:46",
+    "RevisionNumber":6.0,
+    "Modification":"revise"
+},
+{
+    "ATCOCode":"5140WDB25299",
+    "NaptanCode":"wrejgtw",
+    "PlateCode":null,
+    "CommonName":"Wrexham Bus Station 4",
+    "ShortCommonName":null,
+    "Landmark":null,
+    "Street":"King Street",
+    "Indicator":"at",
+    "Bearing":null,
+    "NptgLocalityCode":"E0043570",
+    "LocalityName":"Wrexham",
+    "ParentLocalityName":null,
+    "Town":null,
+    "Suburb":null,
+    "LocalityCentre":"true",
+    "GridType":"UKOS",
+    "Longitude":-2.996025957,
+    "Latitude":53.048195577,
+    "StopType":"BCS",
+    "BusStopType":null,
+    "TimingStatus":null,
+    "AdministrativeAreaCode":67,
+    "CreationDateTime":"2000-01-01T00:00:00",
+    "ModificationDateTime":"2024-11-06T13:31:58",
+    "RevisionNumber":6.0,
+    "Modification":"revise"
+},
+{
+    "ATCOCode":"5140WDB25301",
+    "NaptanCode":"wrejgwd",
+    "PlateCode":null,
+    "CommonName":"Wrexham Bus Station 8",
+    "ShortCommonName":null,
+    "Landmark":"Wrexham Bus Station",
+    "Street":"King Street",
+    "Indicator":"at",
+    "Bearing":null,
+    "NptgLocalityCode":"E0043570",
+    "LocalityName":"Wrexham",
+    "ParentLocalityName":null,
+    "Town":null,
+    "Suburb":null,
+    "LocalityCentre":"true",
+    "GridType":"UKOS",
+    "Longitude":-2.995673597,
+    "Latitude":53.048441243,
+    "StopType":"BCS",
+    "BusStopType":null,
+    "TimingStatus":null,
+    "AdministrativeAreaCode":67,
+    "CreationDateTime":"2000-01-01T00:00:00",
+    "ModificationDateTime":"2024-11-06T13:26:18",
+    "RevisionNumber":6.0,
+    "Modification":"revise"
+},
+{
+    "ATCOCode":"5140WDB25303",
+    "NaptanCode":"wrejgwj",
+    "PlateCode":null,
+    "CommonName":"Wrexham Bus Station 3",
+    "ShortCommonName":null,
+    "Landmark":null,
+    "Street":"Trinity Street",
+    "Indicator":"at",
+    "Bearing":null,
+    "NptgLocalityCode":"E0043570",
+    "LocalityName":"Wrexham",
+    "ParentLocalityName":null,
+    "Town":null,
+    "Suburb":null,
+    "LocalityCentre":"true",
+    "GridType":"UKOS",
+    "Longitude":-2.995830407,
+    "Latitude":53.048125299,
+    "StopType":"BCS",
+    "BusStopType":null,
+    "TimingStatus":null,
+    "AdministrativeAreaCode":67,
+    "CreationDateTime":"2000-01-01T00:00:00",
+    "ModificationDateTime":"2024-11-06T13:20:48",
+    "RevisionNumber":6.0,
+    "Modification":"revise"
+}]
 """.data(using: .utf8)!

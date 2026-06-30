@@ -1,3 +1,11 @@
+.idea/
 xcuserdata/
 xcshareddata/
+Info.plist
+ExampleLocation.gpx
 api_key.txt
+node_modules/
+image.png
+pnpm-lock.yaml
+.idea/
+token.txt
