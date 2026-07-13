@@ -29,6 +29,17 @@ func distance(vehicle: Vehicle, longitude: Double, latitude: Double) -> Double {
 actor VehicleClient {
     private var server = Server()
     
+    func version() async throws -> String {
+        let feedURL: URL = server.getURLRoot(path: "/version")
+        guard let data = try? await downloader.httpData(from: feedURL) else {
+            throw BusTrackerError.networkError
+        }
+        
+        let result = String(data: data, encoding: .utf8)!
+        
+        return result
+    }
+    
     func vehicles(
         mapLocation: MapLocation,
         maxVehicles: Int,

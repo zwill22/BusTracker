@@ -9,3 +9,4 @@ image.png
 pnpm-lock.yaml
 .idea/
 token.txt
+.DS_Store

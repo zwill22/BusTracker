@@ -1,0 +1,27 @@
+name: Build BusTracker
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        name: ["iPhone 17"]
+        arch: ["arm64", "x86_64"]
+        os: ["26.2", "26.4.1", "26.5"]
+
+    steps:
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build BusTracker on iPhone Simulator
+        run: |
+          xcodebuild -scheme 'BusTracker' -destination 'platform=iOS Simulator,name=${{matrix.name}},arch=${{matrix.arch}},OS=${{matrix.os}}'

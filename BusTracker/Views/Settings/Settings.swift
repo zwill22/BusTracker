@@ -13,12 +13,24 @@ struct Settings: View {
     @Bindable var stopProvider: StopProvider
     @Bindable var vehicleProvider: VehicleProvider
     @Bindable var issueManager: IssueManager
-    
+
     var body: some View {
         NavigationStack {
             SettingsBlock(height: 80).padding(.top)
             Text("Settings").font(.title).padding(.bottom)
             Form {
+                Section(header: Text("Open Bus API")) {
+                    if let version = vehicleProvider.apiVersion {
+                        HStack{
+                            Text("Version:")
+                            Spacer()
+                            Text("\(version)")
+                        }
+                    } else {
+                        Text("API unavailable")
+                    }
+                }
+                
                 Section(header: Text("Vehicle Options")) {
                     VehicleSettings(
                         maxVehicles: $vehicleProvider.maxVehicles,

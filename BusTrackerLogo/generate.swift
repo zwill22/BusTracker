@@ -14,8 +14,14 @@ struct LogoView: View {
     let imageSize: CGFloat = 1024
     let circleRadius: CGFloat = 896
     let busSize: CGFloat = 576
+    
+    // Bus Tracker Logo
     let background: RadialGradient = RadialGradient(colors: [.white, .gray], center: .center, startRadius: 0, endRadius: 1024)
     let busColour: Color = .blue
+    // OpenBusAPI logo
+    //let background: RadialGradient = RadialGradient(colors: [.white, .blue], center: .center, startRadius: 0, endRadius: 1024)
+    //let busColour: Color = .init(.sRGB, red: 128 / 256, green: 16 / 256, blue: 16 / 256)
+    
     let bus: String = "bus.fill"
     
     var body: some View {
@@ -68,7 +74,7 @@ struct LogoGenerator {
         if let image = Logo().logo {
             do {
                 try write(cgimage: image, to: fileURL)
-                print("Done.")
+                print("Done, image saved to: \(fileURL.path())")
             } catch {
                 print("Logo not saved!")
             }
