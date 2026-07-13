@@ -13,15 +13,19 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        os: ["26.2"]
         name:
           [
+            "iPhone 16",
+            "iPhone 16 Plus",
+            "iPhone 16 Pro",
+            "iPhone 16 Pro Max",
+            "iPhone 16e",
             "iPhone 17",
             "iPhone 17 Pro",
             "iPhone 17 Pro Max",
-            "iPhone Air"
+            "iPhone Air",
+            "iPhone SE (3rd generation)
           ]
-        arch: ["arm64"]
 
     steps:
       # Checkout the repository
@@ -30,4 +34,5 @@ jobs:
 
       - name: Build BusTracker on iPhone Simulator
         run: |
-          xcodebuild -scheme 'BusTracker' -destination 'platform=iOS Simulator,name=${{matrix.name}},arch=${{matrix.arch}},OS=${{matrix.os}}'
+          xcodebuild -scheme 'BusTracker' -destination 'platform=iOS Simulator,name=${{matrix.name}}'
+
