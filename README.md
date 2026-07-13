@@ -1,6 +1,6 @@
 <link href="style.css" rel="stylesheet"></link>
 
-![Logo](BusTracker/Assets.xcassets/AppIcon.appiconset/logo.png)
+<img src="BusTracker/Assets.xcassets/AppIcon.appiconset/logo.png" alt="BusTracker Logo" height=256/>
 
 # BusTracker App
 
@@ -20,17 +20,11 @@ This is a bus tracking app for UK Bus services using location data from
 the [Bus Open Data Service][bus-data-dft]
 This app aims to provide users with real-time location data for buses across the UK.
 
-![main-view](Screenshots/MainView.png)
+<img src="Screenshots/MainView.png" alt="Main view showing buses around Cardiff, UK" height=720 title="main-view"/>
 
-_Main view showing buses around Cardiff, UK_
+<img src="Screenshots/OperatorList.png" alt="View showing list of transport operators" height=720 title="operator-list"/>
 
-![operator-list](Screenshots/OperatorList.png)
-
-_View showing list of transport operators_
-
-![stop-view](Screenshots/StopView.png)
-
-_View showing stops and stations around Cardiff, UK_
+<img src="Screenshots/StopView.png" alt="View showing stops and stations around Cardiff, UK" height=720 title="stop-view"/>
 
 The app can be used to find bus services currently running, information about transport operators, and
 the locations of bus stops and other transport access locations.
@@ -59,17 +53,11 @@ Clicking on an item in the bus list directs the user to a more detailed view abo
 This includes its current location and the location of its destination.
 More detailed information is provided about its location, origin, and when the information was obtained.
 
-![bus-detail-view](Screenshots/BusDetailView.png)
+<img src="Screenshots/BusDetailView.png" alt="View showing details of a bus in Cardiff, UK" height=720 title="bus-detail-view"/>
 
-_View showing details of a bus in Cardiff, UK_
+<img src="Screenshots/OperatorDetailView.png" alt="View showing transport operator details" height=720 title="operator-detail-view"/>
 
-![operator-detail-view](Screenshots/OperatorDetailView.png)
-
-_View showing transport operator details_
-
-![stop-detail-view](Screenshots/StopDetailView.png)
-
-_View showing details of a UK bus station_
+<img src="Screenshots/StopDetailView.png" alt="View showing details of a UK bus station" height=720 title="stop-detail-view"/>
 
 The bus detail view includes a link to details about the bus operator including their website, contact information,
 and social media (see above).
@@ -93,7 +81,7 @@ Thank you to anyone who has used the app. If you have any suggestions, issues, b
 these may also be added through the app.
 If you found the app use, please consider supporting my work:
 
-[![buy-me-a-coffee](BusTracker/Assets.xcassets/buymeacoffee.imageset/coffee.png)][buy-me-a-coffee]
+[<img src="BusTracker/Assets.xcassets/buymeacoffee.imageset/coffee.png" alt="Buy Me A Cherry Cola" height="48">][buy-me-a-coffee]
 
 <!--Links-->
 
