@@ -24,7 +24,7 @@ jobs:
             "iPhone 17 Pro",
             "iPhone 17 Pro Max",
             "iPhone Air",
-            "iPhone SE (3rd generation)
+            "iPhone SE (3rd generation)",
           ]
 
     steps:
@@ -35,4 +35,3 @@ jobs:
       - name: Build BusTracker on iPhone Simulator
         run: |
           xcodebuild -scheme 'BusTracker' -destination 'platform=iOS Simulator,name=${{matrix.name}}'
-
