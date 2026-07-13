@@ -21,11 +21,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    # Install any dependencies
-    - name: Install Dependencies
-      run: swift package resolve
-
-    # Run tests on iPhone 14 Simulator with iOS 16.0
     - name: Build BusTracker on iPhone {{matrix.iphone}} Simulator (iOS 26.5)
       run: |
         xcodebuild -scheme 'BusTracker' -destination 'platform=iOS Simulator,name=iPhone {{matrix.iphone}} OS=26.5'
