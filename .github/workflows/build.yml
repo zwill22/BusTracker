@@ -13,14 +13,23 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        iphone: ["11", "12", "13", "14", "15", "16", "17"]
-  
+        name:
+          [
+            "iPhone 16e",
+            "iPhone 17",
+            "iPhone 17 Pro",
+            "iPhone 17 Pro Max",
+            "iPhone 17e",
+            "iPhone Air",
+          ]
+        arch: ["arm64", "x86_64"]
+        os: ["26.2", "26.4.1", "26.5"]
 
     steps:
-    # Checkout the repository
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Build BusTracker on iPhone {{matrix.iphone}} Simulator (iOS 26.5)
-      run: |
-        xcodebuild -scheme 'BusTracker' -destination 'platform=iOS Simulator,name=iPhone {{matrix.iphone}} OS=26.5'
+      - name: Build BusTracker on iPhone ${{matrix.iphone}} Simulator (iOS 26.5)
+        run: |
+          xcodebuild -scheme 'BusTracker' -destination 'platform=iOS Simulator,name=${{matrix.name}} OS=${{matrix.os}},arch=${{matrix.arch}}'
