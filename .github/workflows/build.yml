@@ -13,6 +13,7 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
+        os: ["26.0", "26.0.1", "26.1", "26.2"]
         name:
           [
             "iPhone 17",
@@ -26,6 +27,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Download platform
+        run: |
+          xcodebuild -downloadPlatform iOS -buildVersion ${{matrix.os}}  -architectureVariant arm64
+
       - name: Build BusTracker on iPhone Simulator
         run: |
-          xcodebuild -scheme 'BusTracker' -destination 'platform=iOS Simulator,name=${{matrix.name}}'
+          xcodebuild -scheme 'BusTracker' -destination 'platform=iOS Simulator,name=${{matrix.name}},OS=${{matrix.os}},arch=arm64'
