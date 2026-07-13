@@ -24,4 +24,4 @@ jobs:
 
       - name: Build BusTracker on iPhone Simulator
         run: |
-          xcodebuild -scheme 'BusTracker' -destination 'platform=iOS Simulator,name=${{matrix.name}},arch=${{matrix.arch}}'
+          xcodebuild -scheme 'BusTracker' -destination 'platform=iOS Simulator,name=${{matrix.name}},arch=${{matrix.arch}},OS=${{matrix.os}}'

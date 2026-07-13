@@ -11,6 +11,7 @@
 [![JSON][json-badge]](#)
 [![XML][xml-badge]](#)
 [![GitHub Issues][github-issues-badge]][github-issues]
+[![Build][github-build-badge]][github-build]
 [![Buy Me A Coffee][buy-me-a-coffee-badge]][buy-me-a-coffee]
 [![License: MIT][license-badge]][license]
 [![No AI][noai-badge]](#)
@@ -110,12 +111,15 @@ If you found the app use, please consider supporting my work:
 [open-bus-api]: https://github.com/zwill22/OpenBusAPI
 [octokit-swift]: https://github.com/nerdishbynature/octokit.swift
 [siri-vm]: https://www.gov.uk/government/publications/technical-guidance-publishing-location-data-using-the-bus-open-data-service-siri-vm
+[github-build]: https://github.com/zwill22/BusTracker/actions/workflows/build.yml
+
 <!-- Badges -->
 
 [ios-badge]: https://img.shields.io/badge/iOS-000000?&logo=apple&logoColor=white&style=for-the-badge
 [app-store-badge]: https://img.shields.io/badge/App_Store-0D96F6?logo=app-store&logoColor=white&style=for-the-badge
 [swift-badge]: https://img.shields.io/badge/Swift-F54A2A?logo=swift&logoColor=white&style=for-the-badge
 [github-badge]: https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white&style=for-the-badge
+[github-build-badge]: https://img.shields.io/github/actions/workflow/status/zwill22/BusTracker/build.yml?style=for-the-badge&logo=github&label=Build
 [json-badge]: https://img.shields.io/badge/JSON-000?logo=json&logoColor=fff&style=for-the-badge
 [xml-badge]: https://img.shields.io/badge/XML-767C52?logo=xml&logoColor=fff&style=for-the-badge
 [github-issues-badge]: https://img.shields.io/github/issues/zwill22/BusTracker?style=for-the-badge&logo=github&label=Issues
