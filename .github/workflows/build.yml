@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  test-ios:
+  build:
     runs-on: macos-latest
     strategy:
       matrix:
@@ -22,6 +22,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Build BusTracker on iPhone ${{matrix.iphone}} Simulator (iOS 26.5)
+      - name: Build BusTracker on iPhone Simulator
         run: |
           xcodebuild -scheme 'BusTracker' -destination 'platform=iOS Simulator,name=${{matrix.name}},arch=${{matrix.arch}}'
