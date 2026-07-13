@@ -32,4 +32,4 @@ jobs:
 
       - name: Build BusTracker on iPhone ${{matrix.iphone}} Simulator (iOS 26.5)
         run: |
-          xcodebuild -scheme 'BusTracker' -destination 'platform=iOS Simulator,name=${{matrix.name}} OS=${{matrix.os}},arch=${{matrix.arch}}'
+          xcodebuild -scheme 'BusTracker' -destination 'platform=iOS Simulator,name=${{matrix.name}},OS=${{matrix.os}},arch=${{matrix.arch}}'
