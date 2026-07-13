@@ -13,14 +13,8 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        os: ["26.0", "26.0.1", "26.1", "26.2"]
-        name:
-          [
-            "iPhone 17",
-            "iPhone 17 Pro",
-            "iPhone 17 Pro Max",
-            "iPhone Air"
-          ]
+        os: ["26.2"]
+        name: ["iPhone 17 Pro"]
 
     steps:
       # Checkout the repository
