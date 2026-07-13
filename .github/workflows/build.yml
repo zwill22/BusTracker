@@ -13,10 +13,22 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        name: ["iPhone 17"]
-        arch: ["arm64", "x86_64"]
-        os: ["26.2", "26.4.1", "26.5"]
-
+        os: ["26.0", "26.0.1", "26.1", "26.2"]
+        name:
+          [
+            "iPhone 16",
+            "iPhone 16 Plus",
+            "iPhone 16 Pro",
+            "iPhone 16 Pro Max",
+            "iPhone 16e",
+            "iPhone SE (3rd generation)",
+            "iPhone 17",
+            "iPhone 17 Pro",
+            "iPhone 17 Pro Max",
+            "iPhone Air"
+          ]
+        arch: ["arm64"]
+        
     steps:
       # Checkout the repository
       - name: Checkout repository
