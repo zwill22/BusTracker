@@ -19,11 +19,11 @@ This is a bus tracking app for UK Bus services using location data from
 the [Bus Open Data Service][bus-data-dft]
 This app aims to provide users with real-time location data for buses across the UK.
 
-<img src="Screenshots/MainView.png" alt="Main view showing buses around Cardiff, UK" height=720 title="main-view"/>
+<img src="Screenshots/MainView.png" alt="Main view showing buses around Wrexham, Cymru" height=720 title="main-view"/>
 
 <img src="Screenshots/OperatorList.png" alt="View showing list of transport operators" height=720 title="operator-list"/>
 
-<img src="Screenshots/StopView.png" alt="View showing stops and stations around Cardiff, UK" height=720 title="stop-view"/>
+<img src="Screenshots/StopView.png" alt="View showing stops and stations around Wrexham, Cymru" height=720 title="stop-view"/>
 
 The app can be used to find bus services currently running, information about transport operators, and
 the locations of bus stops and other transport access locations.
@@ -52,7 +52,7 @@ Clicking on an item in the bus list directs the user to a more detailed view abo
 This includes its current location and the location of its destination.
 More detailed information is provided about its location, origin, and when the information was obtained.
 
-<img src="Screenshots/BusDetailView.png" alt="View showing details of a bus in Cardiff, UK" height=720 title="bus-detail-view"/>
+<img src="Screenshots/BusDetailView.png" alt="View showing details of a bus in Wrexham, Cymru" height=720 title="bus-detail-view"/>
 
 <img src="Screenshots/OperatorDetailView.png" alt="View showing transport operator details" height=720 title="operator-detail-view"/>
 
