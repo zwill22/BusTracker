@@ -57,6 +57,11 @@ class LocationProvider {
         )
     }
 
+    func update() {
+        locationManager.setup()
+        updatePosition()
+    }
+
     init() {
         self.locationManager = LocationManager()
         updatePosition()

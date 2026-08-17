@@ -11,12 +11,19 @@ struct Vehicles: View {
     @AppStorage("vehiclesLastUpdated")
     var vehiclesLastUpdated = Date.distantFuture.timeIntervalSince1970
 
+    @AppStorage("locationLastUpdated")
+    var locationLastUpdated = Date.distantFuture.timeIntervalSince1970
+
     @Bindable var locationProvider: LocationProvider
     @Bindable var operatorProvider: OperatorProvider
     @Bindable var stopProvider: StopProvider
     @Bindable var vehicleProvider: VehicleProvider
 
-    @State var isLoading: Bool = false
+    @State var vehiclesLoading: Bool = false
+    @State var centredOnUser: Bool = false
+    @State var locationLoading: Bool = false
+    @State var locationRequested: Bool = false
+
     @State private var error: BusTrackerError?
     @State private var hasError = false
 
@@ -24,7 +31,9 @@ struct Vehicles: View {
         NavigationStack {
             VehicleMap(
                 position: $locationProvider.position,
-                vehicles: $vehicleProvider.vehicles
+                vehicles: $vehicleProvider.vehicles,
+                centredOnUser: $centredOnUser,
+                recentreRequested: $locationRequested
             )
             List {
                 ForEach(
@@ -76,7 +85,7 @@ struct Vehicles: View {
     }
 
     func fetchVehicles() async {
-        isLoading = true
+        vehiclesLoading = true
         do {
             guard let location = locationProvider.mapLocation() else { return }
             try await vehicleProvider.fetchVehicles(mapLocation: location)
@@ -92,8 +101,27 @@ struct Vehicles: View {
             self.hasError = true
         }
         vehiclesLastUpdated = Date().timeIntervalSince1970
-        isLoading = false
+        vehiclesLoading = false
     }
+
+    func fetchUserLocation() {
+        locationLoading = true
+
+        let time = Date().timeIntervalSince1970
+
+        if time - locationLastUpdated < 10 && centredOnUser {
+            locationLoading = false
+            return
+        }
+
+        locationProvider.update()
+
+        locationLastUpdated = Date().timeIntervalSince1970
+        locationLoading = false
+        locationRequested = true
+        centredOnUser = true
+    }
+
 }
 
 #Preview {

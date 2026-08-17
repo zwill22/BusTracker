@@ -5,34 +5,42 @@
 //  Created by Zack Williams on 11-11-2024.
 //
 
-import SwiftUI
 import MapKit
+import SwiftUI
 
 struct VehicleMap: View {
     @Namespace var vehicleMapScope
-    
+
     @Binding var position: MapCameraPosition
     @Binding var vehicles: [Vehicle]
+
+    @Binding var centredOnUser: Bool
+    @Binding var recentreRequested: Bool
 
     var body: some View {
         Map(position: $position) {
             ForEach(vehicles) { vehicle in
                 Marker(
                     "",
-                    systemImage: vehicle.vehicleOperator?.mode.image() ?? "bus.fill",
-                    coordinate: VehiclePlace(location: vehicle.details.location).location
+                    systemImage: vehicle.vehicleOperator?.mode.image()
+                        ?? "bus.fill",
+                    coordinate: VehiclePlace(location: vehicle.details.location)
+                        .location
                 )
                 .tint(vehicle.vehicleOperator?.primaryColour ?? .primary)
             }
         }
         .onMapCameraChange(frequency: .onEnd) { context in
             position = .region(context.region)
+
+            if recentreRequested {
+                recentreRequested = false
+            } else if centredOnUser {
+                centredOnUser = false
+            }
         }
         .mapControls {
-            VStack {
-                MapUserLocationButton(scope: vehicleMapScope)
-                MapScaleView(scope: vehicleMapScope)
-            }
+            MapScaleView(scope: vehicleMapScope)
         }
     }
 }
