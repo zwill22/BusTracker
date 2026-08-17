@@ -9,11 +9,11 @@ import Foundation
 
 struct Server {
     #if DEBUG
-    private let url: URL = URL(filePath: "http://localhost:5134")!
+        private let url: URL = URL(string: "http://localhost:5134")!
     #else
-    private let url: URL = URL(filePath: "https://zmwill.pythonanywhere.com")!
+        private let url: URL = URL(string: "https://zmwill.pythonanywhere.com")!
     #endif
-    
+
     func getURLRoot(path: String) -> URL {
         return url.appending(path: path)
     }
