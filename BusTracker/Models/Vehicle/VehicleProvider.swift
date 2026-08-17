@@ -17,9 +17,9 @@ class VehicleProvider {
     var refreshInterval: TimeInterval = 30
     var autoRefresh: Bool = true
     var apiVersion: String?
-    
+
     let client: VehicleClient
-    
+
     func fetchAPIVersion() async throws {
         self.apiVersion = try await client.version()
     }
@@ -31,35 +31,41 @@ class VehicleProvider {
             maxTime: maxTime
         )
     }
-    
+
     func getOperators(_ offset: Int) -> [Operator] {
         if let vehicleOperator = self.vehicles[offset].vehicleOperator {
             return [vehicleOperator]
         }
-        
+
         return []
     }
-    
+
     func getStops(_ offset: Int) -> [Stop] {
         return self.vehicles[offset].getStops()
     }
-    
+
     func updateVehicle(atOffset: Int) async throws {
+        if atOffset > vehicles.count {
+            throw BusTrackerError.missingData
+        }
         let vehicleRef = vehicles[atOffset].details.vehicleRef
         let updatedVehicle = try await client.vehicle(vehicleRef: vehicleRef)
         let operators = getOperators(atOffset)
-        let stops:[Stop] = getStops(atOffset)
-        
-        self.vehicles[atOffset] = Vehicle(vehicle: updatedVehicle, operators: operators, stops: stops)
+        let stops: [Stop] = getStops(atOffset)
+
+        self.vehicles[atOffset] = Vehicle(
+            vehicle: updatedVehicle,
+            operators: operators,
+            stops: stops
+        )
     }
-    
-    
+
     func updateVehicles(operators: [Operator], stops: [Stop]) {
         self.vehicles = self.vehicles.map {
             Vehicle(vehicle: $0, operators: operators, stops: stops)
         }
     }
-    
+
     init(client: VehicleClient = VehicleClient()) {
         self.client = client
     }

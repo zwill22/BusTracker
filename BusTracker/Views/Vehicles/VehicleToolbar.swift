@@ -5,10 +5,11 @@
 //  Created by Zack Williams on 13-11-2024.
 //
 
+import MapKit
 import SwiftUI
 
 extension Vehicles {
-    
+
     @ViewBuilder
     func toolbarStatus() -> some View {
         ToolbarStatus(
@@ -18,18 +19,19 @@ extension Vehicles {
             itemType: "Vehicles"
         )
     }
-    
+
     @ToolbarContentBuilder
     func toolbarContent() -> some ToolbarContent {
-        ToolbarItemGroup(placement: .bottomBar) {
+        ToolbarItem(placement: .cancellationAction) {
             RefreshButton(isLoading: $isLoading) {
                 Task {
                     await fetchVehicles()
                 }
             }
-            Spacer()
+        }
+
+        ToolbarItem(placement: .title) {
             toolbarStatus()
-            Spacer()
         }
     }
 }
