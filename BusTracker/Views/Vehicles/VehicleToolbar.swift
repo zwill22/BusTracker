@@ -5,31 +5,43 @@
 //  Created by Zack Williams on 13-11-2024.
 //
 
+import MapKit
 import SwiftUI
 
 extension Vehicles {
-    
+
     @ViewBuilder
     func toolbarStatus() -> some View {
         ToolbarStatus(
-            isLoading: isLoading,
+            isLoading: vehiclesLoading,
             lastUpdated: vehiclesLastUpdated,
             count: vehicleProvider.vehicles.count,
             itemType: "Vehicles"
         )
     }
-    
+
     @ToolbarContentBuilder
     func toolbarContent() -> some ToolbarContent {
-        ToolbarItemGroup(placement: .bottomBar) {
-            RefreshButton(isLoading: $isLoading) {
+        ToolbarItem(placement: .topBarLeading) {
+            RefreshButton(isLoading: $vehiclesLoading) {
                 Task {
                     await fetchVehicles()
                 }
             }
-            Spacer()
-            toolbarStatus()
-            Spacer()
         }
+
+        ToolbarItem(placement: .title) {
+            toolbarStatus()
+        }
+
+        ToolbarItem(placement: .topBarTrailing) {
+            UserLocationButton(
+                isLoading: $locationLoading,
+                centredOnUser: $centredOnUser
+            ) {
+                fetchUserLocation()
+            }
+        }
+
     }
 }

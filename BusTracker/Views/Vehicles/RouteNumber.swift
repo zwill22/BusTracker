@@ -8,20 +8,22 @@
 import SwiftUI
 
 struct RouteNumber: View {
-    var vehicle: Vehicle
+    var vehicle: Vehicle?
     var height: CGFloat = 60
-    
+
     var body: some View {
         RoundedRectangle(cornerRadius: 8)
-            .fill(vehicle.vehicleOperator?.primaryColour ?? .primary.opacity(0.8)
+            .fill(
+                vehicle?.vehicleOperator?.primaryColour ?? .primary.opacity(0.8)
             )
             .frame(width: 80, height: height)
             .overlay {
-                Text(vehicle.details.lineNumber)
+                Text(vehicle?.details.lineNumber ?? "")
                     .font(.title)
                     .bold()
                     .foregroundStyle(
-                        vehicle.vehicleOperator?.secondaryColour ?? .accentColor
+                        vehicle?.vehicleOperator?.secondaryColour
+                            ?? .accentColor
                     )
             }
     }

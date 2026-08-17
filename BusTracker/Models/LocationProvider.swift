@@ -20,30 +20,35 @@ struct MapLocation {
 @Observable
 class LocationProvider {
     private let locationManager: LocationManager
-    
+
     var defaultDelta = 0.1
     var maxDelta = 1.0
-    var position : MapCameraPosition = .automatic
-    
+    var position: MapCameraPosition = .automatic
+
     func getLocation() -> CLLocation? {
         return locationManager.location
     }
-    
+
     func updatePosition() {
         if let location = locationManager.location {
-            position = MapCameraPosition.region(MKCoordinateRegion(
-                center: location.coordinate,
-                span: MKCoordinateSpan(latitudeDelta: defaultDelta, longitudeDelta: defaultDelta)
-            ))
+            position = MapCameraPosition.region(
+                MKCoordinateRegion(
+                    center: location.coordinate,
+                    span: MKCoordinateSpan(
+                        latitudeDelta: defaultDelta,
+                        longitudeDelta: defaultDelta
+                    )
+                )
+            )
         }
     }
-    
+
     func mapLocation() -> MapLocation? {
         guard let region = position.region else { return nil }
-        
+
         let deltaLatitude = min(region.span.latitudeDelta, maxDelta) / 2
         let deltaLongitude = min(region.span.longitudeDelta, maxDelta) / 2
-        
+
         return MapLocation(
             centreLongitude: region.center.longitude,
             centreLatitude: region.center.latitude,
@@ -51,7 +56,12 @@ class LocationProvider {
             latitudeDelta: deltaLatitude
         )
     }
-    
+
+    func update() {
+        locationManager.setup()
+        updatePosition()
+    }
+
     init() {
         self.locationManager = LocationManager()
         updatePosition()

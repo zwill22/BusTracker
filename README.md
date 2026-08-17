@@ -5,26 +5,25 @@
 # BusTracker App
 
 [![iOS][ios-badge]][ios]
-[![App Store][app-store-badge]][app-store]
 [![Swift][swift-badge]][swift]
 [![GitHub][github-badge]][github]
-[![JSON][json-badge]](#)
-[![XML][xml-badge]](#)
-[![GitHub Issues][github-issues-badge]][github-issues]
 [![Build][github-build-badge]][github-build]
+[![JSON][json-badge]][open-bus-api]
+[![XML][xml-badge]][open-bus-api]
+[![GitHub Issues][github-issues-badge]][github-issues]
 [![Buy Me A Coffee][buy-me-a-coffee-badge]][buy-me-a-coffee]
 [![License: MIT][license-badge]][license]
-[![No AI][noai-badge]](#)
+[![No AI][noai-badge]][website]
 
 This is a bus tracking app for UK Bus services using location data from
 the [Bus Open Data Service][bus-data-dft]
 This app aims to provide users with real-time location data for buses across the UK.
 
-<img src="Screenshots/MainView.png" alt="Main view showing buses around Cardiff, UK" height=720 title="main-view"/>
+<img src="Screenshots/MainView.png" alt="Main view showing buses around Wrexham, Cymru" height=720 title="main-view"/>
 
 <img src="Screenshots/OperatorList.png" alt="View showing list of transport operators" height=720 title="operator-list"/>
 
-<img src="Screenshots/StopView.png" alt="View showing stops and stations around Cardiff, UK" height=720 title="stop-view"/>
+<img src="Screenshots/StopView.png" alt="View showing stops and stations around Wrexham, Cymru" height=720 title="stop-view"/>
 
 The app can be used to find bus services currently running, information about transport operators, and
 the locations of bus stops and other transport access locations.
@@ -53,7 +52,7 @@ Clicking on an item in the bus list directs the user to a more detailed view abo
 This includes its current location and the location of its destination.
 More detailed information is provided about its location, origin, and when the information was obtained.
 
-<img src="Screenshots/BusDetailView.png" alt="View showing details of a bus in Cardiff, UK" height=720 title="bus-detail-view"/>
+<img src="Screenshots/BusDetailView.png" alt="View showing details of a bus in Wrexham, Cymru" height=720 title="bus-detail-view"/>
 
 <img src="Screenshots/OperatorDetailView.png" alt="View showing transport operator details" height=720 title="operator-detail-view"/>
 
@@ -86,7 +85,6 @@ If you found the app use, please consider supporting my work:
 <!--Links-->
 
 [ios]: https://apple.com/ios/
-[app-store]: https://appstore.com/
 [swift]: https://www.swift.org
 [github]: https://github.com/zwill22/BusTracker
 [xmlcoder]: https://github.com/CoreOffice/XMLCoder
@@ -104,7 +102,6 @@ If you found the app use, please consider supporting my work:
 <!-- Badges -->
 
 [ios-badge]: https://img.shields.io/badge/iOS-000000?&logo=apple&logoColor=white&style=for-the-badge
-[app-store-badge]: https://img.shields.io/badge/App_Store-0D96F6?logo=app-store&logoColor=white&style=for-the-badge
 [swift-badge]: https://img.shields.io/badge/Swift-F54A2A?logo=swift&logoColor=white&style=for-the-badge
 [github-badge]: https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white&style=for-the-badge
 [github-build-badge]: https://img.shields.io/github/actions/workflow/status/zwill22/BusTracker/build.yml?style=for-the-badge&logo=github&label=Build
@@ -114,3 +111,4 @@ If you found the app use, please consider supporting my work:
 [buy-me-a-coffee-badge]: https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?&logo=buy-me-a-coffee&logoColor=black&style=for-the-badge
 [license-badge]: https://img.shields.io/github/license/zwill22/bustracker?style=for-the-badge
 [noai-badge]: https://custom-icon-badges.demolab.com/badge/No%20AI-2f2f2f?logo=non-ai&logoColor=white&style=for-the-badge
+[website]: https://zmwill.uk
